@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: New Table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 20fe2bf28d472074c86f90e08cb7c5d8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 25742336000
+    m_Localized: I need my cone back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396704513581056
+    m_Localized: Bye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7220077973528576
+    m_Localized: I can't make my way home 'til the rain lets up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7258667554234368
+    m_Localized: The bitter scent of lemons remains embedded in my heart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8025395334799360
+    m_Localized: don't need to run its rails
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9067085201989632
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9068785728020480
+    m_Localized: Load Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9069002594508800
+    m_Localized: Setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9069063332225024
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9069928868798464
+    m_Localized: Sounds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9070831793397760
+    m_Localized: BG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9071005601161216
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9071065999138816
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9822450382331904
+    m_Localized: MacGuffin
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
