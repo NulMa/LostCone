@@ -24,9 +24,12 @@ public class MapItems : MonoBehaviour {
 
         // 아이템 보유 상태 로드 및 비활성화
         foreach (var item in Items) {
-            item.isHave = PlayerPrefs.GetInt($"Map_{MapID}_Item_{item.ItemID}_Have", 0) == 1;
+            int haveValue = PlayerPrefs.GetInt($"Map_{MapID}_Item_{item.ItemID}_Have", 0);
+            Debug.Log($"[디버그] MapID:{MapID}, ItemID:{item.ItemID}, PlayerPrefs:{haveValue}");
+            item.isHave = haveValue == 1;
             if (item.isHave) {
-                item.gameObject.SetActive(false); // 보유한 아이템 비활성화
+                Debug.Log($"[디버그] 비활성화됨: MapID:{MapID}, ItemID:{item.ItemID}");
+                item.gameObject.SetActive(false);
             }
         }
     }
@@ -45,21 +48,4 @@ public class MapItems : MonoBehaviour {
             Debug.Log("[Map Debug] No items found in this map.");
         }
     }
-
 }
-
-/*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MapItems : MonoBehaviour{
-    public int stageID;
-    public GameObject[] mapItems;
-    public bool isClear;
-
-    private void Awake() {
-        
-    }
-}
-*/

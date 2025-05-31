@@ -62,8 +62,19 @@ public class ItemDataManager : MonoBehaviour {
     public void SaveCurrentMapData() {
         PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
 
+        // 전체 맵 클리어 상태 저장
         foreach (var map in MapClearStatus) {
             PlayerPrefs.SetInt($"Map_{map.Key}_Clear", map.Value ? 1 : 0);
+        }
+
+        // 전체 맵의 아이템 보유 상태 저장
+        foreach (Transform child in transform) {
+            MapItems mapItems = child.GetComponent<MapItems>();
+            if (mapItems != null) {
+                foreach (var item in mapItems.Items) {
+                    PlayerPrefs.SetInt($"Map_{mapItems.MapID}_Item_{item.ItemID}_Have", item.isHave ? 1 : 0);
+                }
+            }
         }
 
         PlayerPrefs.Save();
@@ -72,8 +83,27 @@ public class ItemDataManager : MonoBehaviour {
     public void LoadCurrentMapData() {
         CurrentMapID = PlayerPrefs.GetInt("CurrentMapID", 0);
 
-        foreach (var map in MapClearStatus.Keys) {
+        // 전체 맵 클리어 상태 불러오기
+        foreach (var map in MapClearStatus.Keys.ToList()) {
             MapClearStatus[map] = PlayerPrefs.GetInt($"Map_{map}_Clear", 0) == 1;
+        }
+
+        // 전체 맵의 아이템 보유 상태 불러오기 및 비활성화 처리
+        foreach (Transform child in transform) {
+            MapItems mapItems = child.GetComponent<MapItems>();
+            if (mapItems != null) {
+                // 맵 클리어 상태 반영
+                mapItems.IsCleared = MapClearStatus.ContainsKey(mapItems.MapID) && MapClearStatus[mapItems.MapID];
+
+                // 아이템 보유 상태 반영 및 비활성화
+                foreach (var item in mapItems.Items) {
+                    int haveValue = PlayerPrefs.GetInt($"Map_{mapItems.MapID}_Item_{item.ItemID}_Have", 0);
+                    item.isHave = haveValue == 1;
+                    if (item.isHave) {
+                        item.gameObject.SetActive(false);
+                    }
+                }
+            }
         }
     }
 

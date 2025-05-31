@@ -41,6 +41,10 @@ public class GamaManager : MonoBehaviour{
 
     }
 
+    private void Update() {
+        ItemDataManager.CurrentMapID = currentStageID;
+    }
+
     public void rainSwitch() {
         if (rain.activeSelf) {
             rain.SetActive(false);
