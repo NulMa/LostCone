@@ -14,6 +14,7 @@ public class SettingUI : MonoBehaviour
     public Slider bgmSlider;
     public Slider sfxSlider;
     public TMP_Dropdown langDropdown;
+    public GameObject SettingPanel;
 
     public static SettingUI instance;
     // Start is called before the first frame update
@@ -42,6 +43,30 @@ public class SettingUI : MonoBehaviour
 
     }
 
+    // 플레이 씬에서 UI 오브젝트를 할당하고 값 동기화 및 이벤트 연결
+    public void AssignUIAndSync(Slider newBgmSlider, Slider newSfxSlider, TMP_Dropdown newLangDropdown) {
+        bgmSlider = newBgmSlider;
+        sfxSlider = newSfxSlider;
+        langDropdown = newLangDropdown;
+
+        // 값 동기화
+        ApplySettingsToUI();
+
+        // 기존 리스너 제거 후 새로 연결
+        if (bgmSlider != null) {
+            bgmSlider.onValueChanged.RemoveAllListeners();
+            bgmSlider.onValueChanged.AddListener(OnBGMSliderChanged);
+        }
+        if (sfxSlider != null) {
+            sfxSlider.onValueChanged.RemoveAllListeners();
+            sfxSlider.onValueChanged.AddListener(OnSFXSliderChanged);
+        }
+        if (langDropdown != null) {
+            langDropdown.onValueChanged.RemoveAllListeners();
+            langDropdown.onValueChanged.AddListener(LangDropdown);
+        }
+    }
+
     public void LangDropdown(int langNum) {
         Language = langNum;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[langNum];
@@ -49,11 +74,13 @@ public class SettingUI : MonoBehaviour
 
     public void OnBGMSliderChanged(float value) {
         BGMUSIC_VOLUME = value;
+        AudioManager.Instance?.SetBGMVolume(value);
         SaveSettings();
     }
 
     public void OnSFXSliderChanged(float value) {
         SFX_VOLUME = value;
+        AudioManager.Instance?.SetSFXVolume(value);
         SaveSettings();
     }
 
@@ -80,6 +107,9 @@ public class SettingUI : MonoBehaviour
             sfxSlider.value = SFX_VOLUME;
         if (langDropdown != null)
             LangDropdown(Language);
+
+        AudioManager.Instance?.SetBGMVolume(BGMUSIC_VOLUME);
+        AudioManager.Instance?.SetSFXVolume(SFX_VOLUME);
     }
 
 }

@@ -25,6 +25,7 @@ public class ItemGet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
+            AudioManager.Instance?.PlayUISFX(1); // 아이템 획득 사운드 재생
             DOTween.Kill(transform);
             isHave = true;
             GamaManager.Instance.ItemDataManager.SaveCurrentMapData();

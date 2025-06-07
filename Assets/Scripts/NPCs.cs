@@ -39,6 +39,7 @@ public class NPCs : MonoBehaviour {
                     // video 오브젝트 활성화
                     if (video != null) {
                         video.SetActive(true);
+                        AudioManager.Instance.PlayBGM(0, true, 0.3f); // 배경음 재생
                         StartCoroutine(FadeInVideoAndPlayAnimator());
                         isPlayed = true; // isPlayed 상태 업데이트
 

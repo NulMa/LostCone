@@ -16,6 +16,7 @@ public class Player : MonoBehaviour{
     public bool isJumping;
     public bool isScenePlaying;
     public bool isInteracting;
+    private bool isMoveSfxPlaying = false;
 
     public GameObject cone;
 
@@ -68,16 +69,19 @@ public class Player : MonoBehaviour{
 
         Collider2D col = GetComponent<Collider2D>();
         Vector2 rayStart = new Vector2(col.bounds.center.x, col.bounds.min.y);
-
-        // 레이캐스트 거리 = 콜라이더 높이 + 여유분
         float rayLength = col.bounds.extents.y + 0.05f;
 
         RaycastHit2D hit = Physics2D.Raycast(rayStart, Vector2.down, 0.1f, LayerMask.GetMask("Tilemap"));
-        //Debug.DrawRay(rayStart, Vector2.down * 0.1f, Color.red);
 
         if (hit.collider != null) {
             anim.SetBool("isJump", false);
             isJumping = false;
+
+            // 착지 후 좌우 입력이 있으면 걷기 사운드 재생
+            if (inputVec2.x != 0 && !isMoveSfxPlaying) {
+                AudioManager.Instance?.PlayLoopSFX(0, gameObject);
+                isMoveSfxPlaying = true;
+            }
         }
     }
 
@@ -90,8 +94,23 @@ public class Player : MonoBehaviour{
             anim.SetBool("isSwing", false);
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
             anim.SetBool("isMove", true);
+
+            // 점프 중이 아니고, 사운드가 재생 중이 아니면 걷기 사운드 루프 재생
+            if (!isJumping && !isMoveSfxPlaying) {
+                AudioManager.Instance?.PlayLoopSFX(0, gameObject);
+                isMoveSfxPlaying = true;
+            }
         }
-        flipCtrl(); //player sprite flip
+        else {
+            // 입력이 없으면 걷기 사운드 정지
+            if (isMoveSfxPlaying) {
+                AudioManager.Instance?.StopLoopSFX(gameObject);
+                isMoveSfxPlaying = false;
+            }
+            moveDirection = Vector3.zero;
+            anim.SetBool("isMove", false);
+        }
+        flipCtrl();
     }
     public void OnJump() {
         if (isScenePlaying)
@@ -100,6 +119,12 @@ public class Player : MonoBehaviour{
         if (!anim.GetBool("isJump")) {
             anim.SetBool("isJump", true);
             rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            // 점프 시 걷기 사운드 정지
+            if (isMoveSfxPlaying) {
+                AudioManager.Instance?.StopLoopSFX(gameObject);
+                isMoveSfxPlaying = false;
+            }
         }
     }
     public void OnFire() {
