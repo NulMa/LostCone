@@ -74,6 +74,10 @@ MonoBehaviour:
     m_Localized: MacGuffin
     m_Metadata:
       m_Items: []
+  - m_Id: 21737928814026752
+    m_Localized: carrying a gun that's sure to come in handy...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

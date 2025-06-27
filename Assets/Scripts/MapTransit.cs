@@ -19,7 +19,6 @@ public class MapTransit : MonoBehaviour{
             GamaManager.Instance.panel.DOFade(1f, 1f).OnComplete(() => {
                 GamaManager.Instance.player.GetComponent<Animator>().SetBool("isMove", true);
                 GamaManager.Instance.player.inputVec2 = new Vector2(1, 0);
-
                 GamaManager.Instance.player.transform.position = destination.position;
 
                 // 일정 시간 대기 후 페이드 아웃
@@ -27,7 +26,8 @@ public class MapTransit : MonoBehaviour{
                 GamaManager.Instance.panel.DOFade(0f, 1f).SetDelay(1f).OnComplete(() => {
                     GamaManager.Instance.player.sceneSwitch();
                     GamaManager.Instance.player.SavePlayerPosition();
-                    GamaManager.Instance.UIManager.PrintMSG("Lemon_Sprout");
+                    GamaManager.Instance.player.inputVec2 = new Vector2(0, 0);
+                    //GamaManager.Instance.UIManager.PrintMSG("Lemon_Sprout");
                 });
 
             });

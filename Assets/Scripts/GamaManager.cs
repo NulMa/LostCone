@@ -14,6 +14,7 @@ public class GamaManager : MonoBehaviour{
     public ItemDataManager ItemDataManager;
     public UICtrl UIManager;
     public Player player;
+    public GameObject playerParent;
     public MapItems currentMap;
     public Image panel;
     public Camera mainCam;
@@ -39,6 +40,7 @@ public class GamaManager : MonoBehaviour{
             Destroy(gameObject); // 중복된 인스턴스 제거
         }
 
+        if(GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
     }
 
     private void Update() {

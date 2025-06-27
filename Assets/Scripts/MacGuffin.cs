@@ -8,6 +8,8 @@ public class MacGuffin : MonoBehaviour{
     public Transform destinaion;
 
     private void OnTriggerEnter2D(Collider2D collision) {
+        if (GamaManager.Instance.SceneManager.scenes[1].isDone)
+            return;
         if(collision.tag == "Player") {
             wareWolf.SetActive(true);
             GetComponent<Collider2D>().enabled = false;
