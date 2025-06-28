@@ -24,10 +24,24 @@ public class Player : MonoBehaviour{
     SpriteRenderer sprite;
     Rigidbody2D rigid;
 
+    // 대쉬 관련 변수
+    public float dashMultiplier = 2.5f; // 대쉬 시 속도 배수 (2~3 사이 추천)
+    public float dashDuration = 0.2f;   // 대쉬 지속 시간(초)
+    public float dashCooldown = 1f;     // 대쉬 쿨타임(초)
+    private bool isDashing = false;
+    private bool canDash = true;
+
+    // 하향점프 관련 변수
+    public float downJumpRayLength = 0.2f; // 바닥 탐지용 레이 길이
+    public LayerMask platformLayer;         // 얇은 바닥 레이어 지정
+    private Collider2D playerCollider;
+
+
     void Start() {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<Collider2D>();
     }
     private void FixedUpdate() {
         if (isScenePlaying)
@@ -83,6 +97,45 @@ public class Player : MonoBehaviour{
                 isMoveSfxPlaying = true;
             }
         }
+    }
+    public void OnDash() {
+        if (!canDash || isDashing || isScenePlaying) return;
+        StartCoroutine(DashRoutine());
+    }
+
+    private IEnumerator DashRoutine() {
+        isDashing = true;
+        canDash = false;
+        float originalSpeed = speed;
+        speed *= dashMultiplier;
+        anim.SetTrigger("Dash"); // 대쉬 애니메이션 트리거(옵션)
+
+        yield return new WaitForSeconds(dashDuration);
+
+        speed = originalSpeed;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+    public void OnDownJump() {
+        Debug.Log("OnDJ");
+        if (isScenePlaying) return;
+
+        // 아래로 레이캐스트
+        Vector2 origin = new Vector2(transform.position.x, playerCollider.bounds.min.y - 0.05f);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, downJumpRayLength, platformLayer);
+        if (hit.collider != null) {
+            StartCoroutine(DownJumpRoutine(hit.collider));
+        }
+    }
+
+    private IEnumerator DownJumpRoutine(Collider2D platform) {
+        // 플레이어 콜라이더를 잠시 비활성화(혹은 PlatformEffector2D 사용시 oneWay 설정)
+        Physics2D.IgnoreCollision(playerCollider, platform, true);
+        yield return new WaitForSeconds(0.3f); // 통과 시간
+        Physics2D.IgnoreCollision(playerCollider, platform, false);
     }
 
     public void OnMove(InputValue value) {

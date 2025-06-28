@@ -1363,7 +1363,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &298458731
 Animator:
@@ -2965,7 +2965,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979934044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ab2116ec176754a4b84f4c960fd6a564, type: 2}
   m_CullingMode: 0
@@ -8115,7 +8115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1e22d724a495649beaf2dfba3014b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chained: {fileID: 0}
+  chained:
+  - {fileID: 208911178}
+  - {fileID: 1783576240}
+  - {fileID: 1524583379}
   video: {fileID: 979934044}
   isPlayed: 0
 --- !u!1 &1552117041
@@ -45285,7 +45288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1e22d724a495649beaf2dfba3014b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chained: {fileID: 1792621675}
+  chained:
+  - {fileID: 1792621675}
   video: {fileID: 298458729}
   isPlayed: 0
 --- !u!1 &1613267614
@@ -106960,6 +106964,13 @@ MonoBehaviour:
   isScenePlaying: 1
   isInteracting: 0
   cone: {fileID: 1995917919}
+  dashMultiplier: 3
+  dashDuration: 0.5
+  dashCooldown: 1
+  downJumpRayLength: 0.2
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1661283848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127401,6 +127412,11 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1783576240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4277424193000781604, guid: 28d86bd909b9e4247a4c60086ec4c89a, type: 3}
+  m_PrefabInstance: {fileID: 1902514833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1787834138
 GameObject:
   m_ObjectHideFlags: 0

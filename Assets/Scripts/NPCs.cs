@@ -8,7 +8,7 @@ public class NPCs : MonoBehaviour {
     public Action OnInteract; // 상호작용 동작
     private Animator animator; // Animator 컴포넌트 참조
 
-    public GameObject chained; // 연결된 오브젝트
+    public GameObject[] chained; // 연결된 오브젝트
     public GameObject video;
 
     public bool isPlayed;
@@ -73,6 +73,7 @@ public class NPCs : MonoBehaviour {
                 break;
 
             case "Gumi":
+                StartCoroutine(ActivateChainedAnimator());
                 break;
         }
 
@@ -83,13 +84,13 @@ public class NPCs : MonoBehaviour {
         switch (gameObject.name) {
             case "Lemon_Sprout":
                 if (GamaManager.Instance.SceneManager.scenes[1].isDone){
-                    Animator chainedAnimator = chained.GetComponent<Animator>();
+                    Animator chainedAnimator = chained[0].GetComponent<Animator>();
                     chainedAnimator.enabled = true;
                     break;
                 }
                 yield return new WaitForSeconds(1.5f); // 1.5초 대기
                 if (chained != null) {
-                    Animator chainedAnimator = chained.GetComponent<Animator>();
+                    Animator chainedAnimator = chained[0].GetComponent<Animator>();
                     if (chainedAnimator != null) {
                         chainedAnimator.enabled = true; // chained의 Animator 활성화
                         GamaManager.Instance.SceneManager.sceneIsDone(1);
