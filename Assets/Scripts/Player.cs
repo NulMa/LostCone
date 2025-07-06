@@ -35,6 +35,7 @@ public class Player : MonoBehaviour{
     public float downJumpRayLength = 0.2f; // 바닥 탐지용 레이 길이
     public LayerMask platformLayer;         // 얇은 바닥 레이어 지정
     private Collider2D playerCollider;
+    private Vector3 dashDirection; // 대쉬 방향 저장용
 
 
     void Start() {
@@ -48,10 +49,22 @@ public class Player : MonoBehaviour{
             return;
         CheckLanding();
 
-        if (inputVec2.x == 0) {
-            moveDirection = Vector3.zero;
-            anim.SetBool("isMove", false);
+        if (isDashing) {
+            transform.position += dashDirection * speed * Time.deltaTime;
+            return;
         }
+
+        // 입력값에 따라 moveDirection을 항상 갱신
+        if (inputVec2.x != 0) {
+            moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
+        }
+        else {
+            moveDirection = Vector3.zero;
+        }
+
+        // 애니메이션도 입력값에 따라 갱신
+        anim.SetBool("isMove", inputVec2.x != 0);
+
         transform.position += moveDirection * speed * Time.deltaTime;
     }
 
@@ -107,13 +120,28 @@ public class Player : MonoBehaviour{
         isDashing = true;
         canDash = false;
         float originalSpeed = speed;
+        dashDirection = moveDirection; // 대쉬 시작 시 방향 고정
         speed *= dashMultiplier;
-        anim.SetTrigger("Dash"); // 대쉬 애니메이션 트리거(옵션)
+        anim.SetTrigger("Dash");
 
         yield return new WaitForSeconds(dashDuration);
 
         speed = originalSpeed;
         isDashing = false;
+
+        // 대쉬 종료 후 입력값에 따라 moveDirection을 즉시 갱신
+        if (inputVec2.x != 0) {
+            Debug.Log("dash move");
+            moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
+            anim.SetBool("isMove", true);
+        }
+        else {
+            moveDirection = Vector3.zero;
+            Debug.Log("dash stop");
+            anim.SetBool("isMove", false);
+        }
+
+        // 애니메이터의 Exit 노드로 상태가 자동 전환됨
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
@@ -142,20 +170,25 @@ public class Player : MonoBehaviour{
         if (isScenePlaying)
             return;
 
-        inputVec2 = value.Get<Vector2>();
+        inputVec2 = value.Get<Vector2>(); // 항상 입력값 갱신
+
+        if (isDashing) {
+            // 대쉬 중에는 방향만 고정, flip만 허용
+            flipCtrl();
+            return;
+        }
+
         if (inputVec2.x != 0) {
             anim.SetBool("isSwing", false);
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
             anim.SetBool("isMove", true);
 
-            // 점프 중이 아니고, 사운드가 재생 중이 아니면 걷기 사운드 루프 재생
             if (!isJumping && !isMoveSfxPlaying) {
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
                 isMoveSfxPlaying = true;
             }
         }
         else {
-            // 입력이 없으면 걷기 사운드 정지
             if (isMoveSfxPlaying) {
                 AudioManager.Instance?.StopLoopSFX(gameObject);
                 isMoveSfxPlaying = false;
