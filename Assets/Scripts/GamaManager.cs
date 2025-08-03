@@ -5,14 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 public class GamaManager : MonoBehaviour{
     public static GamaManager Instance { get; private set; }
 
     public GameObject[] BGs;
     public GameObject[] Maps;
+
+
+
     public SceneManager SceneManager;
     public ItemDataManager ItemDataManager;
     public UICtrl UIManager;
+    public AchiveManager AchiveManager;
+
     public Player player;
     public GameObject playerParent;
     public MapItems currentMap;
@@ -45,6 +52,13 @@ public class GamaManager : MonoBehaviour{
 
     private void Update() {
         ItemDataManager.CurrentMapID = currentStageID;
+    }
+
+    public void achiveCall(string key) {
+        if (PlayerPrefs.GetInt("achive_" + key, 0) == 1)
+            return;
+
+        AchiveManager.instance.SetAchiveClear(key);
     }
 
     public void rainSwitch() {

@@ -43,6 +43,7 @@ public class NPCs : MonoBehaviour {
                             }
                             else {
                                 // video 오브젝트 활성화
+                                GamaManager.Instance.achiveCall("HalfCut");
                                 playVideo();
                             }
 
@@ -56,6 +57,7 @@ public class NPCs : MonoBehaviour {
                         }
                         else {
                             playVideo();
+                            GamaManager.Instance.achiveCall("Alive");
                         }
                         break;
                 }

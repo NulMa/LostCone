@@ -29,6 +29,7 @@ public class Scene_02 : MonoBehaviour{
 
     private IEnumerator RollAndMove() {
         yield return new WaitForSeconds(2f);
+        GamaManager.Instance.achiveCall("OIIA");
         anim.Play("Cone_Roll");
 
         var moveX = transform.DOMoveX(transform.position.x + 9f, 1.5f)

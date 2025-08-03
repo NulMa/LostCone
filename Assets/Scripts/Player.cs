@@ -250,4 +250,27 @@ public class Player : MonoBehaviour{
         anim.SetBool("isMove", animMove);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        switch (collision.name) {
+            case "eineUmb":
+                GamaManager.Instance.achiveCall("Nachtmusik");
+                break;
+
+            case "WearwolfHiddenWall":
+                GamaManager.Instance.achiveCall("MacGuffin");
+                break;
+
+            case "FlamingoHerd":
+                GamaManager.Instance.achiveCall("FlaFla");
+                break;
+
+            case "cran&pan":
+                GamaManager.Instance.achiveCall("HotMeal");
+                break;
+
+            case "Gumi":
+                GamaManager.Instance.achiveCall("YourName");
+                break;
+        }
+    }
 }

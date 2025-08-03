@@ -75,6 +75,14 @@ MonoBehaviour:
     m_Key: Gumi_Need_Help
     m_Metadata:
       m_Items: []
+  - m_Id: 33767158087213056
+    m_Key: Idle_talk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35658273992269824
+    m_Key: AchivesUI
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
