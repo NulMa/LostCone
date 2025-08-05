@@ -14,14 +14,14 @@ public class MapTransit : MonoBehaviour{
             GamaManager.Instance.player.GetComponent<Animator>().SetBool("isMove", true);
             GamaManager.Instance.panel.gameObject.SetActive(true);
             GamaManager.Instance.player.sceneSwitch();
-            GamaManager.Instance.panel.color = new Color(0, 0, 0, 0); // Åõ¸íÇÑ °ËÀº»öÀ¸·Î ÃÊ±âÈ­
+            GamaManager.Instance.panel.color = new Color(0, 0, 0, 0); // íŒ¨ë„ì„ íˆ¬ëª…í•˜ê²Œ ì´ˆê¸°í™”
 
             GamaManager.Instance.panel.DOFade(1f, 1f).OnComplete(() => {
                 GamaManager.Instance.player.GetComponent<Animator>().SetBool("isMove", true);
                 GamaManager.Instance.player.inputVec2 = new Vector2(1, 0);
                 GamaManager.Instance.player.transform.position = destination.position;
 
-                // ÀÏÁ¤ ½Ã°£ ´ë±â ÈÄ ÆäÀÌµå ¾Æ¿ô
+                // ì ì‹œ ì‹œê°„ ëŒ€ê¸° í›„ í˜ì´ë“œ ì•„ì›ƒ
                 GamaManager.Instance.player.GetComponent<Animator>().SetBool("isMove", false);
                 GamaManager.Instance.panel.DOFade(0f, 1f).SetDelay(1f).OnComplete(() => {
                     GamaManager.Instance.player.sceneSwitch();

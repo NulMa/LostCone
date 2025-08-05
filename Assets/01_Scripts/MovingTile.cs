@@ -5,8 +5,8 @@ public class MovingTile : MonoBehaviour {
     public enum TileMoveType { Auto, OnPlayer }
     public TileMoveType moveType = TileMoveType.Auto;
 
-    public Vector3 moveOffset;      // ÀÌµ¿ÇÒ »ó´ë ÁÂÇ¥ (Inspector¿¡¼­ ÀÔ·Â)
-    public float moveTime = 2f;     // ÇÑ ¹æÇâ ÀÌµ¿ ½Ã°£
+    public Vector3 moveOffset;      // ì´ë™í•  ëì  ì¢Œí‘œ (Inspectorì—ì„œ ì…ë ¥)
+    public float moveTime = 2f;     // í•œ ë°©í–¥ ì´ë™ ì‹œê°„
     private Vector3 startPos;
     private Vector3 endPos;
     private bool movingToEnd = true;

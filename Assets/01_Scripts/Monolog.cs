@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 
 public class Monolog : MonoBehaviour {
     TextMeshProUGUI textMeshProUGUI;
-    public float time = 2f; // ´ë±â ½Ã°£(ÃÊ)
-    public float typeDuration = 1f; // Å¸ÀÌÇÎ È¿°ú ½Ã°£
-    public float showDuration = 3f; // Ãâ·Â À¯Áö ½Ã°£
-    public float fadeDuration = 2f; // ÆäÀÌµå¾Æ¿ô ½Ã°£
+    public float time = 2f; // ëŒ€ê¸° ì‹œê°„(ì´ˆ)
+    public float typeDuration = 1f; // íƒ€ì´í•‘ íš¨ê³¼ ì‹œê°„
+    public float showDuration = 3f; // í‘œì‹œ ì§€ì† ì‹œê°„
+    public float fadeDuration = 2f; // í˜ì´ë“œì•„ì›ƒ ì‹œê°„
 
     private Coroutine talkCoroutine;
     private Tween fadeTween;
@@ -21,17 +21,18 @@ public class Monolog : MonoBehaviour {
     }
 
     private void Update() {
-        // ÇÃ·¹ÀÌ¾î°¡ ¸ØÃèÀ» ¶§¸¸ ·çÆ¾ ½ÃÀÛ
+        // í”Œë ˆì´ì–´ ì •ì§€ì‹œ ì‹œì‘
         if (GamaManager.Instance.player.inputVec2 == Vector2.zero && !isShowing) {
             ShowIdleTalk();
         }
-        // Ãâ·Â Áß ¿òÁ÷ÀÓ °¨Áö ½Ã Áï½Ã ÆäÀÌµå¾Æ¿ô ¹× ÃÊ±âÈ­
+        // ì›€ì§ì¼ ì‹œ ë…ë°± ì¦‰ì‹œ ì¤‘ë‹¨ ë° ë¹ ë¥¸ í˜ì´ë“œì•„ì›ƒ í›„ ì´ˆê¸°í™”
         if (isShowing && GamaManager.Instance.player.inputVec2 != Vector2.zero) {
             StopTalkImmediate();
         }
     }
 
-    public void ShowIdleTalk() {
+    public void ShowIdleTalk()
+    {
         StopTalkImmediate();
         talkCoroutine = StartCoroutine(IdleTalkRoutine());
     }
@@ -41,7 +42,7 @@ public class Monolog : MonoBehaviour {
         textMeshProUGUI.text = "";
         textMeshProUGUI.color = new Color(textMeshProUGUI.color.r, textMeshProUGUI.color.g, textMeshProUGUI.color.b, 1f);
 
-        // time¸¸Å­ ´ë±â(µµÁß¿¡ ¿òÁ÷ÀÌ¸é Áï½Ã Á¾·á)
+        // timeë§Œí¼ ëŒ€ê¸°(ë‚˜ì¤‘ì— ìŠ¤í‚µí•˜ë©´ ë¹ ë¥¸ êµ¬ê°„)
         float elapsed = 0f;
         while (elapsed < time) {
             if (GamaManager.Instance.player.inputVec2 != Vector2.zero) {
@@ -52,12 +53,12 @@ public class Monolog : MonoBehaviour {
             yield return null;
         }
 
-        // ÅØ½ºÆ® Ãâ·Â
+        // í…ìŠ¤íŠ¸ í‘œì‹œ
         string localizedString = LocalizationSettings.StringDatabase.GetLocalizedString("New Table", "Idle_talk");
         textMeshProUGUI.DOText(localizedString, typeDuration);
         GamaManager.Instance.achiveCall("Suspense");
 
-        // Ãâ·Â À¯Áö(µµÁß¿¡ ¿òÁ÷ÀÌ¸é Áï½Ã Á¾·á)
+        // í…ìŠ¤íŠ¸ í‘œì‹œ(ë‚˜ì¤‘ì— ìŠ¤í‚µí•˜ë©´ ì¦‰ì‹œ ì¢…ë£Œ)
         float showElapsed = 0f;
         while (showElapsed < showDuration + typeDuration) {
             if (GamaManager.Instance.player.inputVec2 != Vector2.zero) {
@@ -68,7 +69,7 @@ public class Monolog : MonoBehaviour {
             yield return null;
         }
 
-        // ÆäÀÌµå¾Æ¿ô
+        // í˜ì´ë“œì•„ì›ƒ
         fadeTween = textMeshProUGUI.DOFade(0f, fadeDuration);
         yield return fadeTween.WaitForCompletion();
 

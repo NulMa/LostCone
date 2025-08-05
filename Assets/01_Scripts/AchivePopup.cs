@@ -7,18 +7,19 @@ public class AchivePopup : MonoBehaviour {
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
 
+
     void Start() {
         rectTransform = GetComponent<RectTransform>();
 
-        // ¾ÞÄ¿/ÇÇ¹þÀÌ ¿ìÇÏ´Ü(1,0)À¸·Î ¼³Á¤µÇ¾î ÀÖ¾î¾ß ÇÔ
+        // ì•µì»¤/í”¼ë²—ì„ ì˜¤ë¥¸ìª½(1,0)ìœ¼ë¡œ ì„¤ì •ë˜ì–´ ìžˆì–´ì•¼ í•¨
         rectTransform.anchorMin = new Vector2(1f, 0f);
         rectTransform.anchorMax = new Vector2(1f, 0f);
         rectTransform.pivot = new Vector2(1f, 0f);
 
-        // ½ÃÀÛ À§Ä¡ ¼³Á¤ (anchoredPosition ±âÁØ)
+        // ì´ˆê¸° ìœ„ì¹˜ ì„¤ì • (anchoredPosition ì‚¬ìš©)
         rectTransform.anchoredPosition = new Vector2(-50f, -200f);
 
-        // ÀÌµ¿ Æ®À©
+        // ì´ë™ íŠ¸ìœˆ
         rectTransform.DOAnchorPos(new Vector2(-50f, 0f), 1f).OnComplete(() => {
             StartCoroutine(FadeOutRoutine());
         });
@@ -31,6 +32,6 @@ public class AchivePopup : MonoBehaviour {
 
     private IEnumerator FadeOutRoutine() {
         yield return new WaitForSeconds(2f);
-        canvasGroup.DOFade(0f, 1f);
+        canvasGroup.DOFade(0f, 1f).OnComplete(() => Destroy(gameObject));
     }
 }

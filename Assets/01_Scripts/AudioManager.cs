@@ -12,11 +12,11 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager Instance;
 
     public AudioSource bgmSource;
-    public AudioSource sfxSourcePrefab;      // 3D È¿°úÀ½¿ë ÇÁ¸®ÆÕ
-    public AudioSource uiSfxSourcePrefab;    // 2D È¿°úÀ½¿ë ÇÁ¸®ÆÕ
+    public AudioSource sfxSourcePrefab;      // 3D íš¨ê³¼ìŒìš© í”„ë¦¬íŒ¹
+    public AudioSource uiSfxSourcePrefab;    // 2D íš¨ê³¼ìŒìš© í”„ë¦¬íŒ¹
 
-    public AudioClip[] sfxClips; // Inspector¿¡¼­ ¼ø¼­´ë·Î ÇÒ´ç
-    public AudioClip[] bgmClips; // Inspector¿¡¼­ ¼ø¼­´ë·Î ÇÒ´ç
+    public AudioClip[] sfxClips; // Inspectorì—ì„œ ë°°ì—´ë¡œ í• ë‹¹
+    public AudioClip[] bgmClips; // Inspectorì—ì„œ ë°°ì—´ë¡œ í• ë‹¹
 
     private List<AudioSource> uiSfxPool = new List<AudioSource>();
     private int poolSize = 5;
@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            // 2D È¿°úÀ½ Ç® »ı¼º
+            // 2D íš¨ê³¼ìŒ í’€ ìƒì„±
             for (int i = 0; i < poolSize; i++) {
                 var src = Instantiate(uiSfxSourcePrefab, transform);
                 src.spatialBlend = 0f;
@@ -69,20 +69,20 @@ public class AudioManager : MonoBehaviour {
     public void SetSFXVolume(float volume) {
         foreach (var src in uiSfxPool)
             src.volume = volume;
-        // 3D È¿°úÀ½ ÇÁ¸®ÆÕ º¼·ıÀº PlaySFXAt¿¡¼­ °³º°ÀûÀ¸·Î Àû¿ëµÊ
+        // 3D íš¨ê³¼ìŒ ë³¼ë¥¨ì€ ê°œë³„ë¡œ PlaySFXAtì—ì„œ ì„¤ì •í•´ì•¼ë§Œ ì ìš©ë¨
     }
 
-    // ¹è°æÀ½ Àç»ı (ÀÎµ¦½º)
+    // ë°°ê²½ìŒ ì¬ìƒ (ì¸ë±ìŠ¤)
     public void PlayBGM(int index, bool loop = true, float startTime = 0f) {
         if (bgmSource == null || bgmClips == null || index < 0 || index >= bgmClips.Length) return;
         bgmSource.clip = bgmClips[index];
         bgmSource.volume = SettingUI.instance != null ? SettingUI.instance.BGMUSIC_VOLUME : 1f;
         bgmSource.loop = loop;
-        bgmSource.time = startTime; // ½ÃÀÛ À§Ä¡ ÁöÁ¤
+        bgmSource.time = startTime; // ì‹œì‘ ìœ„ì¹˜ ì„¤ì •
         bgmSource.Play();
     }
 
-    // ¹è°æÀ½ Àç»ı (ÀÌ¸§)
+    // ë°°ê²½ìŒ ì¬ìƒ (ì´ë¦„)
     public void PlayBGM(string clipName, bool loop = true, float startTime = 0f) {
         if (bgmSource == null || bgmClips == null) return;
         var clip = System.Array.Find(bgmClips, c => c != null && c.name == clipName);
@@ -90,24 +90,24 @@ public class AudioManager : MonoBehaviour {
         bgmSource.clip = clip;
         bgmSource.volume = SettingUI.instance != null ? SettingUI.instance.BGMUSIC_VOLUME : 1f;
         bgmSource.loop = loop;
-        bgmSource.time = startTime; // ½ÃÀÛ À§Ä¡ ÁöÁ¤
+        bgmSource.time = startTime; // ì‹œì‘ ìœ„ì¹˜ ì„¤ì •
         bgmSource.Play();
     }
 
-    // 2D È¿°úÀ½ (UI µî) - Ç®¿¡¼­ »ç¿ë (ÀÎµ¦½º)
+    // 2D íš¨ê³¼ìŒ (UI ìš©) - í’€ì—ì„œ ì¬ìƒ (ì¸ë±ìŠ¤)
     public void PlayUISFX(int index) {
         if (sfxClips == null || index < 0 || index >= sfxClips.Length) return;
         PlayUISFX(sfxClips[index]);
     }
 
-    // 2D È¿°úÀ½ (UI µî) - Ç®¿¡¼­ »ç¿ë (ÀÌ¸§)
+    // 2D íš¨ê³¼ìŒ (UI ìš©) - í’€ì—ì„œ ì¬ìƒ (ì´ë¦„)
     public void PlayUISFX(string clipName) {
         if (sfxClips == null) return;
         var clip = System.Array.Find(sfxClips, c => c != null && c.name == clipName);
         if (clip != null) PlayUISFX(clip);
     }
 
-    // 2D È¿°úÀ½ (UI µî) - Ç®¿¡¼­ »ç¿ë (AudioClip Á÷Á¢)
+    // 2D íš¨ê³¼ìŒ (UI ìš©) - í’€ì—ì„œ ì¬ìƒ (AudioClip ì§ì ‘)
     public void PlayUISFX(AudioClip clip) {
         float volume = SettingUI.instance != null ? SettingUI.instance.SFX_VOLUME : 1f;
         foreach (var src in uiSfxPool) {
@@ -122,27 +122,27 @@ public class AudioManager : MonoBehaviour {
         extra.PlayOneShot(clip, volume);
     }
 
-    // 3D È¿°úÀ½ (¿ÀºêÁ§Æ® À§Ä¡¿¡¼­, ÀÎµ¦½º)
+    // 3D íš¨ê³¼ìŒ (ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ì—ì„œ, ì¸ë±ìŠ¤)
     public void PlaySFXAt(int index, Vector3 position) {
         if (sfxClips == null || index < 0 || index >= sfxClips.Length) return;
         PlaySFXAt(sfxClips[index], position);
     }
 
-    // 3D È¿°úÀ½ (¿ÀºêÁ§Æ® À§Ä¡¿¡¼­, ÀÌ¸§)
+    // 3D íš¨ê³¼ìŒ (ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ì—ì„œ, ì´ë¦„)
     public void PlaySFXAt(string clipName, Vector3 position) {
         if (sfxClips == null) return;
         var clip = System.Array.Find(sfxClips, c => c != null && c.name == clipName);
         if (clip != null) PlaySFXAt(clip, position);
     }
 
-    // 3D È¿°úÀ½ (¿ÀºêÁ§Æ® À§Ä¡¿¡¼­, AudioClip Á÷Á¢)
+    // 3D íš¨ê³¼ìŒ (ì˜¤ë¸Œì íŠ¸ ìœ„ì¹˜ì—ì„œ, AudioClip ì§ì ‘)
     public void PlaySFXAt(AudioClip clip, Vector3 position) {
         if (sfxSourcePrefab == null || clip == null) return;
         float volume = SettingUI.instance != null ? SettingUI.instance.SFX_VOLUME : 1f;
         AudioSource sfx = Instantiate(sfxSourcePrefab, position, Quaternion.identity);
         sfx.clip = clip;
         sfx.volume = volume;
-        sfx.spatialBlend = 1f; // 3D »ç¿îµå
+        sfx.spatialBlend = 1f; // 3D ì‚¬ìš´ë“œ
         sfx.Play();
         Destroy(sfx.gameObject, clip.length + 0.1f);
     }

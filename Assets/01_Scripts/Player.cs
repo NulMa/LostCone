@@ -24,18 +24,18 @@ public class Player : MonoBehaviour{
     SpriteRenderer sprite;
     Rigidbody2D rigid;
 
-    // ´ë½¬ °ü·Ã º¯¼ö
-    public float dashMultiplier = 2.5f; // ´ë½¬ ½Ã ¼Óµµ ¹è¼ö (2~3 »çÀÌ ÃßÃµ)
-    public float dashDuration = 0.2f;   // ´ë½¬ Áö¼Ó ½Ã°£(ÃÊ)
-    public float dashCooldown = 1f;     // ´ë½¬ ÄğÅ¸ÀÓ(ÃÊ)
+    // ëŒ€ì‹œ ê´€ë ¨ ë³€ìˆ˜
+    public float dashMultiplier = 2.5f; // ëŒ€ì‹œ ì‹œ ì†ë„ ë°°ìˆ˜ (2~3 ì •ë„ ì¶”ì²œ)
+    public float dashDuration = 0.2f;   // ëŒ€ì‹œ ì§€ì† ì‹œê°„(ì´ˆ)
+    public float dashCooldown = 1f;     // ëŒ€ì‹œ ì¿¨íƒ€ì„(ì´ˆ)
     private bool isDashing = false;
     private bool canDash = true;
 
-    // ÇÏÇâÁ¡ÇÁ °ü·Ã º¯¼ö
-    public float downJumpRayLength = 0.2f; // ¹Ù´Ú Å½Áö¿ë ·¹ÀÌ ±æÀÌ
-    public LayerMask platformLayer;         // ¾ãÀº ¹Ù´Ú ·¹ÀÌ¾î ÁöÁ¤
+    // ì•„ë˜ì í”„ ê´€ë ¨ ë³€ìˆ˜
+    public float downJumpRayLength = 0.2f; // ë°”ë‹¥ íƒì§€ìš© ë ˆì´ ê¸¸ì´
+    public LayerMask platformLayer;         // í†µê³¼ ë°”ë‹¥ ë ˆì´ì–´ ë§ˆìŠ¤í¬
     private Collider2D playerCollider;
-    private Vector3 dashDirection; // ´ë½¬ ¹æÇâ ÀúÀå¿ë
+    private Vector3 dashDirection; // ëŒ€ì‹œ ë°©í–¥ ì €ì¥ë³€ìˆ˜
 
 
     void Start() {
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour{
             return;
         }
 
-        // ÀÔ·Â°ª¿¡ µû¶ó moveDirectionÀ» Ç×»ó °»½Å
+        // ì…ë ¥ê°’ì— ë”°ë¥¸ moveDirectionì„ í•­ìƒ ì €ì¥
         if (inputVec2.x != 0) {
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
         }
@@ -62,13 +62,13 @@ public class Player : MonoBehaviour{
             moveDirection = Vector3.zero;
         }
 
-        // ¾Ö´Ï¸ŞÀÌ¼Çµµ ÀÔ·Â°ª¿¡ µû¶ó °»½Å
+        // ì• ë‹ˆë©”ì´ì…˜ëœ ì…ë ¥ê°’ì— ë”°ë¥¸ ì›€ì§ì„ ì„¤ì •
         anim.SetBool("isMove", inputVec2.x != 0);
 
         transform.position += moveDirection * speed * Time.deltaTime;
     }
 
-    public Vector3 Position => transform.position; // ÇöÀç À§Ä¡ ¹İÈ¯
+    public Vector3 Position => transform.position; // í˜„ì¬ ìœ„ì¹˜ ë°˜í™˜
 
     public void SavePlayerPosition() {
         PlayerPrefs.SetFloat("Player_Pos_X", transform.position.x);
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour{
             anim.SetBool("isJump", false);
             isJumping = false;
 
-            // ÂøÁö ÈÄ ÁÂ¿ì ÀÔ·ÂÀÌ ÀÖÀ¸¸é °È±â »ç¿îµå Àç»ı
+            // ì°©ì§€ ì‹œ ì¢Œìš° ì…ë ¥ì´ ìˆìœ¼ë©´ ê±·ê¸° ì‚¬ìš´ë“œ ì¬ìƒ
             if (inputVec2.x != 0 && !isMoveSfxPlaying) {
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
                 isMoveSfxPlaying = true;
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour{
         isDashing = true;
         canDash = false;
         float originalSpeed = speed;
-        dashDirection = moveDirection; // ´ë½¬ ½ÃÀÛ ½Ã ¹æÇâ °íÁ¤
+        dashDirection = moveDirection; // ëŒ€ì‹œ ë°©í–¥ì„ ë¯¸ë¦¬ ì €ì¥
         speed *= dashMultiplier;
         anim.SetTrigger("Dash");
 
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour{
         speed = originalSpeed;
         isDashing = false;
 
-        // ´ë½¬ Á¾·á ÈÄ ÀÔ·Â°ª¿¡ µû¶ó moveDirectionÀ» Áï½Ã °»½Å
+        // ëŒ€ì‹œ ì¢…ë£Œ í›„ ì…ë ¥ê°’ì— ë”°ë¥¸ moveDirectionì„ ë‹¤ì‹œ ì„¤ì •
         if (inputVec2.x != 0) {
             Debug.Log("dash move");
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
@@ -141,7 +141,7 @@ public class Player : MonoBehaviour{
             anim.SetBool("isMove", false);
         }
 
-        // ¾Ö´Ï¸ŞÀÌÅÍÀÇ Exit ³ëµå·Î »óÅÂ°¡ ÀÚµ¿ ÀüÈ¯µÊ
+        // ì• ë‹ˆë©”ì´í„°ì—ì„œ Exit ìƒíƒœê°€ ìë™ìœ¼ë¡œ ì „í™˜ë¨
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour{
         Debug.Log("OnDJ");
         if (isScenePlaying) return;
 
-        // ¾Æ·¡·Î ·¹ÀÌÄ³½ºÆ®
+        // ì•„ë˜ì í”„ ë ˆì´ìºìŠ¤íŠ¸
         Vector2 origin = new Vector2(transform.position.x, playerCollider.bounds.min.y - 0.05f);
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, downJumpRayLength, platformLayer);
         if (hit.collider != null) {
@@ -160,9 +160,9 @@ public class Player : MonoBehaviour{
     }
 
     private IEnumerator DownJumpRoutine(Collider2D platform) {
-        // ÇÃ·¹ÀÌ¾î Äİ¶óÀÌ´õ¸¦ Àá½Ã ºñÈ°¼ºÈ­(È¤Àº PlatformEffector2D »ç¿ë½Ã oneWay ¼³Á¤)
+        // í”Œë ˆì´ì–´ ì½œë¼ì´ë”ì™€ ë°”ë‹¥ ë¹„í™œì„±í™”(í˜¹ì€ PlatformEffector2D ì‚¬ìš©ì‹œ oneWay ì„¤ì •)
         Physics2D.IgnoreCollision(playerCollider, platform, true);
-        yield return new WaitForSeconds(0.3f); // Åë°ú ½Ã°£
+        yield return new WaitForSeconds(0.3f); // ì ê¹ ì‹œê°„
         Physics2D.IgnoreCollision(playerCollider, platform, false);
     }
 
@@ -170,10 +170,10 @@ public class Player : MonoBehaviour{
         if (isScenePlaying)
             return;
 
-        inputVec2 = value.Get<Vector2>(); // Ç×»ó ÀÔ·Â°ª °»½Å
+        inputVec2 = value.Get<Vector2>(); // í•­ìƒ ì…ë ¥ê°’ ì €ì¥
 
         if (isDashing) {
-            // ´ë½¬ Áß¿¡´Â ¹æÇâ¸¸ °íÁ¤, flip¸¸ Çã¿ë
+            // ëŒ€ì‹œ ì¤‘ì—ëŠ” ë°©í–¥ë§Œ ì‚¬ìš©, flipë§Œ ì‚¬ìš©
             flipCtrl();
             return;
         }
@@ -206,7 +206,7 @@ public class Player : MonoBehaviour{
             anim.SetBool("isJump", true);
             rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
-            // Á¡ÇÁ ½Ã °È±â »ç¿îµå Á¤Áö
+            // ì í”„ ì‹œ ê±·ê¸° ì‚¬ìš´ë“œ ì •ì§€
             if (isMoveSfxPlaying) {
                 AudioManager.Instance?.StopLoopSFX(gameObject);
                 isMoveSfxPlaying = false;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemDataManager : MonoBehaviour {
     public static ItemDataManager Instance { get; private set; }
-    public bool[] bools; // ÇØ´ç ½ºÅ×ÀÌÁö ¾ÆÀÌÅÛ º¸À¯ ¿©ºÎ ¹è¿­
+    public bool[] bools; // í•´ë‹¹ ì•„ì´í…œì„ í”Œë ˆì´ì–´ê°€ ê°€ì§„ ì—¬ë¶€ ë°°ì—´
 
-    public int itemCount; // ¾ÆÀÌÅÛ °³¼ö 
-    public int CurrentMapID; // ÇöÀç ¸Ê ¹øÈ£
-    public Dictionary<int, bool> MapClearStatus = new Dictionary<int, bool>(); // ¸Ê Å¬¸®¾î ¿©ºÎ
+    public int itemCount; // ì•„ì´í…œ ê°œìˆ˜ 
+    public int CurrentMapID; // í˜„ì¬ ë§µ ë²ˆí˜¸
+    public Dictionary<int, bool> MapClearStatus = new Dictionary<int, bool>(); // ë§µ í´ë¦¬ì–´ ìƒíƒœ
 
     private void Awake() {
         if (Instance == null) {
@@ -18,29 +18,29 @@ public class ItemDataManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        // ÇöÀç ¸Ê ID ºÒ·¯¿À±â
+        // í˜„ì¬ ë§µ ID ë¶ˆëŸ¬ì˜¤ê¸°
         CurrentMapID = PlayerPrefs.GetInt("CurrentMapID", 0);
 
-        // ¸Ê Å¬¸®¾î »óÅÂ ºÒ·¯¿À±â
+        // ë§µ í´ë¦¬ì–´ ìƒíƒœ ë¶ˆëŸ¬ì˜¤ê¸°
         foreach (var mapID in MapClearStatus.Keys.ToList()) {
             MapClearStatus[mapID] = PlayerPrefs.GetInt($"Map_{mapID}_Clear", 0) == 1;
         }
 
-        // ÇöÀç ¸ÊÀÇ ¾ÆÀÌÅÛ º¸À¯ ¿©ºÎ ºÒ·¯¿À±â
+        // í˜„ì¬ ë§µì˜ ì•„ì´í…œ ì†Œìœ  ìƒíƒœ ë¶ˆëŸ¬ì˜¤ê¸°
         UpdateItemOwnershipArray();
 
-        Debug.Log($"[ItemDataManager] µ¥ÀÌÅÍ ·Îµå ¿Ï·á: CurrentMapID={CurrentMapID}, ¾ÆÀÌÅÛ °³¼ö={itemCount}");
+        Debug.Log($"[ItemDataManager] ë°ì´í„° ë¡œë“œ ì™„ë£Œ: CurrentMapID={CurrentMapID}, ì•„ì´í…œ ê°œìˆ˜={itemCount}");
     }
 
     public void changeStageNum(int number) {
-        // »õ·Î¿î ¸Ê ¹øÈ£ ¼³Á¤
+        // ìƒˆë¡œìš´ ë§µ ë²ˆí˜¸ ì„¤ì •
         CurrentMapID = number;
 
-        // PlayerPrefs¿¡ »õ·Î¿î ¸Ê ¹øÈ£ ÀúÀå
+        // PlayerPrefsì— ìƒˆë¡œìš´ ë§µ ë²ˆí˜¸ ì €ì¥
         PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
         PlayerPrefs.Save();
 
-        // ¸ğµç ÀÚ½Ä MapItems ºñÈ°¼ºÈ­
+        // ëª¨ë“  ìì‹ MapItems ë¹„í™œì„±í™”
         foreach (Transform child in transform) {
             MapItems mapItems = child.GetComponent<MapItems>();
             if (mapItems != null) {
@@ -48,12 +48,12 @@ public class ItemDataManager : MonoBehaviour {
             }
         }
 
-        // ÇØ´ç CurrentMapID¿¡ ¸Â´Â MapItems È°¼ºÈ­
+        // í•´ë‹¹ CurrentMapIDì— ë§ëŠ” MapItems í™œì„±í™”
         foreach (Transform child in transform) {
             MapItems mapItems = child.GetComponent<MapItems>();
             if (mapItems != null && mapItems.MapID == CurrentMapID) {
                 child.gameObject.SetActive(true);
-                Debug.Log($"[ItemDataManager] Map {CurrentMapID} È°¼ºÈ­µÊ.");
+                Debug.Log($"[ItemDataManager] Map {CurrentMapID} í™œì„±í™”ë¨.");
                 break;
             }
         }
@@ -62,12 +62,12 @@ public class ItemDataManager : MonoBehaviour {
     public void SaveCurrentMapData() {
         PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
 
-        // ÀüÃ¼ ¸Ê Å¬¸®¾î »óÅÂ ÀúÀå
+        // ì „ì²´ ë§µ í´ë¦¬ì–´ ìƒíƒœ ì €ì¥
         foreach (var map in MapClearStatus) {
             PlayerPrefs.SetInt($"Map_{map.Key}_Clear", map.Value ? 1 : 0);
         }
 
-        // ÀüÃ¼ ¸ÊÀÇ ¾ÆÀÌÅÛ º¸À¯ »óÅÂ ÀúÀå
+        // ì „ì²´ ë§µì˜ ì•„ì´í…œ ì†Œìœ  ìƒíƒœ ì €ì¥
         foreach (Transform child in transform) {
             MapItems mapItems = child.GetComponent<MapItems>();
             if (mapItems != null) {
@@ -83,19 +83,19 @@ public class ItemDataManager : MonoBehaviour {
     public void LoadCurrentMapData() {
         CurrentMapID = PlayerPrefs.GetInt("CurrentMapID", 0);
 
-        // ÀüÃ¼ ¸Ê Å¬¸®¾î »óÅÂ ºÒ·¯¿À±â
+        // ì „ì²´ ë§µ í´ë¦¬ì–´ ìƒíƒœ ë¶ˆëŸ¬ì˜¤ê¸°
         foreach (var map in MapClearStatus.Keys.ToList()) {
             MapClearStatus[map] = PlayerPrefs.GetInt($"Map_{map}_Clear", 0) == 1;
         }
 
-        // ÀüÃ¼ ¸ÊÀÇ ¾ÆÀÌÅÛ º¸À¯ »óÅÂ ºÒ·¯¿À±â ¹× ºñÈ°¼ºÈ­ Ã³¸®
+        // ì „ì²´ ë§µì˜ ì•„ì´í…œ ì†Œìœ  ìƒíƒœ ë¶ˆëŸ¬ì˜¤ê¸° ë° ë¹„í™œì„±í™” ì²˜ë¦¬
         foreach (Transform child in transform) {
             MapItems mapItems = child.GetComponent<MapItems>();
             if (mapItems != null) {
-                // ¸Ê Å¬¸®¾î »óÅÂ ¹İ¿µ
+                // ë§µ í´ë¦¬ì–´ ìƒíƒœ ë°˜ì˜
                 mapItems.IsCleared = MapClearStatus.ContainsKey(mapItems.MapID) && MapClearStatus[mapItems.MapID];
 
-                // ¾ÆÀÌÅÛ º¸À¯ »óÅÂ ¹İ¿µ ¹× ºñÈ°¼ºÈ­
+                // ì•„ì´í…œ ì†Œìœ  ìƒíƒœ ë°˜ì˜ ë° ë¹„í™œì„±í™”
                 foreach (var item in mapItems.Items) {
                     int haveValue = PlayerPrefs.GetInt($"Map_{mapItems.MapID}_Item_{item.ItemID}_Have", 0);
                     item.isHave = haveValue == 1;
@@ -108,7 +108,7 @@ public class ItemDataManager : MonoBehaviour {
     }
 
     private void Update() {
-        // ÇöÀç ½ºÅ×ÀÌÁö ¾ÆÀÌÅÛ º¸À¯ ¿©ºÎ ¹è¿­À» ¾÷µ¥ÀÌÆ®
+        // í˜„ì¬ í™œì„±í™”ëœ ì•„ì´í…œ ì†Œìœ  ìƒíƒœ ë°°ì—´ì„ ì—…ë°ì´íŠ¸
         UpdateItemOwnershipArray();
     }
 
@@ -116,10 +116,10 @@ public class ItemDataManager : MonoBehaviour {
         if (CurrentMapID == -1)
             return;
 
-        // ÇöÀç ¸ÊÀÇ ¾ÆÀÌÅÛ °³¼ö¸¦ °¡Á®¿À±â À§ÇØ MapItems¸¦ ÂüÁ¶
+        // í˜„ì¬ ë§µì— í™œì„±í™”ëœ ì•„ì´í…œë“¤ì„ ëŒ€ìƒìœ¼ë¡œ í•˜ëŠ” MapItemsë¥¼ ì°¾ê¸°
         MapItems currentMap = null;
 
-        // ItemDataManagerÀÇ ÀÚ½Ä ¿ÀºêÁ§Æ® Áß MapItems¸¦ Ã£À½
+        // ItemDataManagerì˜ ìì‹ ì˜¤ë¸Œì íŠ¸ ì¤‘ MapItemsë¥¼ ì°¾ê¸°
         foreach (Transform child in transform) {
             MapItems mapItems = child.GetComponent<MapItems>();
             if (mapItems != null && mapItems.MapID == CurrentMapID) {
@@ -128,22 +128,22 @@ public class ItemDataManager : MonoBehaviour {
             }
         }
 
-        // MapItems°¡ ¾ø°Å³ª MapID°¡ ÀÏÄ¡ÇÏÁö ¾ÊÀ¸¸é Á¾·á
+        // MapItemsë¥¼ ì°¾ì§€ ëª»í•˜ê±°ë‚˜ MapIDê°€ ì¼ì¹˜í•˜ì§€ ì•ŠëŠ” ê²½ìš° ì²˜ë¦¬
         if (currentMap == null) {
-            Debug.LogWarning($"[ItemDataManager] MapID {CurrentMapID}¿¡ ÇØ´çÇÏ´Â MapItems¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+            Debug.LogWarning($"[ItemDataManager] MapID {CurrentMapID}ì— í•´ë‹¹í•˜ëŠ” MapItemsë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return;
         }
 
-        // ¾ÆÀÌÅÛ °³¼ö ¾÷µ¥ÀÌÆ®
-        int itemCountInMap = currentMap.Items.Count; // List¿¡¼­´Â Count¸¦ »ç¿ë
+        // ì•„ì´í…œ ê°œìˆ˜ ì—…ë°ì´íŠ¸
+        int itemCountInMap = currentMap.Items.Count; // Listì—ì„œëŠ” Countë¥¼ ì‚¬ìš©
         itemCount = 0;
 
-        // ¾ÆÀÌÅÛ °³¼ö¿¡ ¸Â°Ô bools ¹è¿­ ÃÊ±âÈ­
+        // ì•„ì´í…œ ê°œìˆ˜ì— ë§ê²Œ bools ë°°ì—´ ì´ˆê¸°í™”
         if (bools == null || bools.Length != itemCountInMap) {
             bools = new bool[itemCountInMap];
         }
 
-        // isHave°¡ trueÀÎ °æ¿ì bools ¹è¿­°ú itemCount ¾÷µ¥ÀÌÆ®
+        // isHaveê°€ trueì¸ ê²½ìš° bools ë°°ì—´ê³¼ itemCount ì—…ë°ì´íŠ¸
         for (int i = 0; i < itemCountInMap; i++) {
             if (currentMap.Items[i].isHave) {
                 bools[i] = true;

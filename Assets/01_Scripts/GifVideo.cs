@@ -22,12 +22,12 @@ public class GifVideo : MonoBehaviour{
 
     public void offVideo() {
         if (img != null) {
-            // Image ÄÄÆ÷³ÍÆ®°¡ ÀÖ´Â °æ¿ì DOTweenÀ¸·Î Åõ¸íµµ Á¶Á¤
+            // Image ì»´í¬ë„ŒíŠ¸ê°€ ìˆëŠ” ê²½ìš° DOTweenìœ¼ë¡œ í˜ì´ë“œ ì•„ì›ƒ
             img.DOFade(0f, 1f).OnComplete(() => gameObject.SetActive(false));
         }
         else {
-            Debug.LogWarning("Image ¶Ç´Â SpriteRenderer°¡ ¾ø½À´Ï´Ù.");
-            gameObject.SetActive(false); // ¾ÈÀüÇÏ°Ô ºñÈ°¼ºÈ­
+            Debug.LogWarning("Image ë˜ëŠ” SpriteRendererê°€ ì—†ìŠµë‹ˆë‹¤.");
+            gameObject.SetActive(false); // ê°•ì œë¡œ ë¹„í™œì„±í™”
         }
     }
 }

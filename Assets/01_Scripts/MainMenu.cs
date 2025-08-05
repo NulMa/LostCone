@@ -7,21 +7,21 @@ public class MainMenuManager : MonoBehaviour {
 
     private void Awake() {
         if (PlayerPrefs.HasKey("Player_Pos_X")) {
-            loadButton.interactable = true; // ÀÌ¾îÇÏ±â ¹öÆ° È°¼ºÈ­
+            loadButton.interactable = true; // ì´ì–´í•˜ê¸° ë²„íŠ¼ í™œì„±í™”
         }
         else {
-            loadButton.interactable = false; // ÀÌ¾îÇÏ±â ¹öÆ° ºñÈ°¼ºÈ­
+            loadButton.interactable = false; // ì´ì–´í•˜ê¸° ë²„íŠ¼ ë¹„í™œì„±í™”
         }
     }
 
     public void NewGame() {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene"); // UnityÀÇ SceneManager »ç¿ë
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene"); // Unityì˜ SceneManager ì‚¬ìš©
     }
 
     public void ContinueGame() {
-        // ÀÌ¾îÇÏ±â: °ÔÀÓ ¾À ·Îµå ÈÄ LoadGame() È£Ãâ
+        // ì´ì–´í•˜ê¸°: ì”¬ì„ ë¨¼ì € ë¡œë“œ í›„ LoadGame() í˜¸ì¶œ
         Debug.Log("1");
         UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene");
         StartCoroutine(LoadGameAfterSceneLoad());
@@ -32,12 +32,12 @@ public class MainMenuManager : MonoBehaviour {
             yield return null;
         }
 
-        // GamaManager.Instance°¡ nullÀÎÁö È®ÀÎ
+        // GamaManager.Instanceê°€ nullì¸ì§€ í™•ì¸
         if (GamaManager.Instance != null) {
             GamaManager.Instance.LoadGame();
         }
         else {
-            Debug.LogError("GamaManager.Instance°¡ nullÀÔ´Ï´Ù. GamaManager°¡ DefaultScene¿¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö È®ÀÎÇÏ¼¼¿ä.");
+            Debug.LogError("GamaManager.Instanceê°€ nullì…ë‹ˆë‹¤. GamaManagerê°€ DefaultSceneì— í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”.");
         }
     }
     public void gameExit() {

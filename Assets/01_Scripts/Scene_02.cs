@@ -35,12 +35,12 @@ public class Scene_02 : MonoBehaviour{
         var moveX = transform.DOMoveX(transform.position.x + 9f, 1.5f)
             .SetEase(Ease.Linear);
 
-        // YÃà ½ºÀ® Æ®À© (0.5f¸¸Å­ À§¾Æ·¡·Î, 0.25ÃÊ¾¿ 4¹ø ¹Ýº¹)
+        // Yì¶• í”ë“¤ê¸° íŠ¸ìœˆ (0.5fë§Œí¼ ìœ„ì•„ëž˜ë¡œ, 0.25ì´ˆì”© 4ë²ˆ ë°˜ë³µ)
         var swingY = transform.DOMoveY(transform.position.y + 0.5f, 0.5f)
             .SetLoops(4, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
 
-        // XÃà ÀÌµ¿ÀÌ ³¡³ª¸é Fin() È£Ãâ
+        // Xì¶• ì´ë™ì´ ì™„ë£Œëœ í›„ Fin() í˜¸ì¶œ
         moveX.OnComplete(() => Fin());
     }
 

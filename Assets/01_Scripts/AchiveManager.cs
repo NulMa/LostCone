@@ -14,9 +14,9 @@ public enum AchiveType {
 
 [Serializable]
 public class AchiveData {
-    public string key;         // ¾÷Àû °íÀ¯ Å° (ÀúÀå¿ë)
-    public bool isClear;       // Å¬¸®¾î ¿©ºÎ
-    public AchiveType type;    // ¾÷Àû Á¾·ù
+    public string key;         // ì—…ì  ê³ ìœ  í‚¤ (ë¡œì»¬í™”ìš©)
+    public bool isClear;       // í´ë¦¬ì–´ ì—¬ë¶€
+    public AchiveType type;    // ì—…ì  íƒ€ì…
 
     public AchiveData(string key, AchiveType type) {
         this.key = key;
@@ -28,13 +28,15 @@ public class AchiveData {
 public class AchiveManager : MonoBehaviour {
     public static AchiveManager instance;
     public List<AchiveData> achives = new List<AchiveData>();
+    public GameObject achivePopup;
+    public Canvas Canvas; // ì—…ì  íŒì—…ì„ í‘œì‹œí•  ìº”ë²„ìŠ¤ (UIìš©, í•„ìš”ì‹œ í• ë‹¹)
 
-    public Slider achiveSlider; // ¾÷Àû ´Ş¼ºµµ ½½¶óÀÌ´õ (UI¿ë, ÇÊ¿ä½Ã »ç¿ë)
-    public TextMeshProUGUI achivePercentText; // ¾÷Àû ´Ş¼ºµµ % Ç¥½Ã (UI¿ë, ÇÊ¿ä½Ã »ç¿ë)
+    public Slider achiveSlider; // ì—…ì  ë‹¬ì„±ë¥  ìŠ¬ë¼ì´ë” (UIìš©, í•„ìš”ì‹œ í• ë‹¹)
+    public TextMeshProUGUI achivePercentText; // ì—…ì  ë‹¬ì„±ë¥  % í‘œì‹œ (UIìš©, í•„ìš”ì‹œ í• ë‹¹)
 
-    // UI¿ë
-    public Transform achiveListParent; // ¾÷Àû Ç×¸ñÀÌ µé¾î°¥ ºÎ¸ğ ¿ÀºêÁ§Æ®
-    public GameObject achiveItemPrefab; // ¾÷Àû Ç×¸ñ ÇÁ¸®ÆÕ (TextMeshProUGUI 2°³: ÀÌ¸§, ¼³¸í)
+    // UIìš©
+    public Transform achiveListParent; // ì—…ì  ë¦¬ìŠ¤íŠ¸ UI ë¶€ëª¨ ì˜¤ë¸Œì íŠ¸
+    public GameObject achiveItemPrefab; // ì—…ì  ë¦¬ìŠ¤íŠ¸ í”„ë¦¬íŒ¹ (TextMeshProUGUI 2ê°œ: ì´ë¦„, ì„¤ëª…)
 
     private void Awake() {
         if (instance == null) {
@@ -48,18 +50,33 @@ public class AchiveManager : MonoBehaviour {
         }
     }
 
-
-
-    // ¾÷Àû ´Ş¼º ±â·Ï (¿ÜºÎ¿¡¼­ È£Ãâ)
+    // ì—…ì  ë‹¬ì„± ì„¤ì • (ì™¸ë¶€ì—ì„œ í˜¸ì¶œ)
     public void SetAchiveClear(string key) {
         var achive = achives.Find(a => a.key == key);
         if (achive != null && !achive.isClear) {
             achive.isClear = true;
             SaveAchives();
+            Debug.Log($"[AchiveManager] ì—…ì  '{achive.key}' ë‹¬ì„±!");
+            
+
+            // ì—…ì  íŒì—… ìƒì„± (Canvasì˜ ë¶€ëª¨ë¡œ)
+            if (achivePopup != null && Canvas != null){
+                GameObject popupObj = Instantiate(achivePopup, Canvas.transform);
+
+                // 1ë²ˆì§¸ ìì‹ì˜ TextMeshProUGUIì— ì—…ì  ì´ë¦„ ì…ë ¥
+                if (popupObj.transform.childCount > 1){
+                    Transform child = popupObj.transform.GetChild(1);
+                    var tmp = child.GetComponent<TMPro.TextMeshProUGUI>();
+                    if (tmp != null){
+                        string name = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_name");
+                        tmp.text = name;
+                    }
+                }
+            }
         }
     }
 
-    // ¾÷Àû ÀúÀå
+    // ì—…ì  ì €ì¥
     public void SaveAchives() {
         foreach (var achive in achives) {
             PlayerPrefs.SetInt("achive_" + achive.key, achive.isClear ? 1 : 0);
@@ -67,14 +84,14 @@ public class AchiveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    // ¾÷Àû ºÒ·¯¿À±â
+    // ì—…ì  ë¶ˆëŸ¬ì˜¤ê¸°
     public void LoadAchives() {
         foreach (var achive in achives) {
             achive.isClear = PlayerPrefs.GetInt("achive_" + achive.key, 0) == 1;
         }
     }
 
-    // ¾÷Àû UI °»½Å
+    // ì—…ì  UI ìƒˆë¡œê³ ì¹¨
     public void RefreshUI() {
         if (achiveListParent == null || achiveItemPrefab == null)
             return;
@@ -98,20 +115,19 @@ public class AchiveManager : MonoBehaviour {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive",achive.type.ToString());
                     texts[0].text = name;
                     texts[1].text = desc;
-                    texts[2].text = location; // ¾÷Àû Á¾·ù Ç¥½Ã
+                    texts[2].text = location; // ì—…ì  ìœ„ì¹˜ í‘œì‹œ
                     clearCount++;
                 }
                 else {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = "???";
                     texts[1].text = "???";
-                    texts[2].text = location; // ¾÷Àû Á¾·ù Ç¥½Ã
+                    texts[2].text = location; // ì—…ì  ìœ„ì¹˜ í‘œì‹œ
                 }
             }
         }
 
         achiveSlider.value = clearCount / (float)achives.Count;
         achivePercentText.text = $"{clearCount} / {achives.Count}";
-
     }
 }

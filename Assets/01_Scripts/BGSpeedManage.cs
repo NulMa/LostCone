@@ -14,10 +14,10 @@ public class BGSpeedManage : MonoBehaviour {
     public Player player;
     public BGSpeedData[] bg;
 
-    private float previousPlayerX; // ÀÌÀü ÇÁ·¹ÀÓÀÇ ÇÃ·¹ÀÌ¾î xÁÂÇ¥
+    private float previousPlayerX; // ì´ì „ í”„ë ˆì„ì˜ í”Œë ˆì´ì–´ xì¢Œí‘œ
 
     private void Start() {
-        // ÃÊ±âÈ­: ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç xÁÂÇ¥¸¦ ÀúÀå
+        // ì´ˆê¸°í™”: í”Œë ˆì´ì–´ì˜ í˜„ì¬ xì¢Œí‘œë¥¼ ì €ì¥
         if (player != null) {
             previousPlayerX = player.transform.position.x;
         }
@@ -30,13 +30,13 @@ public class BGSpeedManage : MonoBehaviour {
     public void BGRoll() {
         if (player == null) return;
 
-        // ÇöÀç ÇÃ·¹ÀÌ¾î xÁÂÇ¥
+        // í˜„ì¬ í”Œë ˆì´ì–´ xì¢Œí‘œ
         float currentPlayerX = player.transform.position.x;
 
-        // xÁÂÇ¥ ÀÌµ¿·® °è»ê
+        // xì¢Œí‘œ ì´ë™ëŸ‰ ê³„ì‚°
         float deltaX = currentPlayerX - previousPlayerX;
 
-        // ¹è°æ ÀÌµ¿
+        // ë°°ê²½ ì´ë™
         foreach (var bgData in bg) {
             if (bgData.isAutoPlay)
                 continue;
@@ -44,7 +44,7 @@ public class BGSpeedManage : MonoBehaviour {
             bgData.meshRenderer.material.mainTextureOffset += 0.01f * deltaX * bgData.speed * Vector2.right;
         }
 
-        // ÇöÀç xÁÂÇ¥¸¦ ÀÌÀü xÁÂÇ¥·Î ¾÷µ¥ÀÌÆ®
+        // ì´ì „ xì¢Œí‘œë¥¼ í˜„ì¬ xì¢Œí‘œë¡œ ì—…ë°ì´íŠ¸
         previousPlayerX = currentPlayerX;
     }
 }

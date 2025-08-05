@@ -7,7 +7,7 @@ public class PauseButton : MonoBehaviour
     private SettingUI settingUI;
 
     void Awake() {
-        // ÀÚµ¿ ÇÒ´ç
+        // ìë™ í• ë‹¹
         settingUI = SettingUI.instance;
     }
 

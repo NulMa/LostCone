@@ -22,8 +22,8 @@ public class SettingUI : MonoBehaviour
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            LoadSettings(); // ½ÃÀÛ ½Ã ÀúÀåµÈ °ª ºÒ·¯¿À±â
-            ApplySettingsToUI(); // UI¿¡ °ª ¹İ¿µ
+            LoadSettings(); // ê²Œì„ ì‹œì‘ ì‹œ ì €ì¥ëœ ì„¤ì • ë¶ˆëŸ¬ì˜¤ê¸°
+            ApplySettingsToUI(); // UIì— ì„¤ì • ë°˜ì˜
         }
         else {
             Destroy(gameObject);
@@ -43,16 +43,16 @@ public class SettingUI : MonoBehaviour
 
     }
 
-    // ÇÃ·¹ÀÌ ¾À¿¡¼­ UI ¿ÀºêÁ§Æ®¸¦ ÇÒ´çÇÏ°í °ª µ¿±âÈ­ ¹× ÀÌº¥Æ® ¿¬°á
+    // í”Œë ˆì´ ì¤‘ì— UI ì»´í¬ë„ŒíŠ¸ë¥¼ í• ë‹¹í•˜ê³  ì„¤ì • ë™ê¸°í™” ë° ì´ë²¤íŠ¸ ë“±ë¡
     public void AssignUIAndSync(Slider newBgmSlider, Slider newSfxSlider, TMP_Dropdown newLangDropdown) {
         bgmSlider = newBgmSlider;
         sfxSlider = newSfxSlider;
         langDropdown = newLangDropdown;
 
-        // °ª µ¿±âÈ­
+        // ì„¤ì • ë™ê¸°í™”
         ApplySettingsToUI();
 
-        // ±âÁ¸ ¸®½º³Ê Á¦°Å ÈÄ »õ·Î ¿¬°á
+        // ìŠ¬ë¼ì´ë” ì´ë²¤íŠ¸ ë“±ë¡ ë° ê¸°ì¡´ ì´ë²¤íŠ¸ ì œê±°
         if (bgmSlider != null) {
             bgmSlider.onValueChanged.RemoveAllListeners();
             bgmSlider.onValueChanged.AddListener(OnBGMSliderChanged);
@@ -84,7 +84,7 @@ public class SettingUI : MonoBehaviour
         SaveSettings();
     }
 
-    // ÀúÀå
+    // ì €ì¥
     public void SaveSettings() {
         PlayerPrefs.SetFloat("BGMUSIC_VOLUME", BGMUSIC_VOLUME);
         PlayerPrefs.SetFloat("SFX_VOLUME", SFX_VOLUME);
@@ -92,14 +92,14 @@ public class SettingUI : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    // ºÒ·¯¿À±â
+    // ë¶ˆëŸ¬ì˜¤ê¸°
     public void LoadSettings() {
         BGMUSIC_VOLUME = PlayerPrefs.HasKey("BGMUSIC_VOLUME") ? PlayerPrefs.GetFloat("BGMUSIC_VOLUME") : 0.3f;
         SFX_VOLUME = PlayerPrefs.HasKey("SFX_VOLUME") ? PlayerPrefs.GetFloat("SFX_VOLUME") : 0.3f;
         Language = PlayerPrefs.HasKey("Language") ? PlayerPrefs.GetInt("Language") : 0;
     }
 
-    // UI¿¡ °ª ¹İ¿µ
+    // UIì— ì„¤ì • ë°˜ì˜
     private void ApplySettingsToUI() {
         if (bgmSlider != null)
             bgmSlider.value = BGMUSIC_VOLUME;

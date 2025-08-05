@@ -5,20 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NPCs : MonoBehaviour {
-    public Action OnInteract; // »óÈ£ÀÛ¿ë µ¿ÀÛ
-    private Animator animator; // Animator ÄÄÆ÷³ÍÆ® ÂüÁ¶
+    public Action OnInteract; // ì¸í„°ë ‰ì…˜ ì²˜ë¦¬
+    private Animator animator; // Animator ì»´í¬ë„ŒíŠ¸ ì°¸ì¡°
 
-    public GameObject[] chained; // ¿¬°áµÈ ¿ÀºêÁ§Æ®
+    public GameObject[] chained; // ì—°ê²°ëœ ì˜¤ë¸Œì íŠ¸
     public GameObject video;
 
     public bool isPlayed;
 
     private void Awake() {
-        // Animator ÄÄÆ÷³ÍÆ® °¡Á®¿À±â
+        // Animator ì»´í¬ë„ŒíŠ¸ ê°€ì ¸ì˜¤ê¸°
         animator = GetComponent<Animator>();
 
-        // ±âº» µ¿ÀÛ ¼³Á¤
-        OnInteract = () => Debug.Log("±âº» »óÈ£ÀÛ¿ë µ¿ÀÛÀÔ´Ï´Ù.");
+        // ê¸°ë³¸ ë™ì‘ ì„¤ì •
+        OnInteract = () => Debug.Log("ê¸°ë³¸ ì¸í„°ë ‰ì…˜ ì…ë‹ˆë‹¤.");
 
         if(gameObject.name == "Lemon_Sprout" && GamaManager.Instance.SceneManager.scenes[1].isDone) {
             OnVideoDisabled();
@@ -28,21 +28,21 @@ public class NPCs : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             Player player = collision.GetComponent<Player>();
-            if (player != null && player.isInteracting) { // isInteracting ÇÊµå È®ÀÎ
-                // »óÈ£ÀÛ¿ë µ¿ÀÛ ½ÇÇà
+            if (player != null && player.isInteracting) { // isInteracting í•„ë“œ í™•ì¸
+                // ì¸í„°ë ‰ì…˜ì— ëŒ€í•œ ì²˜ë¦¬
                 OnInteract?.Invoke();
 
                 switch (gameObject.name) {
                     case "Lemon_Sprout":
                         if (GamaManager.Instance.SceneManager.scenes[1].isDone) break;
-                        // ¿ÀºêÁ§Æ® ÀÌ¸§ÀÌ "Lemon_Sprout"ÀÎÁö È®ÀÎ
+                        // ì˜¤ë¸Œì íŠ¸ ì´ë¦„ì´ "Lemon_Sprout"ì¸ì§€ í™•ì¸
                         if (gameObject.name == "Lemon_Sprout" && animator != null) {
                             if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed) {
                                 GamaManager.Instance.UIManager.PrintMSG("Lemon_Sprout");
                                 return;
                             }
                             else {
-                                // video ¿ÀºêÁ§Æ® È°¼ºÈ­
+                                // video ì˜¤ë¸Œì íŠ¸ í™œì„±í™”
                                 GamaManager.Instance.achiveCall("HalfCut");
                                 playVideo();
                             }
@@ -61,7 +61,7 @@ public class NPCs : MonoBehaviour {
                         }
                         break;
                 }
-                StartCoroutine(ResetPlayerInteraction(player)); // »óÈ£ÀÛ¿ë »óÅÂ ÃÊ±âÈ­
+                StartCoroutine(ResetPlayerInteraction(player)); // ì¸í„°ë ‰ì…˜ ìƒíƒœ ì´ˆê¸°í™”
             }
         }
     }
@@ -70,8 +70,8 @@ public class NPCs : MonoBehaviour {
 
         switch (gameObject.name) {
             case "Lemon_Sprout":
-                animator.SetTrigger("Grow"); // AnimatorÀÇ "Grow" Æ®¸®°Å ½ÇÇà
-                StartCoroutine(ActivateChainedAnimator()); //chainedÀÇ Animator È°¼ºÈ­
+                animator.SetTrigger("Grow"); // Animatorì˜ "Grow" íŠ¸ë¦¬ê±° ì„¤ì •
+                StartCoroutine(ActivateChainedAnimator()); //chainedì˜ Animator í™œì„±í™”
                 break;
 
             case "Gumi":
@@ -90,21 +90,21 @@ public class NPCs : MonoBehaviour {
                     chainedAnimator.enabled = true;
                     break;
                 }
-                yield return new WaitForSeconds(1.5f); // 1.5ÃÊ ´ë±â
+                yield return new WaitForSeconds(1.5f); // 1.5ì´ˆ ëŒ€ê¸°
                 if (chained != null) {
                     Animator chainedAnimator = chained[0].GetComponent<Animator>();
                     if (chainedAnimator != null) {
-                        chainedAnimator.enabled = true; // chainedÀÇ Animator È°¼ºÈ­
+                        chainedAnimator.enabled = true; // chainedì˜ Animator í™œì„±í™”
                         GamaManager.Instance.SceneManager.sceneIsDone(1);
                         GamaManager.Instance.UIManager.PrintMSG("Lemon_Tree");
                         GamaManager.Instance.rainSwitch();
                     }
                     else {
-                        Debug.LogWarning("Chained ¿ÀºêÁ§Æ®¿¡ Animator°¡ ¾ø½À´Ï´Ù.");
+                        Debug.LogWarning("Chained ì˜¤ë¸Œì íŠ¸ì˜ Animatorê°€ ì—†ìŠµë‹ˆë‹¤.");
                     }
                 }
                 else {
-                    Debug.LogWarning("Chained ¿ÀºêÁ§Æ®°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+                    Debug.LogWarning("Chained ì˜¤ë¸Œì íŠ¸ê°€ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
                 }
                 break;
 
@@ -115,45 +115,45 @@ public class NPCs : MonoBehaviour {
     }
 
     private IEnumerator ResetPlayerInteraction(Player player) {
-        yield return new WaitForSeconds(0.1f); // 0.1ÃÊ ´ë±â
-        player.isInteracting = false; // ÇÃ·¹ÀÌ¾îÀÇ »óÈ£ÀÛ¿ë »óÅÂ ÃÊ±âÈ­
+        yield return new WaitForSeconds(0.1f); // 0.1ì´ˆ ëŒ€ê¸°
+        player.isInteracting = false; // í”Œë ˆì´ì–´ì˜ ì¸í„°ë ‰ì…˜ ìƒíƒœ ì´ˆê¸°í™”
     }
     private IEnumerator FadeInVideoAndPlayAnimator() {
-        // videoÀÇ Image ¶Ç´Â SpriteRenderer °¡Á®¿À±â
+        // videoì˜ Image ë˜ëŠ” SpriteRenderer ê°€ì ¸ì˜¤ê¸°
         var image = video.GetComponent<Image>();
         var spriteRenderer = video.GetComponent<SpriteRenderer>();
 
         if (image != null) {
-            // ImageÀÇ Åõ¸íµµ¸¦ 0¿¡¼­ 1·Î Á¶Á¤
+            // Imageì˜ ì•ŒíŒŒê°’ì„ 0ì—ì„œ 1ë¡œ ë³€ê²½
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
             yield return image.DOFade(1f, 1f).SetEase(Ease.InOutQuad).WaitForCompletion();
         }
         else {
-            Debug.LogWarning("video ¿ÀºêÁ§Æ®¿¡ Image ¶Ç´Â SpriteRenderer°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogWarning("video ì˜¤ë¸Œì íŠ¸ì— Image ë˜ëŠ” SpriteRendererê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
 
-        video.GetComponent<Animator>().enabled = true; // videoÀÇ Animator È°¼ºÈ­
-        // ¾Ö´Ï¸ŞÀÌÅÍ Àç»ı
+        video.GetComponent<Animator>().enabled = true; // videoì˜ Animator í™œì„±í™”
+        // ì• ë‹ˆë©”ì´í„° ì‹¤í–‰
         if (animator != null) {
-            StartCoroutine(WaitForVideoToDisable()); // video°¡ ºñÈ°¼ºÈ­µÉ ¶§±îÁö ´ë±â
+            StartCoroutine(WaitForVideoToDisable()); // videoê°€ ë¹„í™œì„±í™”ë  ë•Œê¹Œì§€ ëŒ€ê¸°
         }
     }
 
     private IEnumerator WaitForVideoToDisable() {
-        // video ¿ÀºêÁ§Æ®°¡ ºñÈ°¼ºÈ­µÉ ¶§±îÁö ´ë±â
+        // video ì˜¤ë¸Œì íŠ¸ê°€ ë¹„í™œì„±í™”ë  ë•Œê¹Œì§€ ëŒ€ê¸°
         while (video != null && video.activeSelf) {
-            yield return null; // ´ÙÀ½ ÇÁ·¹ÀÓ±îÁö ´ë±â
+            yield return null; // ë§¤ë²ˆ í”„ë ˆì„ê¹Œì§€ ëŒ€ê¸°
         }
 
-        // video°¡ ºñÈ°¼ºÈ­µÈ ÈÄ ½ÇÇàÇÒ ÇÔ¼öµé È£Ãâ
+        // videoê°€ ë¹„í™œì„±í™”ëœ í›„ í›„ì† í•¨ìˆ˜ë¥¼ í˜¸ì¶œ
         OnVideoDisabled();
     }
     public void playVideo() {
         if (video != null && !isPlayed) {
             video.SetActive(true);
-            AudioManager.Instance.PlayBGM(0, true, 1f); // ¹è°æÀ½ Àç»ı
+            //AudioManager.Instance.PlayBGM(0, true, 1f); // ìŠ¤í† ë¦¬ ìŒì•… //////ë§Œë“¦ 
             StartCoroutine(FadeInVideoAndPlayAnimator());
-            isPlayed = true; // isPlayed »óÅÂ ¾÷µ¥ÀÌÆ®
+            isPlayed = true; // isPlayed ìƒíƒœ ì—…ë°ì´íŠ¸
         }
     }
 }

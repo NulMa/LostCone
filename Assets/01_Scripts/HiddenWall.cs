@@ -6,7 +6,7 @@ public enum HiddenWallType { OnContact, OnFunction }
 
 public class HiddenWall : MonoBehaviour {
     public HiddenWallType type = HiddenWallType.OnContact;
-    public int wallId; // Inspector¿¡¼­ °íÀ¯ ¹øÈ£ ÇÒ´ç
+    public int wallId; // Inspectorì—ì„œ ë²½ì˜ ë²ˆí˜¸ í• ë‹¹
 
     Tilemap tilemap;
     TilemapRenderer tilemapRenderer;
@@ -16,10 +16,10 @@ public class HiddenWall : MonoBehaviour {
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
 
-        // Å¸ÀÔ°ú °íÀ¯ ¹øÈ£¸¦ Æ÷ÇÔÇÑ ÀúÀå Å° »ı¼º
+        // íƒ€ì…ê³¼ ë²½ì˜ ë²ˆí˜¸ë¥¼ ì¡°í•©í•œ ì €ì¥ í‚¤ ìƒì„±
         saveKey = $"HiddenWall_{type}_{wallId}";
 
-        // ÀúÀåµÈ »óÅÂ ºÒ·¯¿À±â
+        // ì €ì¥ëœ ìƒíƒœ ë¶ˆëŸ¬ì˜¤ê¸°
         if (PlayerPrefs.HasKey(saveKey)) {
             bool isHidden = PlayerPrefs.GetInt(saveKey) == 1;
             if (isHidden) {
@@ -35,7 +35,7 @@ public class HiddenWall : MonoBehaviour {
         }
     }
 
-    // ¿ÜºÎ¿¡¼­ È£ÃâÇÒ ÇÔ¼ö
+    // ì™¸ë¶€ì—ì„œ í˜¸ì¶œí•  í•¨ìˆ˜
     public void HideWallByFunction() {
         if (type != HiddenWallType.OnFunction) return;
         HideWall();
@@ -50,7 +50,7 @@ public class HiddenWall : MonoBehaviour {
             });
         }
         else {
-            Debug.LogWarning("TilemapRenderer ¶Ç´Â MaterialÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            Debug.LogWarning("TilemapRenderer ë˜ëŠ” Materialì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
         }
     }
 }

@@ -10,14 +10,15 @@ public class MapNumbers : MonoBehaviour{
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Player") && GamaManager.Instance.currentStageID != mapNumber) {
-            Debug.Log("¸Ê ¹øÈ£°¡ " + mapNumber + "·Î º¯°æµÇ¾ú½À´Ï´Ù.");
+            Debug.Log("ë§µ ë²ˆí˜¸ê°€ " + mapNumber + "ë¡œ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
             GamaManager.Instance.currentStageID = mapNumber;
             GamaManager.Instance.BGOn(mapNumber);
+            AudioManager.Instance.PlayBGM(mapNumber, true, 3f);
         }
     }
 
     public void OnOffAll() {
-        Debug.Log("OnOffAll() È£ÃâµÊ");
+        Debug.Log("OnOffAll() í˜¸ì¶œë¨");
 
         foreach (GameObject obj in toOff) {
             obj.SetActive(false);

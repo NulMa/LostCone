@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MapItems : MonoBehaviour {
-    public int MapID; // ¸Ê ¹øÈ£
-    public bool IsCleared; // Å¬¸®¾î ¿©ºÎ
-    public List<ItemGet> Items; // ÇØ´ç ¸ÊÀÇ ¾ÆÀÌÅÛ ¸®½ºÆ®
-    public int haveCount; // º¸À¯ÇÑ ¾ÆÀÌÅÛ °³¼ö
+    public int MapID; // ë§µ ë²ˆí˜¸
+    public bool IsCleared; // í´ë¦¬ì–´ ìƒíƒœ
+    public List<ItemGet> Items; // í•´ë‹¹ ë§µì˜ ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸
+    public int haveCount; // í”Œë ˆì´ì–´ ì•„ì´í…œ ê°œìˆ˜
 
     public void SaveMapData() {
         PlayerPrefs.SetInt($"Map_{MapID}_Clear", IsCleared ? 1 : 0);
@@ -19,25 +19,25 @@ public class MapItems : MonoBehaviour {
     }
 
     public void LoadMapData() {
-        // ¸Ê Å¬¸®¾î ¿©ºÎ ·Îµå
+        // ë§µ í´ë¦¬ì–´ ìƒíƒœ ë¡œë“œ
         IsCleared = PlayerPrefs.GetInt($"Map_{MapID}_Clear", 0) == 1;
 
-        // ¾ÆÀÌÅÛ º¸À¯ »óÅÂ ·Îµå ¹× ºñÈ°¼ºÈ­
+        // ì•„ì´í…œì´ ìˆì„ ê²½ìš° ë¡œë“œ í›„ ë¹„í™œì„±í™”
         foreach (var item in Items) {
             int haveValue = PlayerPrefs.GetInt($"Map_{MapID}_Item_{item.ItemID}_Have", 0);
-            Debug.Log($"[µğ¹ö±×] MapID:{MapID}, ItemID:{item.ItemID}, PlayerPrefs:{haveValue}");
+            Debug.Log($"[ë¡œë”©] MapID:{MapID}, ItemID:{item.ItemID}, PlayerPrefs:{haveValue}");
             item.isHave = haveValue == 1;
             if (item.isHave) {
-                Debug.Log($"[µğ¹ö±×] ºñÈ°¼ºÈ­µÊ: MapID:{MapID}, ItemID:{item.ItemID}");
+                Debug.Log($"[ë¡œë”©] ë¹„í™œì„±í™”ë¨: MapID:{MapID}, ItemID:{item.ItemID}");
                 item.gameObject.SetActive(false);
             }
         }
     }
     public void DebugMapData() {
-        // ¸Ê ID¿Í Å¬¸®¾î ¿©ºÎ Ãâ·Â
+        // ë§µ IDë¡œ í´ë¦¬ì–´ ìƒíƒœ ì €ì¥
         Debug.Log($"[Map Debug] Map ID: {MapID}, Cleared: {IsCleared}");
 
-        // ¾ÆÀÌÅÛ º¸À¯ »óÅÂ Ãâ·Â
+        // ì•„ì´í…œì˜ ë³´ìœ  ìƒíƒœ ì €ì¥
         if (Items != null && Items.Count > 0) {
             foreach (var item in Items) {
                 string itemStatus = item.isHave ? "Owned" : "Not Owned";

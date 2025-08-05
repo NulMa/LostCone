@@ -5406,6 +5406,8 @@ MonoBehaviour:
   - key: Alive
     isClear: 0
     type: 2
+  achivePopup: {fileID: 3223174787749661962, guid: 6c5b1c59635cf714e980ec445d8c27d1, type: 3}
+  Canvas: {fileID: 1944930157}
   achiveSlider: {fileID: 587469842}
   achivePercentText: {fileID: 312954707}
   achiveListParent: {fileID: 1046502442}

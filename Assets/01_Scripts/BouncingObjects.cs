@@ -1,10 +1,10 @@
 using UnityEngine;
 
 public class BouncingObject : MonoBehaviour {
-    public float speed = 5f; // ±âº» ÀÌµ¿ ¼Óµµ
-    public float rotationSpeed = 360f; // È¸Àü ¼Óµµ (µµ/ÃÊ)
-    private Vector2 direction; // ÀÌµ¿ ¹æÇâ
-    private Rigidbody2D rb; // Rigidbody2D ÄÄÆ÷³ÍÆ®
+    public float speed = 5f; // ê¸°ë³¸ ì´ë™ ì†ë„
+    public float rotationSpeed = 360f; // íšŒì „ ì†ë„ (ë„/ì´ˆ)
+    private Vector2 direction; // ë°©í–¥ ë²¡í„°
+    private Rigidbody2D rb; // Rigidbody2D
     private Camera mainCamera;
 
     SpriteRenderer sprite;
@@ -15,35 +15,35 @@ public class BouncingObject : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         if (rb == null) {
-            Debug.LogError("Rigidbody2D°¡ ÇÊ¿äÇÕ´Ï´Ù. Rigidbody2D¸¦ Ãß°¡ÇÏ¼¼¿ä.");
+            Debug.LogError("Rigidbody2Dê°€ í•„ìš”í•©ë‹ˆë‹¤. Rigidbody2Dë¥¼ ì¶”ê°€í•˜ì„¸ìš”.");
             return;
         }
 
-        // ÃÊ±â ÀÌµ¿ ¹æÇâ ¼³Á¤ (·£´ı)
+        // ì´ˆê¸° ì´ë™ ë°©í–¥ ì„¤ì • (ëœë¤)
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 
-        // ÃÊ±â ¼Óµµ ¼³Á¤
+        // ì´ˆê¸° ì†ë„ ì„¤ì •
         rb.velocity = direction * speed;
     }
 
     private void FixedUpdate() {
-        // È­¸é °æ°è¸¦ ¹ş¾î³ª¸é ¹æÇâ ¹İÀü
+        // í™”ë©´ ê²½ê³„ë¥¼ ë„˜ì–´ê°ˆ ê²½ìš° ë°©í–¥ ë³€ê²½ ë° ì†ë„ ì¡°ì •
         CheckBounds();
 
-        // È¸Àü Ãß°¡
-        // È¸Àü Ãß°¡ (È¸Àü ¼Óµµ Á¦ÇÑ Àû¿ë)
-        rotationSpeed = Mathf.Clamp(rotationSpeed, 50, 200f); // ÃÖ¼Ò 50, ÃÖ´ë 200
+        // íšŒì „ ì¶”ê°€
+        // íšŒì „ ì¶”ê°€ (íšŒì „ ì†ë„ ë²”ìœ„ ì œí•œ)
+        rotationSpeed = Mathf.Clamp(rotationSpeed, 50, 200f); // ìµœì†Œ 50, ìµœëŒ€ 200
         rb.MoveRotation(rb.rotation + rotationSpeed * Time.fixedDeltaTime);
     }
 
     private void CheckBounds() {
         Vector3 currentPosition = transform.position;
 
-        // Ä«¸Ş¶óÀÇ È­¸é °æ°è °è»ê
+        // í™”ë©´ ê²½ê³„ ê³„ì‚°
         Vector3 minBounds = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
         Vector3 maxBounds = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
 
-        // È­¸é °æ°è¸¦ ¹ş¾î³ª¸é ¹æÇâ ¹İÀü ¹× ¼Óµµ Á¶Á¤
+        // í™”ë©´ ê²½ê³„ë¥¼ ë„˜ì–´ê°ˆ ê²½ìš° ë°©í–¥ ë³€ê²½
         if (currentPosition.x < minBounds.x || currentPosition.x > maxBounds.x) {
             direction.x *= -1;
             AdjustSpeed();
@@ -57,13 +57,13 @@ public class BouncingObject : MonoBehaviour {
     }
 
     private void AdjustSpeed() {
-        // ¼Óµµ¿¡ ¡¾2ÀÇ ·£´ı ÆíÂ÷ Ãß°¡
+        // ì†ë„ì— -2ì—ì„œ 2 ì‚¬ì´ì˜ ëœë¤ ê°’ ì¶”ê°€
         speed += Random.Range(-2f, 2f);
 
-        // ¼Óµµ°¡ ³Ê¹« ´À¸®°Å³ª ºü¸£Áö ¾Êµµ·Ï Á¦ÇÑ
-        speed = Mathf.Clamp(speed, 2f, 9f); // ÃÖ¼Ò 2, ÃÖ´ë 9
+        // ì†ë„ ë²”ìœ„ ì œí•œ
+        speed = Mathf.Clamp(speed, 2f, 9f); // ìµœì†Œ 2, ìµœëŒ€ 9
 
-        sprite.flipX =  Random.Range(0, 2) == 0; // ·£´ıÀ¸·Î ½ºÇÁ¶óÀÌÆ® ¹İÀü
-        sprite.flipY = Random.Range(0, 2) == 0; // ·£´ıÀ¸·Î ½ºÇÁ¶óÀÌÆ® ¹İÀü
+        sprite.flipX =  Random.Range(0, 2) == 0; // ìŠ¤í”„ë¼ì´íŠ¸ Xì¶• ë°˜ì „
+        sprite.flipY = Random.Range(0, 2) == 0; // ìŠ¤í”„ë¼ì´íŠ¸ Yì¶• ë°˜ì „
     }
 }

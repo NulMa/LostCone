@@ -5,9 +5,9 @@ public class ItemGet : MonoBehaviour {
     Collider2D coll;
     Rigidbody2D rigid;
 
-    public int StageID; // ¸Ê ¹øÈ£
-    public int ItemID; // ¾ÆÀÌÅÛ ID
-    public bool isHave; // º¸À¯ ¿©ºÎ
+    public int StageID; // ìŠ¤í…Œì´ì§€ ë²ˆí˜¸
+    public int ItemID; // ì•„ì´í…œ ID
+    public bool isHave; // ë³´ìœ  ìƒíƒœ
 
     private void Awake() {
         if (isHave) {
@@ -17,7 +17,7 @@ public class ItemGet : MonoBehaviour {
         coll = GetComponent<Collider2D>();
         rigid = GetComponent<Rigidbody2D>();
 
-        // Tweening: À§¾Æ·¡·Î ¹İº¹ ÀÌµ¿
+        // Tweening: ìœ„ì•„ë˜ë¡œ ë°˜ë³µ ì´ë™
         transform.DOMoveY(transform.position.y + 0.25f, 0.5f)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.Linear);
@@ -25,7 +25,7 @@ public class ItemGet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            AudioManager.Instance?.PlayUISFX(1); // ¾ÆÀÌÅÛ È¹µæ »ç¿îµå Àç»ı
+            AudioManager.Instance?.PlayUISFX(1); // ì•„ì´í…œ íšë“ ì‚¬ìš´ë“œ ì¬ìƒ
             DOTween.Kill(transform);
             isHave = true;
             GamaManager.Instance.ItemDataManager.SaveCurrentMapData();
@@ -63,7 +63,7 @@ public class ItemGet : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
-            Debug.Log("¾ÆÀÌÅÛÀ» È¹µæÇß½À´Ï´Ù!");
+            Debug.Log("ì•„ì´í…œì„ íšë“í–ˆìŠµë‹ˆë‹¤!");
             DOTween.Kill(transform);
             isHave = true;
             gameObject.SetActive(false);

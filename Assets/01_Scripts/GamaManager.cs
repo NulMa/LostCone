@@ -30,7 +30,7 @@ public class GamaManager : MonoBehaviour{
 
 
     
-    public int langue; // ¾ğ¾î ÀÎµ¦½º
+    public int langue; // ì–¸ì–´ ì¸ë±ìŠ¤
     public int currentStageID;
 
 
@@ -39,12 +39,12 @@ public class GamaManager : MonoBehaviour{
             LoadGame();
 
 
-        // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º ¼³Á¤
+        // ì‹±ê¸€í†¤ ì¸ìŠ¤í„´ìŠ¤ ì„¤ì •
         if (Instance == null) {
             Instance = this;
         }
         else {
-            Destroy(gameObject); // Áßº¹µÈ ÀÎ½ºÅÏ½º Á¦°Å
+            Destroy(gameObject); // ì¤‘ë³µëœ ì¸ìŠ¤í„´ìŠ¤ ì œê±°
         }
 
         if(GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
@@ -71,7 +71,7 @@ public class GamaManager : MonoBehaviour{
     }
 
     public void passFirstScene() {
-        Debug.Log("Ã¹ ¾ÀÀ» ³Ñ±é´Ï´Ù : " + SceneManager.scenes[0].isDone);
+        Debug.Log("ì²« ë²ˆì§¸ ë„˜ê¸°ë„ë¡ : " + SceneManager.scenes[0].isDone);
         DOTween.Kill(SceneManager.scenes[0].scene);
 
         player.isScenePlaying = false;
@@ -91,9 +91,9 @@ public class GamaManager : MonoBehaviour{
         UIManager.Items.DOColor(color, 1f);
 
         foreach (Transform child in player.transform) {
-            // ÀÚ½Ä ¿ÀºêÁ§Æ®ÀÇ ÅÂ±×°¡ "Remove"ÀÎÁö È®ÀÎ
+            // ìì‹ ì˜¤ë¸Œì íŠ¸ì˜ íƒœê·¸ê°€ "Remove"ì¸ì§€ í™•ì¸
             if (child.CompareTag("Remove")) {
-                // ÇØ´ç ¿ÀºêÁ§Æ® »èÁ¦
+                // í•´ë‹¹ ì˜¤ë¸Œì íŠ¸ ì‚­ì œ
                 Destroy(child.gameObject);
             }
         }
@@ -110,7 +110,7 @@ public class GamaManager : MonoBehaviour{
         ItemDataManager.Instance.SaveCurrentMapData();
         currentMap.SaveMapData();
         SceneManager.SaveSceneData();
-        Debug.Log("°ÔÀÓ µ¥ÀÌÅÍ°¡ ÀúÀåµÇ¾ú½À´Ï´Ù.");
+        Debug.Log("ê²Œì„ ë°ì´í„°ê°€ ì €ì¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 
     public void LoadGame() {
@@ -120,19 +120,19 @@ public class GamaManager : MonoBehaviour{
         SceneManager.LoadSceneData();
         currentMap.LoadMapData();
         passFirstScene();
-        Debug.Log("°ÔÀÓ µ¥ÀÌÅÍ°¡ ·ÎµåµÇ¾ú½À´Ï´Ù.");
+        Debug.Log("ê²Œì„ ë°ì´í„°ê°€ ë¡œë“œë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 
 
 
     public void BGOn(int number) {
         if (BGs == null || BGs.Length == 0) {
-            Debug.LogError("BGs ¹è¿­ÀÌ ÃÊ±âÈ­µÇÁö ¾Ê¾Ò½À´Ï´Ù. Unity Inspector¿¡¼­ BGs ¹è¿­À» ¼³Á¤ÇÏ¼¼¿ä.");
+            Debug.LogError("BGs ë°°ì—´ì´ ì´ˆê¸°í™”ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. Unity Inspectorì—ì„œ BGs ë°°ì—´ì„ ì„¤ì •í•˜ì„¸ìš”.");
             return;
         }
 
         if (number < 0 || number >= BGs.Length) {
-            Debug.LogError($"Àß¸øµÈ ÀÎµ¦½º: {number}. BGs ¹è¿­ÀÇ ¹üÀ§¸¦ È®ÀÎÇÏ¼¼¿ä.");
+            Debug.LogError($"ì˜ëª»ëœ ì¸ë±ìŠ¤: {number}. BGs ë°°ì—´ì˜ ë²”ìœ„ë¥¼ í™•ì¸í•˜ì„¸ìš”.");
             return;
         }
 

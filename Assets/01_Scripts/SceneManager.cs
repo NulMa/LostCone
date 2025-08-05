@@ -4,11 +4,11 @@ using UnityEngine;
 
 [System.Serializable]
 public struct SceneData {
-    public GameObject scene; // ¾À GameObject
-    public bool isDone;      // ¾À Àç»ı ¿Ï·á ¿©ºÎ
+    public GameObject scene; // ì”¬ GameObject
+    public bool isDone;      // ì”¬ ì™„ë£Œ ìƒíƒœ
 }
 public class SceneManager : MonoBehaviour{
-    public SceneData[] scenes; // ¾À µ¥ÀÌÅÍ ¹è¿­
+    public SceneData[] scenes; // ì”¬ ë°ì´í„° ë°°ì—´
 
     private void Awake() {
         LoadSceneData();
