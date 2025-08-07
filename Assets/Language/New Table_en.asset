@@ -87,6 +87,10 @@ MonoBehaviour:
     m_Localized: Check Achivements
     m_Metadata:
       m_Items: []
+  - m_Id: 37846491340791808
+    m_Localized: MainMenu
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

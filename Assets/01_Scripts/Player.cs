@@ -256,7 +256,7 @@ public class Player : MonoBehaviour{
                 GamaManager.Instance.achiveCall("Nachtmusik");
                 break;
 
-            case "WearwolfHiddenWall":
+            case "IdleWolf":
                 GamaManager.Instance.achiveCall("MacGuffin");
                 break;
 

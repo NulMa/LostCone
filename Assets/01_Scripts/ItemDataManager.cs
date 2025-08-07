@@ -39,24 +39,6 @@ public class ItemDataManager : MonoBehaviour {
         // PlayerPrefs에 새로운 맵 번호 저장
         PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
         PlayerPrefs.Save();
-
-        // 모든 자식 MapItems 비활성화
-        foreach (Transform child in transform) {
-            MapItems mapItems = child.GetComponent<MapItems>();
-            if (mapItems != null) {
-                child.gameObject.SetActive(false);
-            }
-        }
-
-        // 해당 CurrentMapID에 맞는 MapItems 활성화
-        foreach (Transform child in transform) {
-            MapItems mapItems = child.GetComponent<MapItems>();
-            if (mapItems != null && mapItems.MapID == CurrentMapID) {
-                child.gameObject.SetActive(true);
-                Debug.Log($"[ItemDataManager] Map {CurrentMapID} 활성화됨.");
-                break;
-            }
-        }
     }
 
     public void SaveCurrentMapData() {

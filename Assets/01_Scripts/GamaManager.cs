@@ -7,7 +7,8 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
-public class GamaManager : MonoBehaviour{
+public class GamaManager : MonoBehaviour
+{
     public static GamaManager Instance { get; private set; }
 
     public GameObject[] BGs;
@@ -29,48 +30,60 @@ public class GamaManager : MonoBehaviour{
     public GameObject rain;
 
 
-    
+
     public int langue; // 언어 인덱스
     public int currentStageID;
 
 
-    private void Awake() {
+    private void Awake()
+    {
         if (PlayerPrefs.HasKey("Player_Pos_X"))
             LoadGame();
 
 
         // 싱글톤 인스턴스 설정
-        if (Instance == null) {
+        if (Instance == null)
+        {
             Instance = this;
         }
-        else {
+        else
+        {
             Destroy(gameObject); // 중복된 인스턴스 제거
         }
 
-        if(GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
+        if (GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
+
+        // 현재 스테이지에 따른 BGM 재생
+        PlayBGMForCurrentStage();
     }
 
-    private void Update() {
+    private void Update()
+    {
         ItemDataManager.CurrentMapID = currentStageID;
     }
 
-    public void achiveCall(string key) {
+    public void achiveCall(string key)
+    {
         if (PlayerPrefs.GetInt("achive_" + key, 0) == 1)
             return;
 
         AchiveManager.instance.SetAchiveClear(key);
     }
 
-    public void rainSwitch() {
-        if (rain.activeSelf) {
+    public void rainSwitch()
+    {
+        if (rain.activeSelf)
+        {
             rain.SetActive(false);
         }
-        else {
+        else
+        {
             rain.SetActive(true);
         }
     }
 
-    public void passFirstScene() {
+    public void passFirstScene()
+    {
         Debug.Log("첫 번째 넘기도록 : " + SceneManager.scenes[0].isDone);
         DOTween.Kill(SceneManager.scenes[0].scene);
 
@@ -90,22 +103,26 @@ public class GamaManager : MonoBehaviour{
         UIManager.Stage.DOColor(color, 1f);
         UIManager.Items.DOColor(color, 1f);
 
-        foreach (Transform child in player.transform) {
+        foreach (Transform child in player.transform)
+        {
             // 자식 오브젝트의 태그가 "Remove"인지 확인
-            if (child.CompareTag("Remove")) {
+            if (child.CompareTag("Remove"))
+            {
                 // 해당 오브젝트 삭제
                 Destroy(child.gameObject);
             }
         }
 
-        if(currentStageID == 0 && !SceneManager.scenes[1].isDone) {
+        if (currentStageID == 0 && !SceneManager.scenes[1].isDone)
+        {
             rainSwitch();
         }
         currentMap.gameObject.SetActive(true);
 
     }
 
-    public void SaveGame() {
+    public void SaveGame()
+    {
         player.SavePlayerPosition();
         ItemDataManager.Instance.SaveCurrentMapData();
         currentMap.SaveMapData();
@@ -113,7 +130,8 @@ public class GamaManager : MonoBehaviour{
         Debug.Log("게임 데이터가 저장되었습니다.");
     }
 
-    public void LoadGame() {
+    public void LoadGame()
+    {
         player.isScenePlaying = false;
         player.LoadPlayerPosition();
         ItemDataManager.Instance.LoadCurrentMapData();
@@ -125,23 +143,61 @@ public class GamaManager : MonoBehaviour{
 
 
 
-    public void BGOn(int number) {
-        if (BGs == null || BGs.Length == 0) {
+    public void BGOn(int number)
+    {
+        if (BGs == null || BGs.Length == 0)
+        {
             Debug.LogError("BGs 배열이 초기화되지 않았습니다. Unity Inspector에서 BGs 배열을 설정하세요.");
             return;
         }
 
-        if (number < 0 || number >= BGs.Length) {
+        if (number < 0 || number >= BGs.Length)
+        {
             Debug.LogError($"잘못된 인덱스: {number}. BGs 배열의 범위를 확인하세요.");
             return;
         }
 
-        foreach (var chooseAll in BGs) {
-            if (chooseAll != null && chooseAll.gameObject.activeSelf) {
+        foreach (var chooseAll in BGs)
+        {
+            if (chooseAll != null && chooseAll.gameObject.activeSelf)
+            {
                 chooseAll.gameObject.SetActive(false);
             }
         }
 
         BGs[number].gameObject.SetActive(true);
+
+        // 배경 변경 시 해당 스테이지 BGM 재생
+        currentStageID = number;
+        PlayBGMForCurrentStage();
     }
+
+    // 현재 스테이지에 따른 BGM 재생
+    public void PlayBGMForCurrentStage()
+    {
+        if (AudioManager.Instance == null)
+        {
+            Debug.LogWarning("AudioManager 인스턴스가 없습니다.");
+            return;
+        }
+
+        // 스테이지별 BGM 인덱스 설정 (필요에 따라 수정)
+        switch (currentStageID)
+        {
+            case 0:
+                AudioManager.Instance.PlayBGM(0); // 첫 번째 BGM
+                break;
+            case 1:
+                AudioManager.Instance.PlayBGM(1); // 두 번째 BGM
+                break;
+            case 2:
+                AudioManager.Instance.PlayBGM(2); // 세 번째 BGM
+                break;
+            default:
+                AudioManager.Instance.PlayBGM(0); // 기본 BGM
+                break;
+        }
+    }
+
+
 }

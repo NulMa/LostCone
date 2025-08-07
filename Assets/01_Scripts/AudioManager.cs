@@ -146,4 +146,29 @@ public class AudioManager : MonoBehaviour {
         sfx.Play();
         Destroy(sfx.gameObject, clip.length + 0.1f);
     }
+
+    // BGM 리버브 효과 제어
+    public void SetBGMReverb(bool enable) {
+        if (bgmSource == null) return;
+
+        AudioReverbFilter reverbFilter = bgmSource.GetComponent<AudioReverbFilter>();
+        
+        if (enable) {
+            // 리버브 효과 추가
+            if (reverbFilter == null) {
+                reverbFilter = bgmSource.gameObject.AddComponent<AudioReverbFilter>();
+            }
+            reverbFilter.enabled = true;
+            // 설정창에 적합한 리버브 설정 (차분하고 부드러운 효과)
+            reverbFilter.reverbPreset = AudioReverbPreset.Room;
+            reverbFilter.dryLevel = -1000f; // 원본 소리 감소
+            reverbFilter.room = -600f;      // 룸 효과
+            reverbFilter.roomHF = -1200f;   // 고주파 감소
+        } else {
+            // 리버브 효과 제거
+            if (reverbFilter != null) {
+                reverbFilter.enabled = false;
+            }
+        }
+    }
 }
