@@ -40,6 +40,10 @@ public class AudioManager : MonoBehaviour {
     private Dictionary<GameObject, AudioSource> loopSfxDict = new Dictionary<GameObject, AudioSource>();
 
     public void PlayLoopSFX(int sfxIndex, GameObject owner) {
+        PlayLoopSFX(sfxIndex, owner, 1f);
+    }
+
+    public void PlayLoopSFX(int sfxIndex, GameObject owner, float pitch = 1f) {
         if (sfxClips == null || sfxIndex < 0 || sfxIndex >= sfxClips.Length) return;
         if (loopSfxDict.ContainsKey(owner)) return;
 
@@ -47,6 +51,7 @@ public class AudioManager : MonoBehaviour {
         src.clip = sfxClips[sfxIndex];
         src.loop = true;
         src.spatialBlend = 0f;
+        src.pitch = pitch;
         src.volume = SettingUI.instance != null ? SettingUI.instance.SFX_VOLUME : 1f;
         src.Play();
         loopSfxDict[owner] = src;
@@ -100,6 +105,12 @@ public class AudioManager : MonoBehaviour {
         PlayUISFX(sfxClips[index]);
     }
 
+    // 2D 효과음 (UI 용) - 풀에서 재생 (인덱스, 속도 조절)
+    public void PlayUISFX(int index, float pitch = 1f) {
+        if (sfxClips == null || index < 0 || index >= sfxClips.Length) return;
+        PlayUISFX(sfxClips[index], pitch);
+    }
+
     // 2D 효과음 (UI 용) - 풀에서 재생 (이름)
     public void PlayUISFX(string clipName) {
         if (sfxClips == null) return;
@@ -107,17 +118,31 @@ public class AudioManager : MonoBehaviour {
         if (clip != null) PlayUISFX(clip);
     }
 
+    // 2D 효과음 (UI 용) - 풀에서 재생 (이름, 속도 조절)
+    public void PlayUISFX(string clipName, float pitch = 1f) {
+        if (sfxClips == null) return;
+        var clip = System.Array.Find(sfxClips, c => c != null && c.name == clipName);
+        if (clip != null) PlayUISFX(clip, pitch);
+    }
+
     // 2D 효과음 (UI 용) - 풀에서 재생 (AudioClip 직접)
     public void PlayUISFX(AudioClip clip) {
+        PlayUISFX(clip, 1f);
+    }
+
+    // 2D 효과음 (UI 용) - 풀에서 재생 (AudioClip 직접, 속도 조절)
+    public void PlayUISFX(AudioClip clip, float pitch = 1f) {
         float volume = SettingUI.instance != null ? SettingUI.instance.SFX_VOLUME : 1f;
         foreach (var src in uiSfxPool) {
             if (!src.isPlaying) {
+                src.pitch = pitch;
                 src.PlayOneShot(clip, volume);
                 return;
             }
         }
         var extra = Instantiate(uiSfxSourcePrefab, transform);
         extra.spatialBlend = 0f;
+        extra.pitch = pitch;
         uiSfxPool.Add(extra);
         extra.PlayOneShot(clip, volume);
     }
@@ -128,6 +153,12 @@ public class AudioManager : MonoBehaviour {
         PlaySFXAt(sfxClips[index], position);
     }
 
+    // 3D 효과음 (오브젝트 위치에서, 인덱스, 속도 조절)
+    public void PlaySFXAt(int index, Vector3 position, float pitch = 1f) {
+        if (sfxClips == null || index < 0 || index >= sfxClips.Length) return;
+        PlaySFXAt(sfxClips[index], position, pitch);
+    }
+
     // 3D 효과음 (오브젝트 위치에서, 이름)
     public void PlaySFXAt(string clipName, Vector3 position) {
         if (sfxClips == null) return;
@@ -135,16 +166,29 @@ public class AudioManager : MonoBehaviour {
         if (clip != null) PlaySFXAt(clip, position);
     }
 
+    // 3D 효과음 (오브젝트 위치에서, 이름, 속도 조절)
+    public void PlaySFXAt(string clipName, Vector3 position, float pitch = 1f) {
+        if (sfxClips == null) return;
+        var clip = System.Array.Find(sfxClips, c => c != null && c.name == clipName);
+        if (clip != null) PlaySFXAt(clip, position, pitch);
+    }
+
     // 3D 효과음 (오브젝트 위치에서, AudioClip 직접)
     public void PlaySFXAt(AudioClip clip, Vector3 position) {
+        PlaySFXAt(clip, position, 1f);
+    }
+
+    // 3D 효과음 (오브젝트 위치에서, AudioClip 직접, 속도 조절)
+    public void PlaySFXAt(AudioClip clip, Vector3 position, float pitch = 1f) {
         if (sfxSourcePrefab == null || clip == null) return;
         float volume = SettingUI.instance != null ? SettingUI.instance.SFX_VOLUME : 1f;
         AudioSource sfx = Instantiate(sfxSourcePrefab, position, Quaternion.identity);
         sfx.clip = clip;
         sfx.volume = volume;
+        sfx.pitch = pitch;
         sfx.spatialBlend = 1f; // 3D 사운드
         sfx.Play();
-        Destroy(sfx.gameObject, clip.length + 0.1f);
+        Destroy(sfx.gameObject, clip.length / pitch + 0.1f); // pitch에 따라 재생 시간 조정
     }
 
     // BGM 리버브 효과 제어

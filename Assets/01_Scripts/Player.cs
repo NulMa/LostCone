@@ -10,6 +10,16 @@ public class Player : MonoBehaviour{
     public float speed;
     public float jumpForce;
 
+    // --- Crouch 추가 (원본 복구) ---
+    [Header("Crouch Settings")] [SerializeField] float crouchSpeedMultiplier = 0.5f; // 앉기 이동 속도 배수
+    [SerializeField] bool instantCrouchAnim = true; // 즉시 전환 옵션 (Play 강제)
+    bool isCrouching; // 현재 앉은 상태
+    float baseSpeed;  // 원래 속도 저장
+    [Header("Crouch State Names")] [SerializeField] string crouchIdleStateName = "CrouchIdle"; // Animator 상태 이름
+    [SerializeField] string crouchWalkStateName = "CrouchWalk"; // Animator 상태 이름
+    int crouchIdleHash; int crouchWalkHash; // 해시 캐시
+    bool hasCrouchIdle; bool hasCrouchWalk; bool loggedCrouchStateWarning; // 상태 존재 여부
+
     public Vector2 inputVec2;
     public Vector3 moveDirection;
 
@@ -37,24 +47,47 @@ public class Player : MonoBehaviour{
     private Collider2D playerCollider;
     private Vector3 dashDirection; // 대시 방향 저장변수
 
+    // ===== 착지 / 점프 안정화 추가 변수 =====
+    [Header("Ground Check")]
+    [SerializeField] LayerMask groundMask; // Tilemap + OneWayPlatform 등 포함
+    [SerializeField] Transform groundCheck; // 발 위치 기준 Transform (없으면 자동 생성)
+    [SerializeField] float groundCheckRadius = 0.12f;
+    bool isGrounded;              // 현재 지상 여부
+    bool wasGroundedLastFrame;    // 이전 프레임 지상 여부
+    bool isDroppingThrough;       // 아래점프 중 여부
+
+    // (옵션) 점프 버퍼 & 코요테 타임 (필요시 조정)
+    [SerializeField] float jumpBufferTime = 0.1f;
+    [SerializeField] float coyoteTime = 0.1f;
+    float jumpBufferCounter;
+    float coyoteCounter;
 
     void Start() {
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+        baseSpeed = speed; // 속도 기준 저장
+        if (groundCheck == null) {
+            GameObject gc = new GameObject("GroundCheck");
+            gc.transform.SetParent(transform);
+            gc.transform.localPosition = new Vector3(0f, -playerCollider.bounds.extents.y, 0f);
+            groundCheck = gc.transform;
+        }
+        ValidateCrouchStates(); // 복구
     }
     private void FixedUpdate() {
         if (isScenePlaying)
             return;
-        CheckLanding();
+
+        UpdateGroundedState();
+        HandleBufferedJump();
 
         if (isDashing) {
             transform.position += dashDirection * speed * Time.deltaTime;
             return;
         }
 
-        // 입력값에 따른 moveDirection을 항상 저장
         if (inputVec2.x != 0) {
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
         }
@@ -62,10 +95,63 @@ public class Player : MonoBehaviour{
             moveDirection = Vector3.zero;
         }
 
-        // 애니메이션된 입력값에 따른 움직임 설정
-        anim.SetBool("isMove", inputVec2.x != 0);
+        float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
+        transform.position += moveDirection * appliedSpeed * Time.deltaTime;
+    }
 
-        transform.position += moveDirection * speed * Time.deltaTime;
+    void Update() {
+        if (isScenePlaying) return;
+        UpdateCrouchState();
+        UpdateLocomotionAnim();
+    }
+
+    void UpdateLocomotionAnim(){
+        if (isCrouching){
+            if (isMoveSfxPlaying){
+                AudioManager.Instance?.StopLoopSFX(gameObject);
+                isMoveSfxPlaying = false;
+            }
+            bool moving = Mathf.Abs(moveDirection.x) > 0.0001f;
+            if (instantCrouchAnim && (hasCrouchIdle || hasCrouchWalk)){
+                string target = moving ? crouchWalkStateName : crouchIdleStateName;
+                int targetHash = moving ? crouchWalkHash : crouchIdleHash;
+                AnimatorStateInfo st = anim.GetCurrentAnimatorStateInfo(0);
+                if (!st.IsName(target)) {
+                    if ((moving && hasCrouchWalk) || (!moving && hasCrouchIdle))
+                        anim.Play(targetHash, 0, 0f); // 즉시
+                }
+            } else {
+                anim.SetBool("isMove", false);
+                anim.SetBool("CrouchIdle", !moving);
+                anim.SetBool("CrouchWalk", moving);
+            }
+        } else {
+            if (instantCrouchAnim){
+                anim.SetBool("CrouchIdle", false);
+                anim.SetBool("CrouchWalk", false);
+                anim.SetBool("isMove", Mathf.Abs(moveDirection.x) > 0.0001f);
+            } else {
+                anim.SetBool("CrouchIdle", false);
+                anim.SetBool("CrouchWalk", false);
+                anim.SetBool("isMove", Mathf.Abs(moveDirection.x) > 0.0001f);
+            }
+            bool wantWalkSound = Mathf.Abs(moveDirection.x) > 0.0001f && isGrounded && !isJumping;
+            if (wantWalkSound && !isMoveSfxPlaying){
+                AudioManager.Instance?.PlayLoopSFX(0, gameObject);
+                isMoveSfxPlaying = true;
+            }
+            if (!wantWalkSound && isMoveSfxPlaying){
+                AudioManager.Instance?.StopLoopSFX(gameObject);
+                isMoveSfxPlaying = false;
+            }
+        }
+    }
+
+    void UpdateCrouchState() {
+        bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !isDashing;
+        if (wantCrouch != isCrouching) {
+            isCrouching = wantCrouch;
+        }
     }
 
     public Vector3 Position => transform.position; // 현재 위치 반환
@@ -90,27 +176,62 @@ public class Player : MonoBehaviour{
     public void jumpSwtich() {
         isJumping = isJumping ? false : true;
     }
-    void CheckLanding() {
-        if (!isJumping)
-            return;
 
-        Collider2D col = GetComponent<Collider2D>();
-        Vector2 rayStart = new Vector2(col.bounds.center.x, col.bounds.min.y);
-        float rayLength = col.bounds.extents.y + 0.05f;
+    // ===== 새 Ground 체크 로직 =====
+    void UpdateGroundedState() {
+        wasGroundedLastFrame = isGrounded;
 
-        RaycastHit2D hit = Physics2D.Raycast(rayStart, Vector2.down, 0.1f, LayerMask.GetMask("Tilemap"));
+        if (isDroppingThrough) {
+            // 아래로 통과 중에는 지면 체크 잠시 무시
+            isGrounded = false;
+        } else {
+            if (groundCheck != null) {
+                isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+            } else {
+                // fallback (하위호환)
+                Vector2 rayStart = new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.min.y);
+                float rayLength = playerCollider.bounds.extents.y + 0.05f;
+                isGrounded = Physics2D.Raycast(rayStart, Vector2.down, rayLength, groundMask);
+            }
+        }
 
-        if (hit.collider != null) {
+        // 코요테 타임 갱신
+        if (isGrounded) coyoteCounter = coyoteTime; else coyoteCounter -= Time.fixedDeltaTime;
+
+        // 착지 이벤트 (이전엔 공중, 지금은 지상)
+        if (!wasGroundedLastFrame && isGrounded) {
             anim.SetBool("isJump", false);
             isJumping = false;
-
-            // 착지 시 좌우 입력이 있으면 걷기 사운드 재생
             if (inputVec2.x != 0 && !isMoveSfxPlaying) {
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
                 isMoveSfxPlaying = true;
             }
         }
     }
+
+    void HandleBufferedJump() {
+        if (jumpBufferCounter > 0f) {
+            jumpBufferCounter -= Time.fixedDeltaTime;
+            if ((isGrounded || coyoteCounter > 0f) && !isJumping) {
+                ExecuteJump();
+                jumpBufferCounter = 0f;
+            }
+        }
+    }
+
+    void ExecuteJump() {
+        isJumping = true;
+        isGrounded = false;
+        anim.SetBool("isJump", true);
+        // 수직 속도 초기화 후 힘 적용(이중 점프 잔류 속도 제거)
+        rigid.velocity = new Vector2(rigid.velocity.x, 0f);
+        rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if (isMoveSfxPlaying) {
+            AudioManager.Instance?.StopLoopSFX(gameObject);
+            isMoveSfxPlaying = false;
+        }
+    }
+
     public void OnDash() {
         if (!canDash || isDashing || isScenePlaying) return;
         StartCoroutine(DashRoutine());
@@ -160,10 +281,13 @@ public class Player : MonoBehaviour{
     }
 
     private IEnumerator DownJumpRoutine(Collider2D platform) {
-        // 플레이어 콜라이더와 바닥 비활성화(혹은 PlatformEffector2D 사용시 oneWay 설정)
+        isDroppingThrough = true;
         Physics2D.IgnoreCollision(playerCollider, platform, true);
-        yield return new WaitForSeconds(0.3f); // 잠깐 시간
+        yield return new WaitForSeconds(0.3f); // 잠깐 시간 (설정 가능)
         Physics2D.IgnoreCollision(playerCollider, platform, false);
+        // 한 프레임 기다렸다가 착지 재평가 (플랫폼 위로 완전히 올라온 후)
+        yield return new WaitForFixedUpdate();
+        isDroppingThrough = false;
     }
 
     public void OnMove(InputValue value) {
@@ -178,39 +302,35 @@ public class Player : MonoBehaviour{
             return;
         }
 
+        // 앉기 상태 중에도 좌우 입력은 moveDirection 반영 (속도는 FixedUpdate에서 배수 적용)
         if (inputVec2.x != 0) {
             anim.SetBool("isSwing", false);
             moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
-            anim.SetBool("isMove", true);
 
-            if (!isJumping && !isMoveSfxPlaying) {
+            if (!isJumping && !isMoveSfxPlaying && isGrounded && !isCrouching) {
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
                 isMoveSfxPlaying = true;
             }
         }
         else {
-            if (isMoveSfxPlaying) {
+            if (isMoveSfxPlaying && !isCrouching) { // 앉은 상태 걷기 사운드 별도 정책(현재 비활성)
                 AudioManager.Instance?.StopLoopSFX(gameObject);
                 isMoveSfxPlaying = false;
             }
             moveDirection = Vector3.zero;
-            anim.SetBool("isMove", false);
         }
         flipCtrl();
     }
     public void OnJump() {
         if (isScenePlaying)
             return;
-
-        if (!anim.GetBool("isJump")) {
-            anim.SetBool("isJump", true);
-            rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-            // 점프 시 걷기 사운드 정지
-            if (isMoveSfxPlaying) {
-                AudioManager.Instance?.StopLoopSFX(gameObject);
-                isMoveSfxPlaying = false;
-            }
+        if (isCrouching) return; // 앉은 상태에서는 점프 금지 (원하면 제거)
+        // 점프 입력을 버퍼에 저장 (즉시 조건 불충족이면 나중에 처리)
+        jumpBufferCounter = jumpBufferTime;
+        // 지상 즉시 점프 가능 조건이면 바로 실행
+        if ((isGrounded || coyoteCounter > 0f) && !isJumping) {
+            ExecuteJump();
+            jumpBufferCounter = 0f;
         }
     }
     public void OnFire() {
@@ -271,6 +391,25 @@ public class Player : MonoBehaviour{
             case "Gumi":
                 GamaManager.Instance.achiveCall("YourName");
                 break;
+        }
+    }
+
+    // 디버그용 기즈모 (GroundCheck 시각화)
+    void OnDrawGizmosSelected() {
+        if (groundCheck != null) {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
+    void ValidateCrouchStates(){
+        crouchIdleHash = Animator.StringToHash(crouchIdleStateName);
+        crouchWalkHash = Animator.StringToHash(crouchWalkStateName);
+        hasCrouchIdle = anim != null && anim.HasState(0, crouchIdleHash);
+        hasCrouchWalk = anim != null && anim.HasState(0, crouchWalkHash);
+        if ((!hasCrouchIdle || !hasCrouchWalk) && !loggedCrouchStateWarning){
+            Debug.LogWarning($"[Player] 지정한 Crouch 애니 상태를 찾지 못했습니다. Idle:{crouchIdleStateName} 존재:{hasCrouchIdle} / Walk:{crouchWalkStateName} 존재:{hasCrouchWalk}. Bool 파라미터 폴백 사용.");
+            loggedCrouchStateWarning = true;
         }
     }
 }

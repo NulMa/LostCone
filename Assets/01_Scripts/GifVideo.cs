@@ -4,30 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class GifVideo : MonoBehaviour{
+public class GifVideo : MonoBehaviour
+{
     Image img;
     SpriteRenderer sprite;
 
+    public GameObject videoObject; // 비디오 오브젝트
 
-    private void Awake() {
+
+    private void Awake()
+    {
         img = GetComponent<Image>();
         sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         img.sprite = sprite.sprite;
 
     }
 
-    public void offVideo() {
-        if (img != null) {
+    public void offVideo()
+    {
+        if (img != null)
+        {
             // Image 컴포넌트가 있는 경우 DOTween으로 페이드 아웃
             img.DOFade(0f, 1f).OnComplete(() => gameObject.SetActive(false));
         }
-        else {
+        else
+        {
             Debug.LogWarning("Image 또는 SpriteRenderer가 없습니다.");
             gameObject.SetActive(false); // 강제로 비활성화
+        }
+    }
+
+    public void ifNeed(){
+        if (videoObject != null){
+            videoObject.SetActive(true); // 비디오 오브젝트 활성화
         }
     }
 }

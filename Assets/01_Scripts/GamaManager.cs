@@ -172,6 +172,8 @@ public class GamaManager : MonoBehaviour
         PlayBGMForCurrentStage();
     }
 
+
+
     // 현재 스테이지에 따른 BGM 재생
     public void PlayBGMForCurrentStage()
     {
@@ -196,6 +198,73 @@ public class GamaManager : MonoBehaviour
             default:
                 AudioManager.Instance.PlayBGM(0); // 기본 BGM
                 break;
+        }
+    }
+
+    // AudioManager SFX 실행 함수들
+    public void PlayUISFX(int index){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayUISFX(index);
+        }
+    }
+
+    public void PlayUISFX(int index, float pitch){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayUISFX(index, pitch);
+        }
+    }
+
+    public void PlayUISFX(string clipName){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayUISFX(clipName);
+        }
+    }
+
+    public void PlayUISFX(string clipName, float pitch){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayUISFX(clipName, pitch);
+        }
+    }
+
+    public void PlaySFXAt(int index, Vector3 position){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlaySFXAt(index, position);
+        }
+    }
+
+    public void PlaySFXAt(int index, Vector3 position, float pitch){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlaySFXAt(index, position, pitch);
+        }
+    }
+
+    public void PlaySFXAt(string clipName, Vector3 position){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlaySFXAt(clipName, position);
+        }
+    }
+
+    public void PlaySFXAt(string clipName, Vector3 position, float pitch){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlaySFXAt(clipName, position, pitch);
+        }
+    }
+
+    public void PlayLoopSFX(int index, GameObject owner){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayLoopSFX(index, owner);
+        }
+    }
+
+    public void PlayLoopSFX(int index, GameObject owner, float pitch){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.PlayLoopSFX(index, owner, pitch);
+        }
+    }
+
+    public void StopLoopSFX(GameObject owner){
+        if (AudioManager.Instance != null){
+            AudioManager.Instance.StopLoopSFX(owner);
         }
     }
 
