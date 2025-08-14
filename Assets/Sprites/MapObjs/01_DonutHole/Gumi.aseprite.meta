@@ -1,0 +1,587 @@
+fileFormatVersion: 2
+guid: 7eb61e4d97d4b7249933d4c88e07837e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Gumi_Frame_0
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 178
+      width: 77
+      height: 168
+    spriteID: 84113b4b932f35941b75c0be97a8d7da
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 178}
+  - name: Gumi_Frame_1
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 356
+      width: 77
+      height: 167
+    spriteID: a04166a143869a541905608cca5f3198
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 90, y: 356}
+  - name: Gumi_Frame_2
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 4
+      width: 77
+      height: 166
+    spriteID: bd5b454363facf04a829193aaec04156
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 4}
+  - name: Gumi_Frame_3
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 178
+      width: 77
+      height: 166
+    spriteID: e5e89e0d12cb166439643390eee24951
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 178}
+  - name: Gumi_Frame_4
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 531
+      width: 77
+      height: 167
+    spriteID: d24f8aaf099317a439f0391c2976ee72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 90, y: 531}
+  - name: Gumi_Frame_5
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 354
+      width: 77
+      height: 168
+    spriteID: ba82de86df8214c4495fb6d10a25a1d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 354}
+  - name: Gumi_Frame_6
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 530
+      width: 77
+      height: 168
+    spriteID: f6f228703ef7cd74d8233d84bc119942
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 530}
+  - name: Gumi_Frame_7
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 706
+      width: 77
+      height: 168
+    spriteID: facdf90e201478844a4c2a8d0bb93ecc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 706}
+  - name: Gumi_Frame_8
+    originalName: 
+    pivot: {x: 0.52631575, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 352
+      width: 76
+      height: 168
+    spriteID: 0013546ccf135d5488f650ad9c591d23
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 352}
+  - name: Gumi_Frame_9
+    originalName: 
+    pivot: {x: 0.52631575, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 528
+      width: 76
+      height: 167
+    spriteID: c398e7959964c944c9062974ff7f78c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 528}
+  - name: Gumi_Frame_10
+    originalName: 
+    pivot: {x: 0.52631575, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 703
+      width: 76
+      height: 166
+    spriteID: f801fe62484c8264eb5fddb92b55b37d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 703}
+  - name: Gumi_Frame_11
+    originalName: 
+    pivot: {x: 0.5128205, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 78
+      height: 166
+    spriteID: a10edf74a0c58a741ba4142884d289d4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Gumi_Frame_12
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 706
+      width: 77
+      height: 167
+    spriteID: 34aeeb42d0786c241b544fa1fba06f71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 90, y: 706}
+  - name: Gumi_Frame_13
+    originalName: 
+    pivot: {x: 0.5333333, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 260
+      y: 4
+      width: 75
+      height: 168
+    spriteID: 5cac058359df89147b01b9134869c7ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 260, y: 4}
+  - name: Gumi_Frame_14
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 4
+      width: 77
+      height: 168
+    spriteID: 1bbd7c4c833173e4d83b30f570f2c979
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 90, y: 4}
+  - name: Gumi_Frame_15
+    originalName: 
+    pivot: {x: 0.51948047, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 90
+      y: 180
+      width: 77
+      height: 168
+    spriteID: 7d41556bc8a060241af294e04e82353a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 90, y: 180}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -460743972
+    name: Gumi
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Gumi_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: 84113b4b932f35941b75c0be97a8d7da
+    - name: Gumi_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 167
+      spriteId: a04166a143869a541905608cca5f3198
+    - name: Gumi_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 166
+      spriteId: bd5b454363facf04a829193aaec04156
+    - name: Gumi_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 166
+      spriteId: e5e89e0d12cb166439643390eee24951
+    - name: Gumi_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 167
+      spriteId: d24f8aaf099317a439f0391c2976ee72
+    - name: Gumi_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: ba82de86df8214c4495fb6d10a25a1d7
+    - name: Gumi_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: f6f228703ef7cd74d8233d84bc119942
+    - name: Gumi_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: facdf90e201478844a4c2a8d0bb93ecc
+    - name: Gumi_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 50
+        y: 0
+        width: 76
+        height: 168
+      spriteId: 0013546ccf135d5488f650ad9c591d23
+    - name: Gumi_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 50
+        y: 0
+        width: 76
+        height: 167
+      spriteId: c398e7959964c944c9062974ff7f78c5
+    - name: Gumi_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 50
+        y: 0
+        width: 76
+        height: 166
+      spriteId: f801fe62484c8264eb5fddb92b55b37d
+    - name: Gumi_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 50
+        y: 0
+        width: 78
+        height: 166
+      spriteId: a10edf74a0c58a741ba4142884d289d4
+    - name: Gumi_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 167
+      spriteId: 34aeeb42d0786c241b544fa1fba06f71
+    - name: Gumi_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 50
+        y: 0
+        width: 75
+        height: 168
+      spriteId: 5cac058359df89147b01b9134869c7ed
+    - name: Gumi_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: 1bbd7c4c833173e4d83b30f570f2c979
+    - name: Gumi_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 50
+        y: 0
+        width: 77
+        height: 168
+      spriteId: 7d41556bc8a060241af294e04e82353a
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 180, y: 180}

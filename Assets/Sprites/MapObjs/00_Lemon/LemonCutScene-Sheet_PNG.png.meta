@@ -1,0 +1,1649 @@
+fileFormatVersion: 2
+guid: 6aeb522538731ea46b2f90d05a55aad8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f1dd7e8b09dfe438e27eaa09c7fc65
+      internalID: -594104264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857a6816a5c03974991a1bda9e89f018
+      internalID: -178516818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e598dd677b0531a44ae190b0e398c17d
+      internalID: 1904274811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c186dad3c78071342a1fb3953a801fae
+      internalID: 814126697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816f5c296dcca33498f8b18cb4233172
+      internalID: -930093096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_5
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afec02c668222cb48a1132e2202fc7dd
+      internalID: 815991454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_6
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38cefe4b8198b84a8120ef7902735db
+      internalID: -64890348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_7
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca8c01e2f12848b42aa683c8c0c17e84
+      internalID: -751339859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_8
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbc42086da39d54aa5c2c1bfe7b73af
+      internalID: -1115670825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5c826d82c5719428c41ea51107eac8
+      internalID: 1640824423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd4addb0e696cb4d9d11a76fb81a846
+      internalID: 1936690658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b5a2b1ac0ce5644bc983c454398f8c
+      internalID: 2094410374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55bfd06dda61abb43882de568e318eff
+      internalID: 230944491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0923025f9abc542896f68a8335c0c8
+      internalID: 507136013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_14
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39103d21aede59b46af984471bbe4f52
+      internalID: -1100910878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_15
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8cdd4ca8bae058448afe3cd356b8a75
+      internalID: -307239088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_16
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87bcad25b39a64b44a04867193c222ea
+      internalID: -1730948546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a80ac9d193d574fb385cbb1c9db7e6
+      internalID: -1424295688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5336587e953bb7c4c8efe4ca89489210
+      internalID: 383519852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9b742e9ff464c40ad34171b72a3eb4
+      internalID: -998783662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 351367b7873e690429b02d36811262a3
+      internalID: -981426747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb111fadca191a44d80425a2470d365c
+      internalID: 497773501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_22
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fff4890122dbf74a855444487c66c76
+      internalID: -1005565193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_23
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7bcb489bf58904fbd868e0694b4945
+      internalID: -412725748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_24
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead49599230cafa429d5549bd9989c52
+      internalID: -678794541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_25
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58324e5e5b7ba0b4c9533fcea3626978
+      internalID: -844256350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72ed1db11f84754c9b2cdd1716228e4
+      internalID: 1637369846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d38ae15aa5233e4a8db6685261d6cec
+      internalID: -1170199085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffebea5f32b6d544a94da73dfd72da5b
+      internalID: -1773482019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_29
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b383dfe97d5403342bee01bd9b27f99c
+      internalID: -404150453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d84b395b0c70bc4a9e184f9e06f3541
+      internalID: 597129103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ec764ec2dfc214fb5da8e0fa8cad89
+      internalID: 1508946150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_32
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff233907e9d688f47b8e97ab4a0398a1
+      internalID: 199078786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_33
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be13a2c39d2fa74ea2b338e7c8473c0
+      internalID: 75315370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_34
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9564854f8cb8e8347bb3b369b442d2d5
+      internalID: 1486352525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_35
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495c51ef17e198148a52c7e76e5967a6
+      internalID: -1613668893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03af70cd40b4ab94ba9974573881f498
+      internalID: -348214016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1256b245b9451643a9325635781c4b6
+      internalID: -1504432047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7994430141ac8fb4689460d692cf537c
+      internalID: 1132883224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_39
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df42f749b0d1914baa248d408e136f2
+      internalID: -276362074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_40
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c72e19062901b458c0d9d4a60f7f5a
+      internalID: 1202044321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_41
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86ad4d9120e71d34893eb7e8aee529ae
+      internalID: 1707457912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_42
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e2cdd2fc472ee4eb0978b2a126a8c1
+      internalID: 1242245560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_43
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff2030261ed1bc341b0b40412f5b47e4
+      internalID: -1191321491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_44
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96d8ec8e94fabd243b6dd29f7aa50c7a
+      internalID: -160034572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1481247edc1c944eb6076d4b359b8ec
+      internalID: 1791174864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_46
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073c02b605f34bb4d9fa552d538e1cc1
+      internalID: 1100906860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_47
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32455466fc49c51488918834ba238bd8
+      internalID: -2140511413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_48
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686207cff1ade87418ca7d51c074a531
+      internalID: -733614112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_49
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce15dcc027fce349879a2d0d2c9164b
+      internalID: 109284757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_50
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87c04f190ec40424db05c627bd0b62cb
+      internalID: 371680186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_51
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50d5ab5b8fc81d94ea60650dfef04e91
+      internalID: -594392288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_52
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207564ccd8ec69d4b84d6d42caa7d443
+      internalID: 430556300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_53
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3554b54c99077ed4c901e931203831e5
+      internalID: -1340162496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd8ccbb4981fdd488eea6406d8939b0
+      internalID: 1893835354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_55
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d6c32433ed05654e803d4e86b75fa8c
+      internalID: -1310938069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_56
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b79539b6da41a364286ff6db1718c937
+      internalID: -664154055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_57
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457e342b60bb4f54789d3b8f1cc10a80
+      internalID: 1816347512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_58
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a561d97643248884ca5c086b8726e0f0
+      internalID: -1054621790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_59
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ae3150f4486374e919d9e32c4dc70d
+      internalID: 1622588446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_60
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 276bfca751f11634f9430009ee052dcb
+      internalID: -1504805070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_61
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c8fed8404c7f347805855fde92803b
+      internalID: 2137042369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b022c67a047b10d4bb393b3db4a4e2c5
+      internalID: 563375507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cec4a74e902af143bb3ab6cad1f1ec5
+      internalID: -1557389714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b62a4e24d4b53c44a4551848cb11e0d
+      internalID: -1337410234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_65
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233563b67d4a39343a03e52df943ff51
+      internalID: -447325619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_66
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418391bc542bcce4ea1805116f2a434e
+      internalID: 285511537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonCutScene-Sheet_PNG_67
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf7c2a5ce745d5b45bb3c45996217fe6
+      internalID: 1195836273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      LemonCutScene-Sheet_PNG_0: -594104264
+      LemonCutScene-Sheet_PNG_1: -178516818
+      LemonCutScene-Sheet_PNG_10: 1936690658
+      LemonCutScene-Sheet_PNG_11: 2094410374
+      LemonCutScene-Sheet_PNG_12: 230944491
+      LemonCutScene-Sheet_PNG_13: 507136013
+      LemonCutScene-Sheet_PNG_14: -1100910878
+      LemonCutScene-Sheet_PNG_15: -307239088
+      LemonCutScene-Sheet_PNG_16: -1730948546
+      LemonCutScene-Sheet_PNG_17: -1424295688
+      LemonCutScene-Sheet_PNG_18: 383519852
+      LemonCutScene-Sheet_PNG_19: -998783662
+      LemonCutScene-Sheet_PNG_2: 1904274811
+      LemonCutScene-Sheet_PNG_20: -981426747
+      LemonCutScene-Sheet_PNG_21: 497773501
+      LemonCutScene-Sheet_PNG_22: -1005565193
+      LemonCutScene-Sheet_PNG_23: -412725748
+      LemonCutScene-Sheet_PNG_24: -678794541
+      LemonCutScene-Sheet_PNG_25: -844256350
+      LemonCutScene-Sheet_PNG_26: 1637369846
+      LemonCutScene-Sheet_PNG_27: -1170199085
+      LemonCutScene-Sheet_PNG_28: -1773482019
+      LemonCutScene-Sheet_PNG_29: -404150453
+      LemonCutScene-Sheet_PNG_3: 814126697
+      LemonCutScene-Sheet_PNG_30: 597129103
+      LemonCutScene-Sheet_PNG_31: 1508946150
+      LemonCutScene-Sheet_PNG_32: 199078786
+      LemonCutScene-Sheet_PNG_33: 75315370
+      LemonCutScene-Sheet_PNG_34: 1486352525
+      LemonCutScene-Sheet_PNG_35: -1613668893
+      LemonCutScene-Sheet_PNG_36: -348214016
+      LemonCutScene-Sheet_PNG_37: -1504432047
+      LemonCutScene-Sheet_PNG_38: 1132883224
+      LemonCutScene-Sheet_PNG_39: -276362074
+      LemonCutScene-Sheet_PNG_4: -930093096
+      LemonCutScene-Sheet_PNG_40: 1202044321
+      LemonCutScene-Sheet_PNG_41: 1707457912
+      LemonCutScene-Sheet_PNG_42: 1242245560
+      LemonCutScene-Sheet_PNG_43: -1191321491
+      LemonCutScene-Sheet_PNG_44: -160034572
+      LemonCutScene-Sheet_PNG_45: 1791174864
+      LemonCutScene-Sheet_PNG_46: 1100906860
+      LemonCutScene-Sheet_PNG_47: -2140511413
+      LemonCutScene-Sheet_PNG_48: -733614112
+      LemonCutScene-Sheet_PNG_49: 109284757
+      LemonCutScene-Sheet_PNG_5: 815991454
+      LemonCutScene-Sheet_PNG_50: 371680186
+      LemonCutScene-Sheet_PNG_51: -594392288
+      LemonCutScene-Sheet_PNG_52: 430556300
+      LemonCutScene-Sheet_PNG_53: -1340162496
+      LemonCutScene-Sheet_PNG_54: 1893835354
+      LemonCutScene-Sheet_PNG_55: -1310938069
+      LemonCutScene-Sheet_PNG_56: -664154055
+      LemonCutScene-Sheet_PNG_57: 1816347512
+      LemonCutScene-Sheet_PNG_58: -1054621790
+      LemonCutScene-Sheet_PNG_59: 1622588446
+      LemonCutScene-Sheet_PNG_6: -64890348
+      LemonCutScene-Sheet_PNG_60: -1504805070
+      LemonCutScene-Sheet_PNG_61: 2137042369
+      LemonCutScene-Sheet_PNG_62: 563375507
+      LemonCutScene-Sheet_PNG_63: -1557389714
+      LemonCutScene-Sheet_PNG_64: -1337410234
+      LemonCutScene-Sheet_PNG_65: -447325619
+      LemonCutScene-Sheet_PNG_66: 285511537
+      LemonCutScene-Sheet_PNG_67: 1195836273
+      LemonCutScene-Sheet_PNG_7: -751339859
+      LemonCutScene-Sheet_PNG_8: -1115670825
+      LemonCutScene-Sheet_PNG_9: 1640824423
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

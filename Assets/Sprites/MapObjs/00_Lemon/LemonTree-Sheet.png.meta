@@ -1,0 +1,593 @@
+fileFormatVersion: 2
+guid: 6012f5e9f45fe4549902ecc415b651db
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LemonTree-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ad5e19151e8f84e970b446f78cb00a
+      internalID: 425859414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1200
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cac4764abb2fe4ca5f5b3a59f54559
+      internalID: -1685674860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1200
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b293f45c4297ccd4b97ee1bc929efc5e
+      internalID: 1411004461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1200
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6f6c5359d037c48b618692b67b0c59
+      internalID: -774812688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1200
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0129ab7b49256f4da5ec8aabdc9e042
+      internalID: 984872405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 800
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f6867f374d359942847429326c532fd
+      internalID: 1207860168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 800
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5c74afab33db2d42845e699a67a8cf9
+      internalID: -1649989823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 800
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29b6734128a5c24db0c2b607900e863
+      internalID: 1525934124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 800
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239fcd09a15c3704caab529de7ccdfea
+      internalID: 246913714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 800
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1555566a4f97de34997858811d0af6e6
+      internalID: -514623731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522a7359ba79a3344ad88b2fa6349e0d
+      internalID: 225175492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 400
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df4fc88d40c742408bef3f10c2605b7
+      internalID: -1938536795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 400
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf027a7b12a4f4541a84c631b659418a
+      internalID: 1169592419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 400
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e103c37eeab68704fa3f7c94955b9624
+      internalID: 1418632098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 400
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc25e51e4825c8241ad00e1a09e76307
+      internalID: 2119654022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c58ddb4dfcc78243b44c3ece7b801df
+      internalID: 2025262084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f67a4a8e4aab545b9d7dc808433a16
+      internalID: 1032498180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 110e39a7cafb7a042b2bb2054b23951f
+      internalID: 361282039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4863caee361d65e40a88b2779939b85c
+      internalID: 1411800406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LemonTree-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 320
+        height: 400
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c475b5d8eb2bba54da239d5300e62454
+      internalID: 1521660907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      LemonTree-Sheet_0: 425859414
+      LemonTree-Sheet_1: -1685674860
+      LemonTree-Sheet_10: 225175492
+      LemonTree-Sheet_11: -1938536795
+      LemonTree-Sheet_12: 1169592419
+      LemonTree-Sheet_13: 1418632098
+      LemonTree-Sheet_14: 2119654022
+      LemonTree-Sheet_15: 2025262084
+      LemonTree-Sheet_16: 1032498180
+      LemonTree-Sheet_17: 361282039
+      LemonTree-Sheet_18: 1411800406
+      LemonTree-Sheet_19: 1521660907
+      LemonTree-Sheet_2: 1411004461
+      LemonTree-Sheet_3: -774812688
+      LemonTree-Sheet_4: 984872405
+      LemonTree-Sheet_5: 1207860168
+      LemonTree-Sheet_6: -1649989823
+      LemonTree-Sheet_7: 1525934124
+      LemonTree-Sheet_8: 246913714
+      LemonTree-Sheet_9: -514623731
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
