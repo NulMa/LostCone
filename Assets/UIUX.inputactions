@@ -1,0 +1,34 @@
+{
+    "name": "UIUX",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "e6bee1c6-cbdb-4a96-bba9-b08d59504897",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "59e8aefd-81ab-4ea9-ac88-85575fc4d36b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e2f149f8-2472-4824-b6ac-5362c8759fbc",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

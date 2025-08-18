@@ -15,8 +15,10 @@ public class SettingUI : MonoBehaviour
     public Slider sfxSlider;
     public TMP_Dropdown langDropdown;
     public GameObject SettingPanel;
+    public GameObject AchivePanel;
 
     public GameObject InGameUi;
+
 
     private bool wasSettingPanelActive = false; // 이전 프레임의 SettingPanel 상태
 
@@ -64,24 +66,42 @@ public class SettingUI : MonoBehaviour
         CheckSettingPanelState();
     }
 
-    private void CheckSettingPanelState(){
+    public void OnEscape(){
+
+        if (AchivePanel.activeSelf)
+            AchivePanel.SetActive(false);
+
+        else{
+            if (SettingPanel.activeSelf)
+                SettingPanel.SetActive(false);
+        }   
+
+    }
+    
+    private void CheckSettingPanelState()
+    {
         if (SettingPanel == null) return;
 
         bool isSettingPanelActive = SettingPanel.activeSelf;
 
         // SettingPanel 상태가 변경되었을 때만 처리
-        if (isSettingPanelActive != wasSettingPanelActive){
-            if (isSettingPanelActive){
+        if (isSettingPanelActive != wasSettingPanelActive)
+        {
+            if (isSettingPanelActive)
+            {
                 // SettingPanel이 켜졌을 때
                 Time.timeScale = 0f; // 시간 정지
-                if (AudioManager.Instance != null){
+                if (AudioManager.Instance != null)
+                {
                     AudioManager.Instance.SetBGMReverb(true); // 리버브 효과 적용
                 }
             }
-            else{
+            else
+            {
                 // SettingPanel이 꺼졌을 때
                 Time.timeScale = 1f; // 시간 복구
-                if (AudioManager.Instance != null){
+                if (AudioManager.Instance != null)
+                {
                     AudioManager.Instance.SetBGMReverb(false); // 리버브 효과 제거
                 }
             }
