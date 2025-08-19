@@ -4,12 +4,16 @@ using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
     public Button loadButton;
+    public GameObject InGameUi; // InGame UI 오브젝트
 
-    private void Awake() {
-        if (PlayerPrefs.HasKey("Player_Pos_X")) {
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("Player_Pos_X"))
+        {
             loadButton.interactable = true; // 이어하기 버튼 활성화
         }
-        else {
+        else
+        {
             loadButton.interactable = false; // 이어하기 버튼 비활성화
         }
     }
@@ -39,16 +43,38 @@ public class MainMenuManager : MonoBehaviour {
         StartCoroutine(LoadGameAfterSceneLoad());
     }
 
-    private System.Collections.IEnumerator LoadGameAfterSceneLoad() {
-        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("DefaultScene")) {
+    public void settings(){
+        if (SettingUI.instance != null){
+            SettingUI.instance.SettingPanel.SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        if (InGameUi == null)
+        {
+            if (GameObject.Find("SettingUI") == null)
+                return;
+            else
+                InGameUi = GameObject.Find("SettingUI");
+        }
+        return;
+    }
+
+    private System.Collections.IEnumerator LoadGameAfterSceneLoad()
+    {
+        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("DefaultScene"))
+        {
             yield return null;
         }
 
         // GamaManager.Instance가 null인지 확인
-        if (GamaManager.Instance != null) {
+        if (GamaManager.Instance != null)
+        {
             GamaManager.Instance.LoadGame();
         }
-        else {
+        else
+        {
             Debug.LogError("GamaManager.Instance가 null입니다. GamaManager가 DefaultScene에 포함되어 있는지 확인하세요.");
         }
     }
