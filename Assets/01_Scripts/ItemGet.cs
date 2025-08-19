@@ -28,9 +28,10 @@ public class ItemGet : MonoBehaviour {
             AudioManager.Instance?.PlayUISFX(1); // 아이템 획득 사운드 재생
             DOTween.Kill(transform);
             isHave = true;
-            GamaManager.Instance.ItemDataManager.SaveCurrentMapData();
-            GamaManager.Instance.SaveGame();
             gameObject.SetActive(false);
+
+            Debug.Log("[ItemGet] Player collided with item. Calling GamaManager.OnItemCollected().");
+            GamaManager.Instance.OnItemCollected();
         }
     }
 }

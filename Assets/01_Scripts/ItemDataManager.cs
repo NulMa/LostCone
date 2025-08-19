@@ -94,7 +94,7 @@ public class ItemDataManager : MonoBehaviour {
         UpdateItemOwnershipArray();
     }
 
-    private void UpdateItemOwnershipArray() {
+    public void UpdateItemOwnershipArray() {
         if (CurrentMapID == -1)
             return;
 

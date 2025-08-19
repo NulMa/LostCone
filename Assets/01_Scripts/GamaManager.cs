@@ -7,6 +7,8 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using TMPro; // For TextMeshProUGUI
+
 public class GamaManager : MonoBehaviour
 {
     public static GamaManager Instance { get; private set; }
@@ -18,7 +20,7 @@ public class GamaManager : MonoBehaviour
 
     public SceneManager SceneManager;
     public ItemDataManager ItemDataManager;
-    public UICtrl UIManager;
+    public UICtrl UIManager; // Reference to UICtrl
     public AchiveManager AchiveManager;
 
     public Player player;
@@ -118,7 +120,6 @@ public class GamaManager : MonoBehaviour
             rainSwitch();
         }
         currentMap.gameObject.SetActive(true);
-
     }
 
     public void SaveGame()
@@ -141,7 +142,25 @@ public class GamaManager : MonoBehaviour
         Debug.Log("게임 데이터가 로드되었습니다.");
     }
 
+    // New method to handle item collection and trigger UI effect
+    public void OnItemCollected()
+    {
+        Debug.Log("[GamaManager] OnItemCollected() called.");
+        // Save game data (including item data)
+        ItemDataManager.Instance.SaveCurrentMapData();
+        Debug.Log("[GamaManager] ItemDataManager.SaveCurrentMapData() called.");
+        ItemDataManager.Instance.UpdateItemOwnershipArray(); // Explicitly update item count
+        SaveGame(); // Call the existing SaveGame method in GamaManager
 
+        Debug.Log($"[GamaManager] Current itemCount: {ItemDataManager.Instance.itemCount}");
+        // Check if this is the first item collected on the current map
+        if (ItemDataManager.Instance.itemCount == 1)
+        {
+            Debug.Log("[GamaManager] First item collected. Triggering UI animation.");
+            // Trigger the UI animation on the Items text
+            UIManager.AnimateItemsTextOnFirstCollect();
+        }
+    }
 
     public void BGOn(int number)
     {
@@ -171,8 +190,6 @@ public class GamaManager : MonoBehaviour
         currentStageID = number;
         PlayBGMForCurrentStage();
     }
-
-
 
     // 현재 스테이지에 따른 BGM 재생
     public void PlayBGMForCurrentStage()
