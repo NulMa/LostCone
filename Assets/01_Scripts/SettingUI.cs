@@ -66,16 +66,18 @@ public class SettingUI : MonoBehaviour
         CheckSettingPanelState();
     }
 
-    public void OnEscape(){
+    public void ToggleSettingPanel(){
 
         if (AchivePanel.activeSelf)
+        {
             AchivePanel.SetActive(false);
+            return; // 업적 패널이 열려있으면 그것만 닫고 끝냄
+        }
 
-        else{
-            if (SettingPanel.activeSelf)
-                SettingPanel.SetActive(false);
-        }   
-
+        if (SettingPanel != null)
+        {
+            SettingPanel.SetActive(!SettingPanel.activeSelf);
+        }
     }
     
     private void CheckSettingPanelState()

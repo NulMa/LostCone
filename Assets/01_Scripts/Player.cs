@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class Player : MonoBehaviour{
     public float speed;
@@ -76,66 +74,94 @@ public class Player : MonoBehaviour{
         }
         ValidateCrouchStates(); // 복구
     }
+
     private void FixedUpdate() {
-        if (isScenePlaying)
-            return;
+        if (isScenePlaying || isDashing) return;
 
         UpdateGroundedState();
         HandleBufferedJump();
 
-        if (isDashing) {
-            transform.position += dashDirection * speed * Time.deltaTime;
-            return;
-        }
-
-        if (inputVec2.x != 0) {
-            moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
-        }
-        else {
-            moveDirection = Vector3.zero;
-        }
-
+        // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
-        transform.position += moveDirection * appliedSpeed * Time.deltaTime;
+        rigid.velocity = new Vector2(inputVec2.x * appliedSpeed, rigid.velocity.y);
     }
 
     void Update() {
         if (isScenePlaying) return;
+
+        HandleInput();
         UpdateCrouchState();
         UpdateLocomotionAnim();
     }
 
+    void HandleInput() {
+        // InputManager 싱글톤이 준비되었는지 확인
+        if (InputManager.instance == null) return;
+
+        // 이동 입력
+        inputVec2 = InputManager.instance.MoveInput;
+        flipCtrl();
+
+        // 점프 입력
+        if (InputManager.instance.IsJumpPressed) {
+            if (!isCrouching) { // 앉은 상태에서는 점프 금지
+                jumpBufferCounter = jumpBufferTime;
+                if ((isGrounded || coyoteCounter > 0f) && !isJumping) {
+                    ExecuteJump();
+                    jumpBufferCounter = 0f;
+                }
+            }
+        }
+
+        // 상호작용 입력 (OnFire)
+        if (InputManager.instance.IsInteractionPressed) {
+            isInteracting = true;
+            StartCoroutine(ResetInteracting());
+        }
+
+        // 대시 입력
+        if (InputManager.instance.IsDashPressed) {
+            OnDash();
+        }
+
+        // 아래점프 입력
+        if (InputManager.instance.IsDownJumpPressed) {
+            OnDownJump();
+        }
+    }
+
     void UpdateLocomotionAnim(){
+        bool isMoving = Mathf.Abs(rigid.velocity.x) > 0.1f;
+
         if (isCrouching){
             if (isMoveSfxPlaying){
                 AudioManager.Instance?.StopLoopSFX(gameObject);
                 isMoveSfxPlaying = false;
             }
-            bool moving = Mathf.Abs(moveDirection.x) > 0.0001f;
             if (instantCrouchAnim && (hasCrouchIdle || hasCrouchWalk)){
-                string target = moving ? crouchWalkStateName : crouchIdleStateName;
-                int targetHash = moving ? crouchWalkHash : crouchIdleHash;
+                string target = isMoving ? crouchWalkStateName : crouchIdleStateName;
+                int targetHash = isMoving ? crouchWalkHash : crouchIdleHash;
                 AnimatorStateInfo st = anim.GetCurrentAnimatorStateInfo(0);
                 if (!st.IsName(target)) {
-                    if ((moving && hasCrouchWalk) || (!moving && hasCrouchIdle))
-                        anim.Play(targetHash, 0, 0f); // 즉시
+                    if ((isMoving && hasCrouchWalk) || (!isMoving && hasCrouchIdle))
+                        anim.Play(targetHash, 0, 0f);
                 }
             } else {
                 anim.SetBool("isMove", false);
-                anim.SetBool("CrouchIdle", !moving);
-                anim.SetBool("CrouchWalk", moving);
+                anim.SetBool("CrouchIdle", !isMoving);
+                anim.SetBool("CrouchWalk", isMoving);
             }
         } else {
             if (instantCrouchAnim){
                 anim.SetBool("CrouchIdle", false);
                 anim.SetBool("CrouchWalk", false);
-                anim.SetBool("isMove", Mathf.Abs(moveDirection.x) > 0.0001f);
+                anim.SetBool("isMove", isMoving);
             } else {
                 anim.SetBool("CrouchIdle", false);
                 anim.SetBool("CrouchWalk", false);
-                anim.SetBool("isMove", Mathf.Abs(moveDirection.x) > 0.0001f);
+                anim.SetBool("isMove", isMoving);
             }
-            bool wantWalkSound = Mathf.Abs(moveDirection.x) > 0.0001f && isGrounded && !isJumping;
+            bool wantWalkSound = isMoving && isGrounded && !isJumping;
             if (wantWalkSound && !isMoveSfxPlaying){
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
                 isMoveSfxPlaying = true;
@@ -182,23 +208,19 @@ public class Player : MonoBehaviour{
         wasGroundedLastFrame = isGrounded;
 
         if (isDroppingThrough) {
-            // 아래로 통과 중에는 지면 체크 잠시 무시
             isGrounded = false;
         } else {
             if (groundCheck != null) {
                 isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
             } else {
-                // fallback (하위호환)
                 Vector2 rayStart = new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.min.y);
                 float rayLength = playerCollider.bounds.extents.y + 0.05f;
                 isGrounded = Physics2D.Raycast(rayStart, Vector2.down, rayLength, groundMask);
             }
         }
 
-        // 코요테 타임 갱신
         if (isGrounded) coyoteCounter = coyoteTime; else coyoteCounter -= Time.fixedDeltaTime;
 
-        // 착지 이벤트 (이전엔 공중, 지금은 지상)
         if (!wasGroundedLastFrame && isGrounded) {
             anim.SetBool("isJump", false);
             isJumping = false;
@@ -223,7 +245,6 @@ public class Player : MonoBehaviour{
         isJumping = true;
         isGrounded = false;
         anim.SetBool("isJump", true);
-        // 수직 속도 초기화 후 힘 적용(이중 점프 잔류 속도 제거)
         rigid.velocity = new Vector2(rigid.velocity.x, 0f);
         rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         if (isMoveSfxPlaying) {
@@ -240,39 +261,27 @@ public class Player : MonoBehaviour{
     private IEnumerator DashRoutine() {
         isDashing = true;
         canDash = false;
-        float originalSpeed = speed;
-        dashDirection = moveDirection; // 대시 방향을 미리 저장
-        speed *= dashMultiplier;
         anim.SetTrigger("Dash");
+        
+        // 대시 중에는 Rigidbody 속도를 직접 제어
+        float originalGravity = rigid.gravityScale;
+        rigid.gravityScale = 0;
+        Vector2 dashVelocity = new Vector2(sprite.flipX ? -1 : 1, 0) * speed * dashMultiplier;
+        rigid.velocity = dashVelocity;
 
         yield return new WaitForSeconds(dashDuration);
 
-        speed = originalSpeed;
+        rigid.velocity = Vector2.zero;
+        rigid.gravityScale = originalGravity;
         isDashing = false;
-
-        // 대시 종료 후 입력값에 따른 moveDirection을 다시 설정
-        if (inputVec2.x != 0) {
-            Debug.Log("dash move");
-            moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
-            anim.SetBool("isMove", true);
-        }
-        else {
-            moveDirection = Vector3.zero;
-            Debug.Log("dash stop");
-            anim.SetBool("isMove", false);
-        }
-
-        // 애니메이터에서 Exit 상태가 자동으로 전환됨
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
 
     public void OnDownJump() {
-        Debug.Log("OnDJ");
-        if (isScenePlaying) return;
+        if (isScenePlaying || !isGrounded) return;
 
-        // 아래점프 레이캐스트
         Vector2 origin = new Vector2(transform.position.x, playerCollider.bounds.min.y - 0.05f);
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, downJumpRayLength, platformLayer);
         if (hit.collider != null) {
@@ -283,59 +292,10 @@ public class Player : MonoBehaviour{
     private IEnumerator DownJumpRoutine(Collider2D platform) {
         isDroppingThrough = true;
         Physics2D.IgnoreCollision(playerCollider, platform, true);
-        yield return new WaitForSeconds(0.3f); // 잠깐 시간 (설정 가능)
+        yield return new WaitForSeconds(0.3f);
         Physics2D.IgnoreCollision(playerCollider, platform, false);
-        // 한 프레임 기다렸다가 착지 재평가 (플랫폼 위로 완전히 올라온 후)
         yield return new WaitForFixedUpdate();
         isDroppingThrough = false;
-    }
-
-    public void OnMove(InputValue value) {
-        if (isScenePlaying)
-            return;
-
-        inputVec2 = value.Get<Vector2>(); // 항상 입력값 저장
-
-        if (isDashing) {
-            // 대시 중에는 방향만 사용, flip만 사용
-            flipCtrl();
-            return;
-        }
-
-        // 앉기 상태 중에도 좌우 입력은 moveDirection 반영 (속도는 FixedUpdate에서 배수 적용)
-        if (inputVec2.x != 0) {
-            anim.SetBool("isSwing", false);
-            moveDirection = new Vector3(inputVec2.x, 0, inputVec2.y);
-
-            if (!isJumping && !isMoveSfxPlaying && isGrounded && !isCrouching) {
-                AudioManager.Instance?.PlayLoopSFX(0, gameObject);
-                isMoveSfxPlaying = true;
-            }
-        }
-        else {
-            if (isMoveSfxPlaying && !isCrouching) { // 앉은 상태 걷기 사운드 별도 정책(현재 비활성)
-                AudioManager.Instance?.StopLoopSFX(gameObject);
-                isMoveSfxPlaying = false;
-            }
-            moveDirection = Vector3.zero;
-        }
-        flipCtrl();
-    }
-    public void OnJump() {
-        if (isScenePlaying)
-            return;
-        if (isCrouching) return; // 앉은 상태에서는 점프 금지 (원하면 제거)
-        // 점프 입력을 버퍼에 저장 (즉시 조건 불충족이면 나중에 처리)
-        jumpBufferCounter = jumpBufferTime;
-        // 지상 즉시 점프 가능 조건이면 바로 실행
-        if ((isGrounded || coyoteCounter > 0f) && !isJumping) {
-            ExecuteJump();
-            jumpBufferCounter = 0f;
-        }
-    }
-    public void OnFire() {
-        isInteracting = true;
-        StartCoroutine(ResetInteracting());
     }
 
     private IEnumerator ResetInteracting() {
@@ -343,12 +303,10 @@ public class Player : MonoBehaviour{
         isInteracting = false;
     }
 
-
     void flipCtrl() {
         if (inputVec2.x > 0) {
             sprite.flipX = false;
-        }
-        else if (inputVec2.x < 0) {
+        } else if (inputVec2.x < 0) {
             sprite.flipX = true;
         }
     }
@@ -375,26 +333,21 @@ public class Player : MonoBehaviour{
             case "eineUmb":
                 GamaManager.Instance.achiveCall("Nachtmusik");
                 break;
-
             case "IdleWolf":
                 GamaManager.Instance.achiveCall("MacGuffin");
                 break;
-
             case "FlamingoHerd":
                 GamaManager.Instance.achiveCall("FlaFla");
                 break;
-
             case "cran&pan":
                 GamaManager.Instance.achiveCall("HotMeal");
                 break;
-
             case "Gumi":
                 GamaManager.Instance.achiveCall("YourName");
                 break;
         }
     }
 
-    // 디버그용 기즈모 (GroundCheck 시각화)
     void OnDrawGizmosSelected() {
         if (groundCheck != null) {
             Gizmos.color = Color.yellow;
