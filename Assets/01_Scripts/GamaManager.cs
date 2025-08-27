@@ -23,6 +23,7 @@ public class GamaManager : MonoBehaviour
     public UICtrl UIManager; // Reference to UICtrl
     public AchiveManager AchiveManager;
 
+    // [설정 필요] Player 오브젝트를 Inspector에서 연결해주세요.
     public Player player;
     public GameObject playerParent;
     public MapItems currentMap;
@@ -142,23 +143,39 @@ public class GamaManager : MonoBehaviour
         Debug.Log("게임 데이터가 로드되었습니다.");
     }
 
-    // New method to handle item collection and trigger UI effect
-    public void OnItemCollected()
+    // [수정됨] 아이템 획득 시의 로직 전체
+    public void OnItemCollected(Sprite collectedItemSprite) // [수정] Sprite를 인자로 받도록 변경
     {
         Debug.Log("[GamaManager] OnItemCollected() called.");
-        // Save game data (including item data)
+        // 데이터 저장 및 업데이트
         ItemDataManager.Instance.SaveCurrentMapData();
-        Debug.Log("[GamaManager] ItemDataManager.SaveCurrentMapData() called.");
-        ItemDataManager.Instance.UpdateItemOwnershipArray(); // Explicitly update item count
-        SaveGame(); // Call the existing SaveGame method in GamaManager
+        ItemDataManager.Instance.UpdateItemOwnershipArray();
+        SaveGame();
 
         Debug.Log($"[GamaManager] Current itemCount: {ItemDataManager.Instance.itemCount}");
-        // Check if this is the first item collected on the current map
+
+        // 첫 번째 아이템인지 확인
         if (ItemDataManager.Instance.itemCount == 1)
         {
-            Debug.Log("[GamaManager] First item collected. Triggering UI animation.");
-            // Trigger the UI animation on the Items text
-            UIManager.AnimateItemsTextOnFirstCollect();
+            Debug.Log("[GamaManager] First item collected. Triggering NEW UI animation sequence.");
+            // [핵심 변경] UIManager의 새로운 연출 함수를 플레이어 위치와 함께 호출
+            if (player != null && UIManager != null)
+            {
+                // [수정] 획득한 아이템의 스프라이트를 함께 전달
+                UIManager.PlayItemAcquireAnimation(player.transform.position, collectedItemSprite);
+            }
+            else
+            {
+                Debug.LogWarning("GamaManager: Player 또는 UIManager 참조가 없습니다!");
+            }
+        }
+        // 첫 아이템이 아닐 경우, UI 텍스트만 조용히 업데이트
+        else
+        {
+            if (UIManager != null)
+            {
+                UIManager.UpdateItemCount(ItemDataManager.Instance.itemCount, ItemDataManager.Instance.bools.Length);
+            }
         }
     }
 
