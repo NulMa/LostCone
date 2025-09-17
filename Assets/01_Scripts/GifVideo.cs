@@ -1,16 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
 public class GifVideo : MonoBehaviour
 {
-    Image img;
-    SpriteRenderer sprite;
+    private Image img;
+    private SpriteRenderer sprite;
 
-    public GameObject videoObject; // 비디오 오브젝트
-
+    public int VideoNum; // 간단한 분기 번호
+    public GameObject[] videoObject; // 0: 대상 (Animator), 추가 슬롯은 확장용
 
     private void Awake()
     {
@@ -18,30 +17,42 @@ public class GifVideo : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        img.sprite = sprite.sprite;
-
+        if (img != null && sprite != null)
+            img.sprite = sprite.sprite;
     }
 
     public void offVideo()
     {
         if (img != null)
         {
-            // Image 컴포넌트가 있는 경우 DOTween으로 페이드 아웃
             img.DOFade(0f, 1f).OnComplete(() => gameObject.SetActive(false));
         }
         else
         {
-            Debug.LogWarning("Image 또는 SpriteRenderer가 없습니다.");
-            gameObject.SetActive(false); // 강제로 비활성화
+            Debug.LogWarning("GifVideo: Image 또는 SpriteRenderer가 없습니다.");
+            gameObject.SetActive(false);
         }
     }
+    // Animation Event 에서 호출 (필요시 애니메이션 이벤트로 직접 연결)
+    public void ifNeed()
+    {
+        if (videoObject == null || videoObject.Length == 0) return;
 
-    public void ifNeed(){
-        if (videoObject != null){
-            videoObject.SetActive(true); // 비디오 오브젝트 활성화
+        switch (VideoNum)
+        {
+            case 0:
+                break;      // 예약
+            case 1:         // ikimono function activate.
+                videoObject[0].GetComponent<Animator>().SetTrigger("Untied");
+
+                break;
+            case 2:
+                break;
+            default:
+                break;
         }
     }
 }
+

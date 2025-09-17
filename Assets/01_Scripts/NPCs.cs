@@ -13,15 +13,28 @@ public class NPCs : MonoBehaviour {
 
     public bool isPlayed;
 
-    private void Awake() {
+    private void Awake()
+    {
         // Animator 컴포넌트 가져오기
         animator = GetComponent<Animator>();
 
         // 기본 동작 설정
         OnInteract = () => Debug.Log("기본 인터렉션 입니다.");
 
-        if(gameObject.name == "Lemon_Sprout" && GamaManager.Instance.SceneManager.scenes[1].isDone) {
+        if (gameObject.name == "Lemon_Sprout" && GamaManager.Instance.SceneManager.scenes[1].isDone)
+        {
             OnVideoDisabled();
+        }
+
+        switch (gameObject.name) {
+            case "Lemon_Sprout":
+                break;
+
+            case "Gumi":
+                if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1){
+                    animator.SetTrigger("Front");
+                }
+                break;
         }
     }
 
@@ -58,6 +71,7 @@ public class NPCs : MonoBehaviour {
                         else {
                             playVideo();
                             GamaManager.Instance.achiveCall("Alive");
+                            animator.SetTrigger("Front");
                         }
                         break;
                 }
