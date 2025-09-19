@@ -34,6 +34,8 @@ public class BGSpeedManage : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        // 시간 기반 오토 스크롤 (isAutoPlay == true)
+        ApplyAutoPlayScroll();
         if (player == null) return;
         BGRoll();
         ApplyVerticalParallax();
@@ -46,6 +48,21 @@ public class BGSpeedManage : MonoBehaviour {
             if (bg[i].meshRenderer != null) {
                 initialLocalY[i] = bg[i].meshRenderer.transform.localPosition.y;
             }
+        }
+    }
+
+    // isAutoPlay 레이어 자동 가로 스크롤 (시간 기반)
+    void ApplyAutoPlayScroll() {
+        if (bg == null) return;
+        float dt = Time.fixedDeltaTime; // FixedUpdate와 동기화
+        foreach (var data in bg) {
+            if (!data.isAutoPlay) continue;
+            if (data.meshRenderer == null) continue;
+
+            var mr = data.meshRenderer;
+            Vector2 offset = mr.material.mainTextureOffset;
+            offset.x += 0.01f * data.speed * dt; // speed의 부호로 방향 결정
+            mr.material.mainTextureOffset = offset;
         }
     }
 

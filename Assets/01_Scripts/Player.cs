@@ -81,6 +81,7 @@ public class Player : MonoBehaviour{
         UpdateGroundedState();
         HandleBufferedJump();
 
+        baseSpeed = speed; // 매 프레임 기본 속도 복구
         // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
         rigid.velocity = new Vector2(inputVec2.x * appliedSpeed, rigid.velocity.y);
