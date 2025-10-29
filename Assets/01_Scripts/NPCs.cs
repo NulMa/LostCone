@@ -42,19 +42,24 @@ public class NPCs : MonoBehaviour {
         if (collision.CompareTag("Player")) {
             Player player = collision.GetComponent<Player>();
             if (player != null && player.isInteracting) { // isInteracting 필드 확인
+                Debug.Log("[NPCs] Player is interacting with " + gameObject.name);
                 // 인터렉션에 대한 처리
                 OnInteract?.Invoke();
 
-                switch (gameObject.name) {
+                switch (gameObject.name)
+                {
                     case "Lemon_Sprout":
                         if (GamaManager.Instance.SceneManager.scenes[1].isDone) break;
                         // 오브젝트 이름이 "Lemon_Sprout"인지 확인
-                        if (gameObject.name == "Lemon_Sprout" && animator != null) {
-                            if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed) {
+                        if (gameObject.name == "Lemon_Sprout" && animator != null)
+                        {
+                            if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed)
+                            {
                                 GamaManager.Instance.UIManager.PrintMSG("Lemon_Sprout");
                                 return;
                             }
-                            else {
+                            else
+                            {
                                 // video 오브젝트 활성화
                                 GamaManager.Instance.achiveCall("HalfCut");
                                 playVideo();
@@ -64,14 +69,27 @@ public class NPCs : MonoBehaviour {
                         break;
 
                     case "Gumi":
-                        if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed) {
+                        if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
                             GamaManager.Instance.UIManager.PrintMSG("Gumi_Need_Help");
                             return;
                         }
-                        else {
+
+                        else{
                             playVideo();
                             GamaManager.Instance.achiveCall("Alive");
                             animator.SetTrigger("Front");
+                        }
+                        break;
+
+                    case "GarakutaKun_0":
+                        if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
+                            Debug.Log("GarakutaKun_0 need help");
+                            return;
+                        }
+
+                        else{
+                            playVideo();
+                            Debug.Log("Clear GarakutaKun_0");
                         }
                         break;
                 }
@@ -86,6 +104,7 @@ public class NPCs : MonoBehaviour {
             case "Lemon_Sprout":
                 animator.SetTrigger("Grow"); // Animator의 "Grow" 트리거 설정
                 StartCoroutine(ActivateChainedAnimator()); //chained의 Animator 활성화
+                chained[1].GetComponent<FollowUVLight>().stagePresets[0].mode = FollowMode.Fixed;
                 break;
 
             case "Gumi":

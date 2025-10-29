@@ -45,6 +45,16 @@ public class Player : MonoBehaviour{
     private Collider2D playerCollider;
     private Vector3 dashDirection; // 대시 방향 저장변수
 
+    // --- Crouch Collider Resize ---
+    Vector2 originalColliderSize;
+    Vector2 originalColliderOffset;
+    float originalBottomLocalY; // offset.y - size.y/2 (원래 바닥 로컬 Y)
+    bool colliderShrunk;        // 현재 축소 적용 여부
+    [Header("Crouch Ceiling Check")] 
+    [SerializeField] float ceilingCheckRadiusFactor = 0.45f; // 가로 폭 * factor 로 head 영역 반경
+    [SerializeField] float ceilingExtraMargin = 0.02f;       // 여유 마진
+        [SerializeField] bool showCeilingGizmo = true;           // 디버그용 기즈모 표시
+
     // ===== 착지 / 점프 안정화 추가 변수 =====
     [Header("Ground Check")]
     [SerializeField] LayerMask groundMask; // Tilemap + OneWayPlatform 등 포함
@@ -66,6 +76,7 @@ public class Player : MonoBehaviour{
         rigid = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
         baseSpeed = speed; // 속도 기준 저장
+        CacheOriginalColliderDimensions();
         if (groundCheck == null) {
             GameObject gc = new GameObject("GroundCheck");
             gc.transform.SetParent(transform);
@@ -84,7 +95,7 @@ public class Player : MonoBehaviour{
         baseSpeed = speed; // 매 프레임 기본 속도 복구
         // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
-        rigid.velocity = new Vector2(inputVec2.x * appliedSpeed, rigid.velocity.y);
+        rigid.linearVelocity = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
     }
 
     void Update() {
@@ -92,6 +103,7 @@ public class Player : MonoBehaviour{
 
         HandleInput();
         UpdateCrouchState();
+        UpdateCrouchCollider();
         UpdateLocomotionAnim();
     }
 
@@ -132,7 +144,7 @@ public class Player : MonoBehaviour{
     }
 
     void UpdateLocomotionAnim(){
-        bool isMoving = Mathf.Abs(rigid.velocity.x) > 0.1f;
+        bool isMoving = Mathf.Abs(rigid.linearVelocity.x) > 0.1f;
 
         if (isCrouching){
             if (isMoveSfxPlaying){
@@ -176,9 +188,94 @@ public class Player : MonoBehaviour{
 
     void UpdateCrouchState() {
         bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !isDashing;
-        if (wantCrouch != isCrouching) {
-            isCrouching = wantCrouch;
+
+        if (wantCrouch) {
+            // 새로 앉기 시작
+            if (!isCrouching) isCrouching = true;
+        } else {
+            // 일어서려고 하는 상황: 현재 crouch 중 + 입력 해제 + 지상
+            if (isCrouching && isGrounded) {
+                if (!CeilingBlocked()) {
+                    isCrouching = false; // 자동 기립
+                }
+                // 막혀 있으면 유지 (isCrouching true)
+            }
         }
+    }
+
+    void CacheOriginalColliderDimensions(){
+        if (playerCollider == null) return;
+        if (playerCollider is BoxCollider2D box){
+            originalColliderSize = box.size;
+            originalColliderOffset = box.offset;
+            originalBottomLocalY = originalColliderOffset.y - originalColliderSize.y * 0.5f;
+        } else if (playerCollider is CapsuleCollider2D cap){
+            originalColliderSize = cap.size;
+            originalColliderOffset = cap.offset;
+            originalBottomLocalY = originalColliderOffset.y - originalColliderSize.y * 0.5f;
+        } else {
+            // 기타 콜라이더는 자동 리사이즈 지원 안 함
+        }
+    }
+
+    void UpdateCrouchCollider(){
+        if (playerCollider == null) return;
+
+        if (isCrouching){
+            if (!colliderShrunk){
+                // 새 높이 = 절반
+                float newHeight = originalColliderSize.y * 0.5f;
+                float bottom = originalBottomLocalY; // 고정 유지
+                float newOffsetY = bottom + newHeight * 0.5f;
+                if (playerCollider is BoxCollider2D box){
+                    box.size = new Vector2(originalColliderSize.x, newHeight);
+                    box.offset = new Vector2(originalColliderOffset.x, newOffsetY);
+                } else if (playerCollider is CapsuleCollider2D cap){
+                    cap.size = new Vector2(originalColliderSize.x, newHeight);
+                    cap.offset = new Vector2(originalColliderOffset.x, newOffsetY);
+                }
+                // groundCheck 바닥 위치 재조정
+                if (groundCheck != null){
+                    groundCheck.localPosition = new Vector3(0f, bottom, 0f);
+                }
+                colliderShrunk = true;
+            }
+        } else {
+            if (colliderShrunk){
+                // 원복
+                if (playerCollider is BoxCollider2D box){
+                    box.size = originalColliderSize;
+                    box.offset = originalColliderOffset;
+                } else if (playerCollider is CapsuleCollider2D cap){
+                    cap.size = originalColliderSize;
+                    cap.offset = originalColliderOffset;
+                }
+                if (groundCheck != null){
+                    groundCheck.localPosition = new Vector3(0f, originalBottomLocalY, 0f);
+                }
+                colliderShrunk = false;
+            }
+        }
+    }
+
+    bool CeilingBlocked(){
+        if (!colliderShrunk) return false;
+        Vector3 worldPoint; float radius;
+        if (!GetCeilingCheckPoint(out worldPoint, out radius)) return false;
+        Collider2D hit = Physics2D.OverlapCircle(worldPoint, radius, groundMask);
+        return (hit != null && hit != playerCollider);
+    }
+
+    bool GetCeilingCheckPoint(out Vector3 worldPoint, out float radius){
+        worldPoint = Vector3.zero; radius = 0f;
+        if (originalColliderSize == Vector2.zero) return false;
+        float currentH = colliderShrunk ? originalColliderSize.y * 0.5f : originalColliderSize.y;
+        float extraH = (originalColliderSize.y - currentH);
+        float localCheckY = originalBottomLocalY + currentH + (colliderShrunk ? extraH * 0.5f : 0f) + ceilingExtraMargin;
+        Vector3 localPoint = new Vector3(originalColliderOffset.x, localCheckY, 0f);
+        worldPoint = transform.TransformPoint(localPoint);
+        radius = originalColliderSize.x * ceilingCheckRadiusFactor;
+        return true;
     }
 
     public Vector3 Position => transform.position; // 현재 위치 반환
@@ -246,7 +343,7 @@ public class Player : MonoBehaviour{
         isJumping = true;
         isGrounded = false;
         anim.SetBool("isJump", true);
-        rigid.velocity = new Vector2(rigid.velocity.x, 0f);
+        rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
         rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         if (isMoveSfxPlaying) {
             AudioManager.Instance?.StopLoopSFX(gameObject);
@@ -268,11 +365,11 @@ public class Player : MonoBehaviour{
         float originalGravity = rigid.gravityScale;
         rigid.gravityScale = 0;
         Vector2 dashVelocity = new Vector2(sprite.flipX ? -1 : 1, 0) * speed * dashMultiplier;
-        rigid.velocity = dashVelocity;
+        rigid.linearVelocity = dashVelocity;
 
         yield return new WaitForSeconds(dashDuration);
 
-        rigid.velocity = Vector2.zero;
+        rigid.linearVelocity = Vector2.zero;
         rigid.gravityScale = originalGravity;
         isDashing = false;
 
@@ -353,6 +450,13 @@ public class Player : MonoBehaviour{
         if (groundCheck != null) {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+        if (showCeilingGizmo && originalColliderSize != Vector2.zero) {
+            Vector3 wp; float r;
+            if (GetCeilingCheckPoint(out wp, out r)) {
+                Gizmos.color = isCrouching ? (CeilingBlocked() ? Color.red : Color.green) : Color.cyan;
+                Gizmos.DrawWireSphere(wp, r);
+            }
         }
     }
 

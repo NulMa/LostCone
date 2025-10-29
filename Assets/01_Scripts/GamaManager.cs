@@ -63,6 +63,9 @@ public class GamaManager : MonoBehaviour
     private void Update()
     {
         ItemDataManager.CurrentMapID = currentStageID;
+
+        if(currentStageID != 0)
+            rain.SetActive(false);
     }
 
     public void achiveCall(string key)

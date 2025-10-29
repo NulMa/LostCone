@@ -88,7 +88,7 @@ public class UICtrl : MonoBehaviour{
         // **연출 2: 포물선 비행**
         Vector3 endPos = arrivalTarget.position;
         Vector3 controlPoint = (icon.transform.position + endPos) / 2 + Vector3.up * 100f;
-        mySequence.Append(icon.transform.DOPath(new Vector3[] { controlPoint, endPos }, 0.7f, PathType.CatmullRom)
+        mySequence.Append(icon.transform.DOPath(new Vector3[] { controlPoint, endPos }, 2, PathType.CatmullRom)
             .SetEase(Ease.InQuad));
 
         mySequence.Append(icon.transform.DOScale(1.5f, 0.2f));

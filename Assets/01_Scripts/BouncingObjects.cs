@@ -23,7 +23,7 @@ public class BouncingObject : MonoBehaviour {
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 
         // 초기 속도 설정
-        rb.velocity = direction * speed;
+        rb.linearVelocity = direction * speed;
     }
 
     private void FixedUpdate() {
@@ -47,12 +47,12 @@ public class BouncingObject : MonoBehaviour {
         if (currentPosition.x < minBounds.x || currentPosition.x > maxBounds.x) {
             direction.x *= -1;
             AdjustSpeed();
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
         if (currentPosition.y < minBounds.y || currentPosition.y > maxBounds.y) {
             direction.y *= -1;
             AdjustSpeed();
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
     }
 
