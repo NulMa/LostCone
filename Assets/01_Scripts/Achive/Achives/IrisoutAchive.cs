@@ -13,6 +13,7 @@ namespace Code.Achive
         [SerializeField] private Image mask;
         [SerializeField] private TextMeshProUGUI irisOutText;
         [SerializeField] private float textDuration = 1f;
+        [SerializeField] private Animator irisOutAnimator;
         
         private readonly int _circleSizeHash = Shader.PropertyToID("_CircleSize");
 
@@ -24,8 +25,11 @@ namespace Code.Achive
         }
 
         [ContextMenu("IRIS OUT")]
-        protected override void OnMessageRecieved()
+        protected async override void OnMessageRecieved()
         {
+            irisOutAnimator.enabled = true;
+            await Awaitable.WaitForSecondsAsync(0.2f);
+            
             Sequence seq = DOTween.Sequence();
             mask.gameObject.SetActive(true);
             mask.transform.localScale = Vector3.zero;
@@ -33,12 +37,13 @@ namespace Code.Achive
             fadeImage.material.SetFloat(_circleSizeHash, 2f);
             seq.Append(fadeImage.material.DOFloat(0f, _circleSizeHash, 1f))
                 .AppendInterval(0.25f)
-                .Append(irisOutText.DOText("IRIS OUT", textDuration))
+                .Append(irisOutText.DOText("I  I  I  I", textDuration))
                 .AppendInterval(1f)
                 .Append(mask.transform.DOScale(15f, 1f))
                 .AppendCallback(() => {
+                    AchiveManager.instance.SetAchiveClear(message);
                     irisOutText.text = string.Empty;
-                    mask.gameObject.SetActive(false); 
+                    mask.gameObject.SetActive(false);
                 })
                 .Append(fadeImage.material.DOFloat(2f, _circleSizeHash, 1f));
         }
