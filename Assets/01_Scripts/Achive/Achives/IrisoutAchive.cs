@@ -12,6 +12,7 @@ namespace Code.Achive
         [SerializeField] private Image fadeImage;
         [SerializeField] private Image mask;
         [SerializeField] private TextMeshProUGUI irisOutText;
+        [SerializeField] private float textDuration = 1f;
         
         private readonly int _circleSizeHash = Shader.PropertyToID("_CircleSize");
 
@@ -32,11 +33,10 @@ namespace Code.Achive
             fadeImage.material.SetFloat(_circleSizeHash, 2f);
             seq.Append(fadeImage.material.DOFloat(0f, _circleSizeHash, 1f))
                 .AppendInterval(0.25f)
-                .Append(irisOutText.DOText("IRIS OUT", 1f))
+                .Append(irisOutText.DOText("IRIS OUT", textDuration))
                 .AppendInterval(1f)
                 .Append(mask.transform.DOScale(15f, 1f))
-                .AppendCallback(() =>
-                {
+                .AppendCallback(() => {
                     irisOutText.text = string.Empty;
                     mask.gameObject.SetActive(false); 
                 })

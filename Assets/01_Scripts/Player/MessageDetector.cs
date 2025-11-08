@@ -11,10 +11,8 @@ namespace Code.Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.name);
             if (other.TryGetComponent(out MessageSender sender))
             {
-                Debug.Log("SDF");
                 GameEventBus.RaiseEvent(_messageEvent.Init(sender.Message));
             }
         }
