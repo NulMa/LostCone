@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using TMPro; // For TextMeshProUGUI
 
+
+[DefaultExecutionOrder(-10)]
 public class GamaManager : MonoBehaviour
 {
     public static GamaManager Instance { get; private set; }
@@ -137,6 +139,7 @@ public class GamaManager : MonoBehaviour
 
     public void LoadGame()
     {
+        Debug.Log("아니");
         player.isScenePlaying = false;
         player.LoadPlayerPosition();
         ItemDataManager.Instance.LoadCurrentMapData();

@@ -16,6 +16,8 @@ public class MainMenuManager : MonoBehaviour {
         {
             loadButton.interactable = false; // 이어하기 버튼 비활성화
         }
+        
+        loadButton.interactable = true; 
     }
 
     
@@ -63,7 +65,7 @@ public class MainMenuManager : MonoBehaviour {
 
     private System.Collections.IEnumerator LoadGameAfterSceneLoad()
     {
-        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("DefaultScene"))
+        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("MainScene"))
         {
             yield return null;
         }
@@ -77,6 +79,8 @@ public class MainMenuManager : MonoBehaviour {
         {
             Debug.LogError("GamaManager.Instance가 null입니다. GamaManager가 DefaultScene에 포함되어 있는지 확인하세요.");
         }
+
+        yield return null;
     }
     public void gameExit() {
         Application.Quit();
