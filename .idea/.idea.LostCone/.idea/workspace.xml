@@ -5,10 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/MonoSingleton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/MonoSingleton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/SaveManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/SaveManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/TestLoader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/TestLoader.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/MapElements.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Lemon_Inst.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Advanced.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Advanced.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_AdvancedSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_AdvancedSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_AdvancedSettings.lighting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_AdvancedSettings.lighting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Basics.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Basics.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_BasicsSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_BasicsSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_BasicsSettings.lighting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_BasicsSettings.lighting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPath.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPath.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPathSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPathSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPathSettings.lighting.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPathSettings.lighting.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Recovery/0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Recovery/0.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,8 +126,6 @@
       <workItem from="1764928155416" duration="966000" />
       <workItem from="1764929578444" duration="1891000" />
       <workItem from="1764936120468" duration="4754000" />
-      <workItem from="1765498640559" duration="8118000" />
-      <workItem from="1765620785376" duration="1215000" />
     </task>
     <servers />
   </component>
