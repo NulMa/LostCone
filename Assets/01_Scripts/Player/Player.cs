@@ -103,6 +103,10 @@ public class Player : MonoBehaviour
         }
         
         ValidateCrouchStates(); // 복구
+
+
+        //Temp
+        anim.SetBool("isMove", false);
     }
 
     private void FixedUpdate()
@@ -378,7 +382,16 @@ public class Player : MonoBehaviour
     public void LoadPlayerPosition()
     {
         PositionData pos = SaveManager.Instance.Load<PositionData>("playerPos");
-        Vector3 playerPos = new Vector3(pos.x, pos.y, pos.z);
+        Vector3 playerPos;
+
+        //if (pos == null)
+        //{
+        //    playerPos = new Vector3(-10.5f, 0f, 0f);
+        //    transform.position = playerPos;
+        //    return;
+        //}
+        
+        playerPos = new Vector3(pos.x, pos.y, pos.z);
         transform.position = playerPos;
     }
 
@@ -543,8 +556,10 @@ public class Player : MonoBehaviour
 
     public void produPlayerMove(bool dirRight)
     {
+        
         sprite.flipX = !dirRight;
         bool animMove = !anim.GetBool("isMove");
+        Debug.Log("AnimMove" + animMove);
         anim.SetBool("isMove", animMove);
     }
 
