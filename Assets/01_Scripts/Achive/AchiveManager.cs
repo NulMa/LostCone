@@ -50,6 +50,11 @@ public class AchiveManager : MonoBehaviour {
         }
     }
 
+    public void AchiveSort()
+    {
+
+    }
+
     // 업적 달성 설정 (외부에서 호출)
     public void SetAchiveClear(string key) {
         var achive = achives.Find(a => a.key == key);
