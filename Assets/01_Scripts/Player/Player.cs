@@ -48,8 +48,9 @@ public class Player : MonoBehaviour
     public float dashMultiplier = 2.5f; // 대시 시 속도 배수 (2~3 정도 추천)
     public float dashDuration = 0.2f; // 대시 지속 시간(초)
     public float dashCooldown = 1f; // 대시 쿨타임(초)
-    private bool isDashing = false;
-    private bool canDash = true;
+    private float lastDashTime;
+    
+    public bool IsDashing => Time.time - lastDashTime < dashDuration;
 
     // 아래점프 관련 변수
     public float downJumpRayLength = 0.2f; // 바닥 탐지용 레이 길이
@@ -100,18 +101,18 @@ public class Player : MonoBehaviour
             gc.transform.localPosition = new Vector3(0f, -playerCollider.bounds.extents.y, 0f);
             groundCheck = gc.transform;
         }
-
+        
         ValidateCrouchStates(); // 복구
     }
 
     private void FixedUpdate()
     {
-        if (isScenePlaying || isDashing) return;
+        if (isScenePlaying || IsDashing) return;
 
         UpdateGroundedState();
         HandleBufferedJump();
 
-        baseSpeed = speed; // 매 프레임 기본 속도 복구
+        //baseSpeed = speed; // 매 프레임 기본 속도 복구
         // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
         rigid.linearVelocity = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
@@ -233,7 +234,7 @@ public class Player : MonoBehaviour
 
     void UpdateCrouchState()
     {
-        bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !isDashing;
+        bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !IsDashing;
 
         if (wantCrouch)
         {
@@ -378,7 +379,6 @@ public class Player : MonoBehaviour
     {
         PositionData pos = SaveManager.Instance.Load<PositionData>("playerPos");
         Vector3 playerPos = new Vector3(pos.x, pos.y, pos.z);
-        Debug.Log(playerPos.ToString());
         transform.position = playerPos;
     }
 
@@ -450,7 +450,7 @@ public class Player : MonoBehaviour
         isGrounded = false;
         anim.SetBool("isJump", true);
         rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
-        rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rigid.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         if (isMoveSfxPlaying)
         {
             AudioManager.Instance?.StopLoopSFX(gameObject);
@@ -460,14 +460,16 @@ public class Player : MonoBehaviour
 
     public void OnDash()
     {
-        if (!canDash || isDashing || isScenePlaying) return;
-        StartCoroutine(DashRoutine());
+        if (Time.time - lastDashTime < dashCooldown || isScenePlaying) return;
+        Vector2 dir = sprite.flipX ? Vector2.left : Vector2.right;
+        rigid.AddForce(dir * (speed * dashMultiplier), ForceMode2D.Impulse);
+        lastDashTime = Time.time;
+        //StartCoroutine(DashRoutine());
     }
 
     private IEnumerator DashRoutine()
     {
-        isDashing = true;
-        canDash = false;
+        //canDash = false;
         anim.SetTrigger("Dash");
 
         // 대시 중에는 Rigidbody 속도를 직접 제어
@@ -480,10 +482,9 @@ public class Player : MonoBehaviour
 
         rigid.linearVelocity = Vector2.zero;
         rigid.gravityScale = originalGravity;
-        isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
+        //canDash = true;
     }
 
     public void OnDownJump()
