@@ -68,7 +68,7 @@ public class NPCs : MonoBehaviour {
                         }
                         break;
 
-                    case "Gumi":
+                    case "YourName":
                         if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
                             GamaManager.Instance.UIManager.PrintMSG("Gumi_Need_Help");
                             return;

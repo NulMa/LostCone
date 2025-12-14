@@ -19,6 +19,9 @@ public class GifVideo : MonoBehaviour
 
     private void Update()
     {
+        //GamaManager.Instance.player.isScenePlaying = true;
+
+
         if (img != null && sprite != null)
             img.sprite = sprite.sprite;
     }

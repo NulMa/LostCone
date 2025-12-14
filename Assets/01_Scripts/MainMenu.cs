@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ public class MainMenuManager : MonoBehaviour {
 
     
     public void NewGame() {
+        Debug.Log("NewGame");
+        SaveManager.Instance.ClearAllData();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
         
@@ -35,13 +38,13 @@ public class MainMenuManager : MonoBehaviour {
             AchiveManager.instance.RefreshUI();
         }
         
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene"); // Unity의 SceneManager 사용
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
     }
 
     public void ContinueGame() {
         // 이어하기: 씬을 먼저 로드 후 LoadGame() 호출
-        Debug.Log("1");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene");
+        Debug.Log("ContinueGame");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2");
         StartCoroutine(LoadGameAfterSceneLoad());
     }
 

@@ -103,6 +103,10 @@ public class Player : MonoBehaviour
         }
         
         ValidateCrouchStates(); // 복구
+
+
+        //Temp
+        anim.SetBool("isMove", false);
     }
 
     private void FixedUpdate()
@@ -378,7 +382,16 @@ public class Player : MonoBehaviour
     public void LoadPlayerPosition()
     {
         PositionData pos = SaveManager.Instance.Load<PositionData>("playerPos");
-        Vector3 playerPos = new Vector3(pos.x, pos.y, pos.z);
+        Vector3 playerPos;
+
+        //if (pos == null)
+        //{
+        //    playerPos = new Vector3(-10.5f, 0f, 0f);
+        //    transform.position = playerPos;
+        //    return;
+        //}
+        
+        playerPos = new Vector3(pos.x, pos.y, pos.z);
         transform.position = playerPos;
     }
 
@@ -543,33 +556,48 @@ public class Player : MonoBehaviour
 
     public void produPlayerMove(bool dirRight)
     {
+        
         sprite.flipX = !dirRight;
         bool animMove = !anim.GetBool("isMove");
+        Debug.Log("AnimMove" + animMove);
         anim.SetBool("isMove", animMove);
     }
 
+
+    //================================================================================
+    //================================================================================
+    //================================================================================
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (collision.name)
+        GamaManager.Instance.achiveCall(collision.name);
+        if(collision.name == "RedOut")
         {
-            case "eineUmb":
-                GamaManager.Instance.achiveCall("Nachtmusik");
-                break;
-            case "IdleWolf":
-                GamaManager.Instance.achiveCall("MacGuffin");
-                break;
-            case "FlamingoHerd":
-                GamaManager.Instance.achiveCall("FlaFla");
-                break;
-            case "cran&pan":
-                GamaManager.Instance.achiveCall("HotMeal");
-                break;
-            case "Gumi":
-                GamaManager.Instance.achiveCall("YourName");
-                break;
+            StartCoroutine(MakeAlphaZero(collision.GetComponent<SpriteRenderer>(), 2f));
+            if (GetComponentInParent<Transform>().name == "RedOutRabbit")
+                GetComponentInParent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
     }
 
+    public IEnumerator MakeAlphaZero(SpriteRenderer target, float duration = 1.0f)
+    {
+        Color color = target.color;
+        float startAlpha = color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsedTime / duration);
+            target.color = color;
+            yield return null;
+        }
+        color.a = 0f;
+        target.color = color;
+        target.gameObject.SetActive(false);
+    }
+    //================================================================================
+    //================================================================================
+    //================================================================================
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
