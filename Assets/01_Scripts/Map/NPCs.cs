@@ -30,10 +30,15 @@ public class NPCs : MonoBehaviour {
             case "Lemon_Sprout":
                 break;
 
-            case "Gumi":
+            case "YourName":
                 if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1){
                     animator.SetTrigger("Front");
                 }
+                break;
+
+            case "GarakutaKun_0":
+                chained[0].GetComponent<Animator>().SetBool("Close", true);
+                chained[0].GetComponent<BoxCollider2D>().enabled = true;
                 break;
         }
     }
@@ -89,6 +94,9 @@ public class NPCs : MonoBehaviour {
 
                         else{
                             playVideo();
+                            chained[0].GetComponent<Animator>().SetBool("Close", false);
+                            chained[0].GetComponent<BoxCollider2D>().enabled = false;
+
                             Debug.Log("Clear GarakutaKun_0");
                         }
                         break;
