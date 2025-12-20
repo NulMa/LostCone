@@ -64,6 +64,12 @@ namespace Core
             return JsonUtility.FromJson<T>(json);
         }
 
+        public bool HasPath(string saveKey)
+        {
+            string path = GetPath(saveKey);
+            return File.Exists(path);
+        }
+
 
         [ContextMenu("Clear Data")]
         public void ClearData(string saveKey)
