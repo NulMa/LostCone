@@ -11,10 +11,13 @@ public class GifVideo : MonoBehaviour
     public int VideoNum; // 간단한 분기 번호
     public GameObject[] videoObject; // 0: 대상 (Animator), 추가 슬롯은 확장용
 
+    Player player => GamaManager.Instance.player;
+
     private void Awake()
     {
         img = GetComponent<Image>();
         sprite = GetComponent<SpriteRenderer>();
+        player.isScenePlaying = true;
     }
 
     private void Update()
@@ -56,6 +59,11 @@ public class GifVideo : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        player.isScenePlaying = false;
     }
 }
 

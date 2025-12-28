@@ -111,7 +111,17 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isScenePlaying || IsDashing) return;
+        if (isScenePlaying)
+        {
+            rigid.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (IsDashing)
+        {
+            return;
+        }
+
 
         UpdateGroundedState();
         HandleBufferedJump();
