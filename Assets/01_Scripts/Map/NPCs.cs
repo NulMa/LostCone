@@ -32,7 +32,6 @@ public class NPCs : MonoBehaviour {
 
             case "YourName":
                 if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1){
-                    Debug.Log("구미 앞을 보다.");
                     animator.SetTrigger("Front");
                 }
                 break;
@@ -75,7 +74,6 @@ public class NPCs : MonoBehaviour {
                         break;
 
                     case "YourName":
-                        if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1) return;
                         if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
                             GamaManager.Instance.UIManager.PrintMSG("Gumi_Need_Help");
                             return;
