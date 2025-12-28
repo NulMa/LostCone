@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/SkipStage.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/SkipStage.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Jump.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +105,9 @@
       <workItem from="1764936120468" duration="4754000" />
       <workItem from="1765498640559" duration="8118000" />
       <workItem from="1765620785376" duration="1215000" />
+      <workItem from="1766216716698" duration="4426000" />
+      <workItem from="1766421685387" duration="34000" />
+      <workItem from="1766762509926" duration="2950000" />
     </task>
     <servers />
   </component>
