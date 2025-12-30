@@ -11,6 +11,8 @@ public class GifVideo : MonoBehaviour
     public int VideoNum; // 간단한 분기 번호
     public GameObject[] videoObject; // 0: 대상 (Animator), 추가 슬롯은 확장용
 
+    public Sprite[] sprites; // 필요시 여러 스프라이트 배열
+
     Player player => GamaManager.Instance.player;
 
     private void Awake()
@@ -51,11 +53,38 @@ public class GifVideo : MonoBehaviour
             case 0:
                 break;      // 예약
             case 1:         // ikimono function activate.
+
                 videoObject[0].GetComponent<Animator>().SetTrigger("Untied");
+                break;
+
+            case 2:
+                // 0 garakutaKun0 change animation_normal
+                videoObject[0].GetComponent<Animator>().Play("Normal_Idle");
+
+                // 1 change garakuataKun1 change animation_fixed
+                videoObject[1].GetComponent<Animator>().enabled = true;
+
+                // 2 change fuze sprite
+                videoObject[2].GetComponent<SpriteRenderer>().sprite = sprites[0];
+
+                // 3 change KANDEN gate open
+                videoObject[3].GetComponent<SpriteRenderer>().sprite = sprites[2];
+                videoObject[3].GetComponent<BoxCollider2D>().enabled = false;
+                // 4 change KANDEN POWER sprite
+                videoObject[4].GetComponent<SpriteRenderer>().sprite = sprites[2];
+
+                // 5 change NEKO gate open
+                videoObject[5].GetComponent<SpriteRenderer>().sprite = sprites[3];
+                videoObject[5].GetComponent<BoxCollider2D>().enabled = false;
+                videoObject[5].GetComponent<Animator>().enabled = false;
+
+                // 6 change NEKO POWER sprite
+                videoObject[6].GetComponent<SpriteRenderer>().sprite = sprites[3];
+
+
 
                 break;
-            case 2:
-                break;
+
             default:
                 break;
         }
