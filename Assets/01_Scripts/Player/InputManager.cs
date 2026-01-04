@@ -31,8 +31,19 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
+        // Control Scheme과 Device를 Keyboard&Mouse로 강제 설정
+        if (playerInput != null)
+        {
+            playerInput.defaultControlScheme = "Keyboard&Mouse";
+            // 키보드와 마우스가 연결되어 있다면 해당 장치들로 스킴 전환
+            if (Keyboard.current != null && Mouse.current != null)
+            {
+                playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+            }
+        }
+
         // "UI" 액션 맵을 명시적으로 활성화시켜서 ESC 입력을 항상 받을 수 있도록 함
-        if(playerInput != null && playerInput.actions != null)
+        if (playerInput != null && playerInput.actions != null)
         {
             // Player 맵과 UI 맵을 모두 활성화하여 동시에 입력을 받을 수 있게 함
             var pMap = playerInput.actions.FindActionMap("Player");
