@@ -56,17 +56,20 @@ public class InputManager : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
+        Debug.Log("Move Input: " + MoveInput);
         MoveInput = value.Get<Vector2>();
     }
 
     private void OnJump()
     {
         IsJumpPressed = true;
+        Debug.Log("Jump Pressed");
     }
 
     private void OnInteraction()
     {
         IsInteractionPressed = true;
+        Debug.Log("Interaction Pressed");
     }
 
     private void OnDash()
