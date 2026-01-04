@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
     float baseSpeed; // 원래 속도 저장
 
     [Header("Crouch State Names")] [SerializeField]
-    string crouchIdleStateName = "CrouchIdle"; // Animator 상태 이름
+    string crouchIdleStateName = "Tongary_Sit_Idle"; // Animator 상태 이름
 
-    [SerializeField] string crouchWalkStateName = "CrouchWalk"; // Animator 상태 이름
+    [SerializeField] string crouchWalkStateName = "Tongary_Sit_Walk"; // Animator 상태 이름
     int crouchIdleHash;
     int crouchWalkHash; // 해시 캐시
     bool hasCrouchIdle;
@@ -111,7 +111,17 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isScenePlaying || IsDashing) return;
+        if (isScenePlaying)
+        {
+            rigid.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        if (IsDashing)
+        {
+            return;
+        }
+
 
         UpdateGroundedState();
         HandleBufferedJump();

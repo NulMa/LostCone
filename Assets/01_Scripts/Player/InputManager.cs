@@ -34,7 +34,11 @@ public class InputManager : MonoBehaviour
         // "UI" 액션 맵을 명시적으로 활성화시켜서 ESC 입력을 항상 받을 수 있도록 함
         if(playerInput != null && playerInput.actions != null)
         {
-            playerInput.actions.FindActionMap("UI").Enable();
+            // Player 맵과 UI 맵을 모두 활성화하여 동시에 입력을 받을 수 있게 함
+            var pMap = playerInput.actions.FindActionMap("Player");
+            var uMap = playerInput.actions.FindActionMap("UI");
+            if(pMap != null) pMap.Enable();
+            if(uMap != null) uMap.Enable();
         }
     }
 

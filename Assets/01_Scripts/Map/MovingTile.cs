@@ -9,7 +9,7 @@ public class MovingTile : MonoBehaviour {
     public float moveTime = 2f;     // 한 방향 이동 시간
     private Vector3 startPos;
     private Vector3 endPos;
-    private bool movingToEnd = true;
+    // private bool movingToEnd = true; // Unused
     private Coroutine moveCoroutine;
 
     private void Start() {

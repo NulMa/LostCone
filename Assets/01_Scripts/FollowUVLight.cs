@@ -206,7 +206,7 @@ public class FollowUVLight : MonoBehaviour {
             var t = FindTypeInAssemblies(tn);
             if (t == null) continue;
 
-            var obj = UnityEngine.Object.FindObjectOfType(t);
+            var obj = UnityEngine.Object.FindFirstObjectByType(t);
             if (obj == null) continue;
 
             foreach (var name in memberNames) {
@@ -266,7 +266,7 @@ public class FollowUVLight : MonoBehaviour {
         // 우선순위: GamaManager.currentStageID
         _cachedManagerType = FindTypeInAssemblies("GamaManager");
         if (_cachedManagerType != null) {
-            _cachedManagerObj = UnityEngine.Object.FindObjectOfType(_cachedManagerType);
+            _cachedManagerObj = UnityEngine.Object.FindFirstObjectByType(_cachedManagerType);
             if (_cachedManagerObj != null) {
                 _cachedFieldInfo = _cachedManagerType.GetField("currentStageID", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 if (_cachedFieldInfo == null) {
