@@ -41,13 +41,6 @@ public class MainMenuManager : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
     }
 
-    public void ContinueGame() {
-        // 이어하기: 씬을 먼저 로드 후 LoadGame() 호출
-        Debug.Log("ContinueGame");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2");
-        StartCoroutine(LoadGameAfterSceneLoad());
-    }
-
     public void settings(){
         if (SettingUI.instance != null){
             SettingUI.instance.SettingPanel.SetActive(true);
@@ -65,26 +58,7 @@ public class MainMenuManager : MonoBehaviour {
         }
         return;
     }
-
-    private System.Collections.IEnumerator LoadGameAfterSceneLoad()
-    {
-        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("MainScene"))
-        {
-            yield return null;
-        }
-
-        // GamaManager.Instance가 null인지 확인
-        if (GamaManager.Instance != null)
-        {
-            GamaManager.Instance.LoadGame();
-        }
-        else
-        {
-            Debug.LogError("GamaManager.Instance가 null입니다. GamaManager가 DefaultScene에 포함되어 있는지 확인하세요.");
-        }
-
-        yield return null;
-    }
+    
     public void gameExit() {
         Application.Quit();
     }

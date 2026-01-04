@@ -20,8 +20,6 @@ public class GamaManager : MonoBehaviour
     public GameObject[] BGs;
     public GameObject[] Maps;
 
-
-
     public SceneManager SceneManager;
     public ItemDataManager ItemDataManager;
     public UICtrl UIManager; // Reference to UICtrl
@@ -35,6 +33,8 @@ public class GamaManager : MonoBehaviour
     public Camera mainCam;
 
     public GameObject rain;
+
+    public bool ignoreSavePos;
 
 
 
@@ -134,7 +134,9 @@ public class GamaManager : MonoBehaviour
 
     public void SaveGame()
     {
-        player.SavePlayerPosition();
+        if (!ignoreSavePos)
+            player.SavePlayerPosition();
+        
         ItemDataManager.Instance.SaveCurrentMapData();
         currentMap.SaveMapData();
         SceneManager.SaveSceneData();
@@ -143,12 +145,13 @@ public class GamaManager : MonoBehaviour
 
     public void LoadGame()
     {
-        player.isScenePlaying = false;
-        player.LoadPlayerPosition();
         ItemDataManager.Instance.LoadCurrentMapData();
         SceneManager.LoadSceneData();
         currentMap.LoadMapData();
         passFirstScene();
+
+        if (!ignoreSavePos)
+            player.LoadPlayerPosition();
 
         Debug.Log("게임 데이터가 로드되었습니다.");
     }

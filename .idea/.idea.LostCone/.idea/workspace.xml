@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/SkipStage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Test/SkipStage.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/LoadButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/LoadButton.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/PositionDataSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/PositionDataSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/StageButton.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/UI/Title/StageButton.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/01_LOOP_I_Packed_My_Bag_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/02_LOOP_Campfire_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/03_LOOP_The_Hunt_Begins_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/04_LOOP_Crowded_Plaza_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/05_LOOP_Come_To_Us_We_Have_Chocolate_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/06_LOOP_A_Calm_Sea_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/07_LOOP_Moonlit_Forest_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/08_LOOP_Beyond_the_Forest_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/09_LOOP_Daily_Chores_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/10_LOOP_Smoke_and_Ice_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/11_LOOP_Keep_Me_Safe_by_Florian_Stracker.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Retro-Fit Adventure (Free 8-Bit Video Game Music)/WAV/12_LOOP_The_Jester's_Tale_by_Florian_Stracker.wav.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +53,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;PaperFlower&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;PaperFlower3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -108,6 +129,10 @@
       <workItem from="1766216716698" duration="4426000" />
       <workItem from="1766421685387" duration="34000" />
       <workItem from="1766762509926" duration="2950000" />
+      <workItem from="1767058719045" duration="669000" />
+      <workItem from="1767336699977" duration="3481000" />
+      <workItem from="1767455873667" duration="3369000" />
+      <workItem from="1767515946206" duration="2401000" />
     </task>
     <servers />
   </component>
