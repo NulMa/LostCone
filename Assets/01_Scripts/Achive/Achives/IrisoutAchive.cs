@@ -43,7 +43,7 @@ namespace Code.Achive
                 int idx = i;
                 seq.AppendCallback(() => {
                     irisOutText.text = string.Join("  ",
-                        Enumerable.Repeat("I,", idx));
+                        Enumerable.Repeat("I ", idx));
                 });
                 seq.AppendInterval(textDuration / 4f);
             }
@@ -51,7 +51,8 @@ namespace Code.Achive
             seq.AppendCallback(() =>
                 {
                     irisOutText.transform.localScale = Vector3.one * 1.25f;
-                    irisOutText.text = "IRIS OUT";
+                    GamaManager.Instance.achiveCall("IrisOut");
+                    //irisOutText.text = "IRIS OUT";
                 })
                 .AppendInterval(1f)
                 .Append(mask.transform.DOScale(15f, 1f))
