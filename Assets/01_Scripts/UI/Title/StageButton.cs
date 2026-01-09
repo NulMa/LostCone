@@ -9,7 +9,8 @@ using SceneMgr = UnityEngine.SceneManagement.SceneManager;
         {
             "HalfCut",
             "Alive",
-            "DSDF"
+            "GarakutaKun_0_Clear",
+            "Unknown"
         };
     }
 
@@ -21,17 +22,23 @@ using SceneMgr = UnityEngine.SceneManagement.SceneManager;
 
         private void Awake()
         {
+            Debug.Log(" Check Stage3 :  " + PlayerPrefs.GetInt("GarakutaKun_0_Clear"));
             UpdateButton();
         }
 
         private void UpdateButton()
         {
             if (AchiveManager.instance == null) return;
+
             if (AchiveManager.instance.IsAchiveCleared(Defines.StageKeys[stage - 1]))
             {
                 lockedObj.SetActive(false);
             }
-        }
+            if(PlayerPrefs.GetInt("GarakutaKun_0_Clear") == 1 && stage == 3)
+            {
+                lockedObj.SetActive(false);
+            }
+    }
 
         public void OnClick()
         {

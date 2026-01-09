@@ -89,6 +89,10 @@ public class InputManager : MonoBehaviour
     {
         IsDownJumpPressed = true;
     }
+    private void OnDownJump1()
+    {
+        IsDownJumpPressed = true;
+    }
 
     private void OnESC()
     {

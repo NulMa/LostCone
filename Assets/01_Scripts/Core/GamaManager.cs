@@ -128,8 +128,8 @@ public class GamaManager : MonoBehaviour
         BGOn(currentStageID);
         Maps[0].GetComponent<MapNumbers>().OnOffAll();
 
-        UIManager.Message.gameObject.SetActive(true);
-        UIManager.Message.DOColor(Color.black, 1f);
+        //UIManager.Message.gameObject.SetActive(true);
+        //UIManager.Message.DOColor(Color.black, 1f);
 
         UIManager.Stage.gameObject.SetActive(true);
         UIManager.Items.gameObject.SetActive(true);

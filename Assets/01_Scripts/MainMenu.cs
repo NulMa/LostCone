@@ -28,17 +28,36 @@ public class MainMenuManager : MonoBehaviour {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
         
+        //// 업적 매니저가 존재한다면 업적 초기화
+        //if (AchiveManager.instance != null) {
+        //    // 모든 업적을 미달성 상태로 초기화
+        //    foreach (var achive in AchiveManager.instance.achives) {
+        //        achive.isClear = false;
+        //    }
+        //    // 업적 UI 새로고침
+        //    AchiveManager.instance.RefreshUI();
+        //}
+        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
+    }
+
+    public void HardReset()
+    {
+        SaveManager.Instance.ClearAllData();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
         // 업적 매니저가 존재한다면 업적 초기화
-        if (AchiveManager.instance != null) {
+        if (AchiveManager.instance != null)
+        {
             // 모든 업적을 미달성 상태로 초기화
-            foreach (var achive in AchiveManager.instance.achives) {
+            foreach (var achive in AchiveManager.instance.achives)
+            {
                 achive.isClear = false;
             }
             // 업적 UI 새로고침
             AchiveManager.instance.RefreshUI();
         }
-        
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
     }
 
     public void settings(){

@@ -29,24 +29,37 @@ public class NPCs : MonoBehaviour {
 
         switch (gameObject.name) {
             case "Lemon_Sprout":
+                if (AchiveManager.instance.IsAchiveCleared("HalfCut"))
+                {
+                    GamaManager.Instance.rain.SetActive(false);
+                    isPlayed = true;
+                }
                 break;
 
             case "YourName":
                 if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1){
                     Debug.Log("구미 앞을 보다.");
                     animator.SetTrigger("Front");
+                    isPlayed = true;
                 }
                 break;
 
             case "CatchNeko":
-
-
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 if (PlayerPrefs.GetInt("achive_LostCone", 0) == 1)
                 {
                     StartCoroutine(ActivateChainedAnimator());
+                    isPlayed = true;
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
+                break;
+
+            case "GarakutaKun_0":
+                if (PlayerPrefs.GetInt("GarakutaKun_0_Clear", 0) == 1)
+                {
+                    video.GetComponent<GifVideo>().ifNeed();
+                    isPlayed = true;
+                }
                 break;
         }
     }
@@ -112,6 +125,7 @@ public class NPCs : MonoBehaviour {
 
                         else{
                             playVideo();
+                            PlayerPrefs.SetInt("GarakutaKun_0_Clear", 1);
                             Debug.Log("Clear GarakutaKun_0");
                         }
                         break;
@@ -177,6 +191,7 @@ public class NPCs : MonoBehaviour {
                 chained[0].GetComponent<LeverNeko>().Gate.GetComponent<BoxCollider2D>().enabled = false;
                 chained[0].GetComponent<BoxCollider2D>().enabled = false;
                 chained[0].GetComponent<Animator>().enabled = false;
+
                 gameObject.SetActive(false);
                 break;
         }

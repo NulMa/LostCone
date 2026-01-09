@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Core;
 
 public class GifVideo : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class GifVideo : MonoBehaviour
         if (img != null)
         {
             img.DOFade(0f, 1f).OnComplete(() => gameObject.SetActive(false));
+            var playerPos = new PositionData(GamaManager.Instance.player.transform.position);
+            SaveManager.Instance.Save<PositionData>(playerPos, "playerPos");
         }
         else
         {
@@ -59,6 +62,7 @@ public class GifVideo : MonoBehaviour
                 break;
 
             case 2:
+                Debug.Log("GifVideo: VideoNum 2 실행");
                 //sprite's
                 // 0 = fuze_fixed
                 // 1 = opened_gate

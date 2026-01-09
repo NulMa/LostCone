@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
+    const float ON_MOVING_TILE = 0.5f;
+
     public float speed;
     public float jumpForce;
 
@@ -86,6 +88,11 @@ public class Player : MonoBehaviour
     float jumpBufferCounter;
     float coyoteCounter;
 
+
+    public float groundcheckDelay = 0.5f;
+    public float groundcheckTimer = 0f;
+    public bool isCheckAllowed = true;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -105,12 +112,16 @@ public class Player : MonoBehaviour
         ValidateCrouchStates(); // 복구
 
 
+
         //Temp
         anim.SetBool("isMove", false);
     }
 
     private void FixedUpdate()
     {
+        Debug.Log("Parent is : " + transform.parent.name);
+        groundcheckDelay = transform.parent.name == "WorstMovingTile" ? ON_MOVING_TILE : 0;
+
         if (isScenePlaying)
         {
             rigid.linearVelocity = Vector2.zero;
@@ -121,7 +132,6 @@ public class Player : MonoBehaviour
         {
             return;
         }
-
 
         UpdateGroundedState();
         HandleBufferedJump();
@@ -140,6 +150,17 @@ public class Player : MonoBehaviour
         UpdateCrouchState();
         UpdateCrouchCollider();
         UpdateLocomotionAnim();
+
+        if (Time.time - groundcheckTimer > groundcheckDelay)
+        {
+            isCheckAllowed = true;
+
+        }
+        else
+        {
+            isCheckAllowed = false;
+
+        }
     }
 
     void HandleInput()
@@ -420,6 +441,9 @@ public class Player : MonoBehaviour
 // ===== 새 Ground 체크 로직 =====
     void UpdateGroundedState()
     {
+        if(!isCheckAllowed)
+            return;
+
         wasGroundedLastFrame = isGrounded;
 
         if (isDroppingThrough)
@@ -475,6 +499,7 @@ public class Player : MonoBehaviour
         anim.SetBool("isJump", true);
         rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
         rigid.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        groundcheckTimer = Time.time;
         if (isMoveSfxPlaying)
         {
             AudioManager.Instance?.StopLoopSFX(gameObject);

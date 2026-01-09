@@ -41,7 +41,6 @@ public class Player_Follower_Neko : MonoBehaviour
         }
     }
 
-
     public float jumpDelay = 2f;
     public float cooldownTimer = 0f;
 
