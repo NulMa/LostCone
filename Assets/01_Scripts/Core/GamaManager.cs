@@ -1,6 +1,8 @@
+using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization;
@@ -17,8 +19,6 @@ public class GamaManager : MonoBehaviour
 
     public GameObject[] BGs;
     public GameObject[] Maps;
-
-
 
     public SceneManager SceneManager;
     public ItemDataManager ItemDataManager;
@@ -55,9 +55,6 @@ public class GamaManager : MonoBehaviour
         {
             followerNeko.SetActive(true);
         }
-        if (PlayerPrefs.HasKey("Player_Pos_X"))
-            LoadGame();
-
 
         // 싱글톤 인스턴스 설정
         if (Instance == null)
@@ -77,7 +74,12 @@ public class GamaManager : MonoBehaviour
         // 현재 스테이지에 따른 BGM 재생
         PlayBGMForCurrentStage();
     }
-    
+
+    private void Start()
+    {
+
+    }
+
     private void Update()
     {
         ItemDataManager.CurrentMapID = currentStageID;
@@ -154,7 +156,9 @@ public class GamaManager : MonoBehaviour
 
     public void SaveGame()
     {
-        player.SavePlayerPosition();
+        if (!ignoreSavePos)
+            player.SavePlayerPosition();
+        
         ItemDataManager.Instance.SaveCurrentMapData();
         currentMap.SaveMapData();
         SceneManager.SaveSceneData();
@@ -163,13 +167,14 @@ public class GamaManager : MonoBehaviour
 
     public void LoadGame()
     {
-        Debug.Log("아니");
-        player.isScenePlaying = false;
-        player.LoadPlayerPosition();
         ItemDataManager.Instance.LoadCurrentMapData();
         SceneManager.LoadSceneData();
         currentMap.LoadMapData();
         passFirstScene();
+
+        if (!ignoreSavePos)
+            player.LoadPlayerPosition();
+
         Debug.Log("게임 데이터가 로드되었습니다.");
     }
 
