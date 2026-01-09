@@ -25,6 +25,7 @@ public class AchiveData {
     }
 }
 
+[DefaultExecutionOrder(-10)]
 public class AchiveManager : MonoBehaviour {
     public static AchiveManager instance;
     public List<AchiveData> achives = new List<AchiveData>();

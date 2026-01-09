@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.InputSystem;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
 
+[DefaultExecutionOrder(-10)]
 public class UICtrl : MonoBehaviour{
 
     public TextMeshProUGUI Message;

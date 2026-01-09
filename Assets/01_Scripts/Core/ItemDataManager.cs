@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using UnityEngine;
 
+[DefaultExecutionOrder(-10)]
 public class ItemDataManager : MonoBehaviour {
     public static ItemDataManager Instance { get; private set; }
     public bool[] bools; // 해당 아이템을 플레이어가 가진 여부 배열
@@ -92,7 +94,7 @@ public class ItemDataManager : MonoBehaviour {
 
     private void Update() {
         // 현재 활성화된 아이템 소유 상태 배열을 업데이트
-        UpdateItemOwnershipArray();
+        //UpdateItemOwnershipArray();
     }
 
     public void UpdateItemOwnershipArray() {
@@ -118,6 +120,7 @@ public class ItemDataManager : MonoBehaviour {
         }
 
         // 아이템 개수 업데이트
+        currentMap?.LoadMapData();
         int itemCountInMap = currentMap.Items.Count; // List에서는 Count를 사용
         itemCount = 0;
 
@@ -136,5 +139,6 @@ public class ItemDataManager : MonoBehaviour {
                 bools[i] = false;
             }
         }
+        
     }
 }

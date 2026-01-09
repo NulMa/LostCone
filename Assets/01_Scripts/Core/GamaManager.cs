@@ -12,7 +12,7 @@ using Unity.VisualScripting;
 using TMPro; // For TextMeshProUGUI
 
 
-[DefaultExecutionOrder(-10)]
+[DefaultExecutionOrder(-5)]
 public class GamaManager : MonoBehaviour
 {
     public static GamaManager Instance { get; private set; }
@@ -65,6 +65,9 @@ public class GamaManager : MonoBehaviour
         {
             Destroy(gameObject); // 중복된 인스턴스 제거
         }
+        
+        if (SaveManager.Instance.HasPath("playerPos"))
+            LoadGame();
 
         if (GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
 
@@ -74,8 +77,7 @@ public class GamaManager : MonoBehaviour
 
     private void Start()
     {
-        if (SaveManager.Instance.HasPath("playerPos"))
-            LoadGame();
+
     }
 
     private void Update()
@@ -184,8 +186,6 @@ public class GamaManager : MonoBehaviour
         ItemDataManager.Instance.SaveCurrentMapData();
         ItemDataManager.Instance.UpdateItemOwnershipArray();
         SaveGame();
-
-        Debug.Log($"[GamaManager] Current itemCount: {ItemDataManager.Instance.itemCount}");
 
         // 첫 번째 아이템인지 확인
         if (ItemDataManager.Instance.itemCount == 1)

@@ -7,6 +7,8 @@ public struct SceneData {
     public GameObject scene; // 씬 GameObject
     public bool isDone;      // 씬 완료 상태
 }
+
+[DefaultExecutionOrder(-10)]
 public class SceneManager : MonoBehaviour{
     public SceneData[] scenes; // 씬 데이터 배열
 
