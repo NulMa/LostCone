@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _01_Scripts.UI.Title
 {
@@ -7,6 +8,20 @@ namespace _01_Scripts.UI.Title
         [SerializeField] private GameObject popup;
         [SerializeField] private GameObject stageCanvas;
 
+        Button button;
+
+        private void Awake()
+        {
+            button = GetComponent<Button>();
+            if (!AchiveManager.instance.IsAchiveCleared("Begin"))
+            {
+                button.interactable = false;
+            }
+            else
+            {
+                button.interactable = true;
+            }
+        }
         public void OnClick()
         {
             popup.SetActive(true);

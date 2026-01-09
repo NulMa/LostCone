@@ -64,7 +64,16 @@
                     "name": "DownJump",
                     "type": "Button",
                     "id": "6324f74e-ba42-4020-ae41-cd78a35880db",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DownJump1",
+                    "type": "Button",
+                    "id": "56d23db0-5825-442f-a21e-de9e32ff3f56",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -282,7 +291,7 @@
                 },
                 {
                     "name": "One Modifier",
-                    "id": "472210be-0ce4-4a9c-b818-5556b1f6546c",
+                    "id": "f8b04494-eb2f-4860-a475-24770a2fa559",
                     "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
@@ -293,7 +302,7 @@
                 },
                 {
                     "name": "modifier",
-                    "id": "f3d359b2-7b86-4e66-8c7c-e56b8af07600",
+                    "id": "eedf8ca0-ebf4-46ba-a8bf-080a29e9917c",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
@@ -304,12 +313,45 @@
                 },
                 {
                     "name": "binding",
-                    "id": "9b3cd403-36ed-4e29-8398-da6b1d303138",
+                    "id": "41992b8a-5824-4389-863d-af3a12f8c8f0",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "DownJump",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "6f80fdb7-f491-4a51-8640-5e90b2519676",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DownJump1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "f4bf3617-8849-4fe2-a984-58cdc18e503d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DownJump1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "d87a5ca8-8b12-4589-8024-6c0228411857",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DownJump1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

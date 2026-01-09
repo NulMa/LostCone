@@ -21,13 +21,14 @@ namespace Code.Achive
         {
             base.Awake();
             fadeImage.material = new Material(fadeImage.material);
+            
         }
 
         [ContextMenu("IRIS OUT")]
         protected async override void OnMessageRecieved()
         {
             if (AchiveManager.instance.IsAchiveCleared("IrisOut")) return;
-            
+
             irisOutAnimator.enabled = true;
             await Awaitable.WaitForSecondsAsync(0.2f);
 

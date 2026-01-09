@@ -6,12 +6,20 @@ public class LeverNeko : MonoBehaviour
 {
     public bool isCleard;
     public GameObject Gate;
+    public GameObject backDoor;
     public GameObject Lever;
 
+    public Sprite clearedSprite;
     Animator anim;
     
     void Start()
     {
+        if(AchiveManager.instance.IsAchiveCleared("LostCone"))
+        {
+            backDoor.GetComponent<SpriteRenderer>().sprite = clearedSprite;
+        }
+
+
         anim = GetComponent<Animator>();
     }
 
