@@ -519,7 +519,6 @@ public class Player : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, downJumpRayLength, platformLayer);
         if (hit.collider != null)
         {
-            Debug.Log("다운다운다운");
             StartCoroutine(DownJumpRoutine(hit.collider));
         }
     }

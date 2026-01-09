@@ -136,10 +136,4 @@ public class AchiveManager : MonoBehaviour {
         achiveSlider.value = clearCount / (float)achives.Count;
         achivePercentText.text = $"{clearCount} / {achives.Count}";
     }
-    
-    public bool IsAchiveCleared(string key)
-    {
-        var achive = achives.Find(a => a.key == key);
-        return achive != null && achive.isClear;
-    }
 }
