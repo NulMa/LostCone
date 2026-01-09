@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class GifVideo : MonoBehaviour
 {
+
     private Image img;
     private SpriteRenderer sprite;
 
@@ -58,6 +59,13 @@ public class GifVideo : MonoBehaviour
                 break;
 
             case 2:
+                //sprite's
+                // 0 = fuze_fixed
+                // 1 = opened_gate
+                // 2 = power_on
+                // 3 = power off
+                // 4 = closed_gate
+
                 // 0 garakutaKun0 change animation_normal
                 videoObject[0].GetComponent<Animator>().Play("Normal_Idle");
 
@@ -65,24 +73,24 @@ public class GifVideo : MonoBehaviour
                 videoObject[1].GetComponent<Animator>().enabled = true;
 
                 // 2 change fuze sprite
-                videoObject[2].GetComponent<SpriteRenderer>().sprite = sprites[0];
+                videoObject[2].GetComponent<SpriteRenderer>().sprite = sprites[0]; 
 
                 // 3 change KANDEN gate open
-                videoObject[3].GetComponent<SpriteRenderer>().sprite = sprites[2];
+                videoObject[3].GetComponent<SpriteRenderer>().sprite = sprites[1];
                 videoObject[3].GetComponent<BoxCollider2D>().enabled = false;
                 // 4 change KANDEN POWER sprite
                 videoObject[4].GetComponent<SpriteRenderer>().sprite = sprites[2];
 
                 // 5 change NEKO gate open
-                videoObject[5].GetComponent<SpriteRenderer>().sprite = sprites[3];
+                videoObject[5].GetComponent<SpriteRenderer>().sprite = sprites[1];
                 videoObject[5].GetComponent<BoxCollider2D>().enabled = false;
                 videoObject[5].GetComponent<Animator>().enabled = false;
 
                 // 6 change NEKO POWER sprite
                 videoObject[6].GetComponent<SpriteRenderer>().sprite = sprites[3];
 
-
-
+                // 7 change NEKO back gate close
+                videoObject[7].GetComponent<SpriteRenderer>().sprite = sprites[4];
                 break;
 
             default:

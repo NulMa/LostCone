@@ -248,6 +248,7 @@ public class Player : MonoBehaviour
 
     void UpdateCrouchState()
     {
+        Debug.Log((inputVec2.y < -0.5f) + " / " + isGrounded + " / " + !IsDashing);
         bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !IsDashing;
 
         if (wantCrouch)
@@ -580,12 +581,16 @@ public class Player : MonoBehaviour
     //================================================================================
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision == null)
+            return;
         GamaManager.Instance.achiveCall(collision.name);
+
         if(collision.name == "RedOut")
         {
             StartCoroutine(MakeAlphaZero(collision.GetComponent<SpriteRenderer>(), 2f));
-            if (GetComponentInParent<Transform>().name == "RedOutRabbit")
-                GetComponentInParent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+
+            if (collision.gameObject.transform.parent.name == "RedOutRabbit")
+                collision.gameObject.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }
     }
 
@@ -605,10 +610,12 @@ public class Player : MonoBehaviour
         color.a = 0f;
         target.color = color;
         target.gameObject.SetActive(false);
+
+        if (target.gameObject.transform.parent.name == "RedOutRabbit")
+            target.gameObject.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
-    //================================================================================
-    //================================================================================
-    //================================================================================
+
+
     void OnDrawGizmosSelected()
     {
         if (groundCheck != null)

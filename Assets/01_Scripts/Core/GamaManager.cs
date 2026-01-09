@@ -28,6 +28,7 @@ public class GamaManager : MonoBehaviour
     // [설정 필요] Player 오브젝트를 Inspector에서 연결해주세요.
     public Player player;
     public GameObject playerParent;
+    public GameObject followerNeko;
     public MapItems currentMap;
     public Image panel;
     public Camera mainCam;
@@ -36,14 +37,25 @@ public class GamaManager : MonoBehaviour
 
     public bool ignoreSavePos;
 
-
-
     public int langue; // 언어 인덱스
     public int currentStageID;
+
+    public bool isLastSceneCleared = false;
 
 
     private void Awake()
     {
+        isLastSceneCleared = PlayerPrefs.GetInt("achive_LostCone") == 1 ? true : false;
+        if (!isLastSceneCleared)
+        {
+
+            followerNeko.SetActive(false);
+        }
+        else
+        {
+            followerNeko.SetActive(true);
+        }
+
         // 싱글톤 인스턴스 설정
         if (Instance == null)
         {
@@ -76,8 +88,16 @@ public class GamaManager : MonoBehaviour
 
     public void achiveCall(string key)
     {
+        //if key is not exist, return
+
         if (PlayerPrefs.GetInt("achive_" + key, 0) == 1)
             return;
+
+        if (AchiveManager.instance == null)
+        {
+            Debug.LogWarning($"[AchiveManager] Instance is null! Cannot update achievement: {key}");
+            return;
+        }
 
         AchiveManager.instance.SetAchiveClear(key);
     }

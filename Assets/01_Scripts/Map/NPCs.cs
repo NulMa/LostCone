@@ -2,6 +2,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class NPCs : MonoBehaviour {
@@ -36,12 +37,32 @@ public class NPCs : MonoBehaviour {
                     animator.SetTrigger("Front");
                 }
                 break;
+
+            case "CatchNeko":
+
+
+                ///////////////////////////////////////////////////////////////////////////////////////////////////
+                if (PlayerPrefs.GetInt("achive_LostCone", 0) == 1)
+                {
+                    StartCoroutine(ActivateChainedAnimator());
+                }
+                ///////////////////////////////////////////////////////////////////////////////////////////////////
+                break;
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             Player player = collision.GetComponent<Player>();
+            if(gameObject.name == "CatchNeko" && !isPlayed)
+            {
+                playVideo();
+                GamaManager.Instance.achiveCall("LostCone");
+            }
+
+
+
+
             if (player != null && player.isInteracting) { // isInteracting 필드 확인
                 Debug.Log("[NPCs] Player is interacting with " + gameObject.name);
                 // 인터렉션에 대한 처리
@@ -112,6 +133,10 @@ public class NPCs : MonoBehaviour {
             case "Gumi":
                 StartCoroutine(ActivateChainedAnimator());
                 break;
+
+            case "CatchNeko":
+                StartCoroutine(ActivateChainedAnimator());
+                break;
         }
 
     }
@@ -145,6 +170,14 @@ public class NPCs : MonoBehaviour {
 
             case "Gumi":
                 Debug.Log("Ikimono is free!");
+                break;
+
+            case "CatchNeko" :  
+                chained[0].GetComponent<SpriteRenderer>().enabled = false;
+                chained[0].GetComponent<LeverNeko>().Gate.GetComponent<BoxCollider2D>().enabled = false;
+                chained[0].GetComponent<BoxCollider2D>().enabled = false;
+                chained[0].GetComponent<Animator>().enabled = false;
+                gameObject.SetActive(false);
                 break;
         }
     }
