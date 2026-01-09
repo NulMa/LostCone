@@ -1,22 +1,23 @@
-using System;
-using Core;
+using _01_Scripts.UI.Title;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SceneMgr = UnityEngine.SceneManagement.SceneManager;
-namespace _01_Scripts.UI.Title
-{
-    public class StageButton : MonoBehaviour
-    {
-        [SerializeField] private int stage;
-        [SerializeField] private PositionDataSO positionData;
-        [SerializeField] private GameObject lockedObj;
 
-        private readonly string[] _stageKeys =
+    public static class Defines
+    {
+        public static string[] StageKeys =
         {
             "HalfCut",
             "Alive",
             "DSDF"
         };
+    }
+
+    public class StageButton : MonoBehaviour
+    {
+        [SerializeField] private int stage;
+        [SerializeField] private PositionDataSO positionData;
+        [SerializeField] private GameObject lockedObj;
 
         private void Awake()
         {
@@ -26,7 +27,7 @@ namespace _01_Scripts.UI.Title
         private void UpdateButton()
         {
             if (AchiveManager.instance == null) return;
-            if (AchiveManager.instance.IsAchiveCleared(_stageKeys[stage - 1]))
+            if (AchiveManager.instance.IsAchiveCleared(Defines.StageKeys[stage - 1]))
             {
                 lockedObj.SetActive(false);
             }
@@ -46,4 +47,3 @@ namespace _01_Scripts.UI.Title
             SceneMgr.sceneLoaded -= HandleSceneLoaded;
         }
     }
-}
