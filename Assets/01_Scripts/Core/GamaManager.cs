@@ -86,6 +86,12 @@ public class GamaManager : MonoBehaviour
 
         if(currentStageID != 0)
             rain.SetActive(false);
+
+        if (ItemDataManager.Instance != null && ItemDataManager.Instance.itemCount != 1)
+        {
+            if (UIManager != null)
+                UIManager.UpdateItemCount(ItemDataManager.Instance.itemCount, ItemDataManager.Instance.bools.Length);
+        }
     }
 
     public void achiveCall(string key)

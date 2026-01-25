@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/SceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/link.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +36,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Real__Develop",
+    "git-widget-placeholder": "PaperFlower",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -111,6 +116,7 @@
       <workItem from="1767336699977" duration="3481000" />
       <workItem from="1767455873667" duration="3369000" />
       <workItem from="1767515946206" duration="2401000" />
+      <workItem from="1769316505537" duration="7382000" />
     </task>
     <servers />
   </component>
