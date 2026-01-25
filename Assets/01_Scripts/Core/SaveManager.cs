@@ -83,7 +83,7 @@ namespace Core
         public void ClearAllData()
         {
             string path = Application.persistentDataPath;
-            string[] files = Directory.GetFiles(path);
+            string[] files = Directory.GetFiles(path, "*.json");
 
             foreach (string file in files)
             {
