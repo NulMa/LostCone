@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Player;
 using Core;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
     public float dashDuration = 0.2f; // 대시 지속 시간(초)
     public float dashCooldown = 1f; // 대시 쿨타임(초)
     private float lastDashTime;
+    public DashEffect dashEffect;
     
     public bool IsDashing => Time.time - lastDashTime < dashDuration;
 
@@ -513,6 +515,8 @@ public class Player : MonoBehaviour
         Vector2 dir = sprite.flipX ? Vector2.left : Vector2.right;
         rigid.AddForce(dir * (speed * dashMultiplier), ForceMode2D.Impulse);
         lastDashTime = Time.time;
+        dashEffect.PlayEffect();
+        dashEffect.SetFlip(sprite.flipX);
         //StartCoroutine(DashRoutine());
     }
 
