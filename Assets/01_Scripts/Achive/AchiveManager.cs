@@ -120,10 +120,8 @@ public class AchiveManager : MonoBehaviour {
             var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
             var image = go.GetComponent<Image>();
 
-            // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
             Image iconImage = null;
-            // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
-            Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
+            Transform iconTransform = go.transform.Find("IconImage"); // Find 안에 있는 내용과 일치하는 게임 오브젝트
             if (iconTransform != null) {
                 iconImage = iconTransform.GetComponent<Image>();
             }
@@ -144,7 +142,7 @@ public class AchiveManager : MonoBehaviour {
                     texts[2].text = location; // 업적 위치 표시
                     clearCount++;
 
-                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시합니다.
+                    //아이콘을 찾아 표시
                     if (iconImage != null && achive.icon != null) {
                         iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
                         iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
@@ -158,12 +156,11 @@ public class AchiveManager : MonoBehaviour {
                     texts[1].text = "???";
                     texts[2].text = location; // 업적 위치 표시
 
-                    // [수정 시작] 클리어하지 않았다면 아이콘을 숨깁니다.
+                    //클리어하지 않았다면 아이콘을 숨김
                     if (iconImage != null) {
                         iconImage.sprite = null;
                         iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
                     }
-                    // [수정 끝]
                 }
             }
         }
