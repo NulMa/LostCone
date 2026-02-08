@@ -17,10 +17,15 @@ public class AchiveData {
     public string key;         // 업적 고유 키 (로컬화용)
     public bool isClear;       // 클리어 여부
     public AchiveType type;    // 업적 타입
+    
+    // [추가] 업적 아이콘을 저장할 Sprite 타입의 필드
+    // public으로 선언해야 Unity Inspector 창에서 보입니다.
+    public Sprite icon;        
 
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
+        this.icon = null; // 생성자에서 기본값은 null로 설정
         isClear = false;
     }
 }
@@ -102,37 +107,68 @@ public class AchiveManager : MonoBehaviour {
         if (achiveListParent == null || achiveItemPrefab == null)
             return;
 
+        // 기존 UI 오브젝트 삭제
         foreach (Transform child in achiveListParent)
             Destroy(child.gameObject);
 
         int clearCount = 0;
         foreach (var achive in achives) {
+            // 프리팹 생성
             GameObject go = Instantiate(achiveItemPrefab, achiveListParent);
+            
+            // 컴포넌트 찾아오기
             var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
             var image = go.GetComponent<Image>();
+
+            // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
+            Image iconImage = null;
+            // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
+            Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
+            if (iconTransform != null) {
+                iconImage = iconTransform.GetComponent<Image>();
+            }
+            // [수정 끝]
+
             if (image != null) {
                 image.color = achive.isClear ? Color.white : new Color(0.6f, 0.6f, 0.6f);
             }
 
             if (texts.Length >= 3) {
                 if (achive.isClear) {
+                    // 업적 클리어 시
                     string name = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_name");
                     string desc = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_desc");
-                    string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive",achive.type.ToString());
+                    string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = name;
                     texts[1].text = desc;
                     texts[2].text = location; // 업적 위치 표시
                     clearCount++;
+
+                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시합니다.
+                    if (iconImage != null && achive.icon != null) {
+                        iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
+                        iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
+                    }
+                    // [수정 끝]
                 }
                 else {
+                    // 업적 미달성 시
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = "???";
                     texts[1].text = "???";
                     texts[2].text = location; // 업적 위치 표시
+
+                    // [수정 시작] 클리어하지 않았다면 아이콘을 숨깁니다.
+                    if (iconImage != null) {
+                        iconImage.sprite = null;
+                        iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
+                    }
+                    // [수정 끝]
                 }
             }
         }
 
+        // 전체 달성률 UI 업데이트
         achiveSlider.value = clearCount / (float)achives.Count;
         achivePercentText.text = $"{clearCount} / {achives.Count}";
     }
