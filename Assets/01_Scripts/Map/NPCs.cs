@@ -188,7 +188,7 @@ public class NPCs : MonoBehaviour {
 
             case "CatchNeko" :  
                 chained[0].GetComponent<SpriteRenderer>().enabled = false;
-                chained[0].GetComponent<LeverNeko>().Gate.GetComponent<BoxCollider2D>().enabled = false;
+                chained[0].GetComponent<LeverNeko>().Cleard();
                 chained[0].GetComponent<BoxCollider2D>().enabled = false;
                 chained[0].GetComponent<Animator>().enabled = false;
 

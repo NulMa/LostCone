@@ -30,6 +30,7 @@ public class LeverNeko : MonoBehaviour
             anim.SetTrigger("ActiveLever");
             Gate.GetComponent<Animator>().SetBool("Close", true);
             Lever.GetComponent<Animator>().SetBool("Close", true);
+            backDoor.GetComponent<Animator>().SetBool("Close", true);
         }
     }
 
@@ -40,6 +41,7 @@ public class LeverNeko : MonoBehaviour
             anim.SetTrigger("ActiveLever");
             Gate.GetComponent<Animator>().SetBool("Close", false);
             Lever.GetComponent<Animator>().SetBool("Close", false);
+            backDoor.GetComponent<Animator>().SetBool("Close", false);
         }
     }
 
@@ -48,12 +50,12 @@ public class LeverNeko : MonoBehaviour
     {
         Gate.GetComponent<Animator>().SetBool("Close", false);
         Lever.GetComponent<Animator>().SetBool("Close", false);
+        backDoor.GetComponent<Animator>().SetBool("Close", false);
 
         //just deactivate components
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Animator>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-
     }
 
 }

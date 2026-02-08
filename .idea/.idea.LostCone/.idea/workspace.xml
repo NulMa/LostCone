@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/TongaryDashEffect.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/TongaryDashEffect.controller" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +115,8 @@
       <workItem from="1767455873667" duration="3369000" />
       <workItem from="1767515946206" duration="2401000" />
       <workItem from="1769316505537" duration="7382000" />
-      <workItem from="1769942416502" duration="958000" />
+      <workItem from="1769942416502" duration="1890000" />
+      <workItem from="1770542546222" duration="1243000" />
     </task>
     <servers />
   </component>
