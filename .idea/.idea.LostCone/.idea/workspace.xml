@@ -5,11 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/TongaryDashEffect.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/TongaryDashEffect.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/MonoSingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/MonoSingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SettingUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/Bouncing.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/Bouncing.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/DontDestroy/SettingUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/DontDestroy/SettingUI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/running.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/running.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/slowsteps.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/slowsteps.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/walking.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/grass/walking.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/running.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/running.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/slow steps.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/slow steps.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/walking.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/StepsLoop/snow/walking.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound/grass.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound/grass.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound/snow.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Footstep(Snow and Grass)/Stepssingle sound/snow.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ObjectPool/PoolManagerSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObjectPool/PoolManagerSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ObjectPool/RunTime/PoolManagerMono.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObjectPool/RunTime/PoolManagerMono.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Bouncing (6).controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Bouncing (6).controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Move.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Tongary/Anim/Tongary_Move.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +140,9 @@
       <workItem from="1769316505537" duration="7382000" />
       <workItem from="1769942416502" duration="1890000" />
       <workItem from="1770542546222" duration="1266000" />
+      <workItem from="1771083283822" duration="5960000" />
+      <workItem from="1771117946256" duration="939000" />
+      <workItem from="1771125852122" duration="1835000" />
     </task>
     <servers />
   </component>

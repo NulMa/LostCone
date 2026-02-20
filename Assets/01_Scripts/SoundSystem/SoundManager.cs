@@ -14,8 +14,9 @@ namespace Blade.Managers
         
         private Dictionary<int, SoundPlayer> _soundPlayerDict = new();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             GameEventBus.AddListener<PlaySFXEvent>(HandlePlaySFXEvent);
             GameEventBus.AddListener<StopSoundEvent>(HandleStopSoundEvent);
         }

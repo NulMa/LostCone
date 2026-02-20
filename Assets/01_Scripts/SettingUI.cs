@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
@@ -11,14 +14,16 @@ public class SettingUI : MonoBehaviour
     public float SFX_VOLUME;
     public int Language; // 0: en, 1: jp, 2: kr;
 
+    public AudioMixer audioMixer;
     public Slider bgmSlider;
     public Slider sfxSlider;
+    public TextMeshProUGUI bgmText;
+    public TextMeshProUGUI sfxText;
     public TMP_Dropdown langDropdown;
     public GameObject SettingPanel;
     public GameObject AchivePanel;
 
     public GameObject InGameUi;
-
 
     private bool wasSettingPanelActive = false; // 이전 프레임의 SettingPanel 상태
 
@@ -164,6 +169,8 @@ public class SettingUI : MonoBehaviour
     public void OnBGMSliderChanged(float value)
     {
         BGMUSIC_VOLUME = value;
+        bgmText.text = Mathf.RoundToInt(value * 100).ToString();
+        audioMixer.SetFloat("musicVolume", Mathf.Log10(value) * 20);
         AudioManager.Instance?.SetBGMVolume(value);
         SaveSettings();
     }
@@ -171,6 +178,8 @@ public class SettingUI : MonoBehaviour
     public void OnSFXSliderChanged(float value)
     {
         SFX_VOLUME = value;
+        sfxText.text = Mathf.RoundToInt(value * 100).ToString();
+        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) * 20);
         AudioManager.Instance?.SetSFXVolume(value);
         SaveSettings();
     }

@@ -7,8 +7,9 @@ namespace KimMin.ObjectPool.RunTime
     {
         [SerializeField] private PoolManagerSO poolManager;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             poolManager.Initialize(transform);
         }
         
