@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using UnityEngine;
 
 public class LeverNeko : MonoBehaviour
@@ -10,7 +12,9 @@ public class LeverNeko : MonoBehaviour
     public GameObject Lever;
 
     public Sprite clearedSprite;
+    public SoundSO doorSound;
     Animator anim;
+    private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
     
     void Start()
     {
@@ -31,6 +35,7 @@ public class LeverNeko : MonoBehaviour
             Gate.GetComponent<Animator>().SetBool("Close", true);
             Lever.GetComponent<Animator>().SetBool("Close", true);
             backDoor.GetComponent<Animator>().SetBool("Close", true);
+            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(doorSound, Gate.transform.position));
         }
     }
 
@@ -42,6 +47,7 @@ public class LeverNeko : MonoBehaviour
             Gate.GetComponent<Animator>().SetBool("Close", false);
             Lever.GetComponent<Animator>().SetBool("Close", false);
             backDoor.GetComponent<Animator>().SetBool("Close", false);
+            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(doorSound, Gate.transform.position));
         }
     }
 
@@ -56,6 +62,7 @@ public class LeverNeko : MonoBehaviour
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Animator>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+        GameEventBus.RaiseEvent(_playSFXEvent.Initialize(doorSound, Gate.transform.position));
     }
 
 }

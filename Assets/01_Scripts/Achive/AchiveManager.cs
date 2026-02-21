@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using UnityEngine.Localization.Settings;
 
 public enum AchiveType {
@@ -44,6 +46,10 @@ public class AchiveManager : MonoBehaviour {
     public Transform achiveListParent; // 업적 리스트 UI 부모 오브젝트
     public GameObject achiveItemPrefab; // 업적 리스트 프리팹 (TextMeshProUGUI 2개: 이름, 설명)
 
+    public SoundSO achiveSound;
+    
+    private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -68,7 +74,7 @@ public class AchiveManager : MonoBehaviour {
             achive.isClear = true;
             SaveAchives();
             Debug.Log($"[AchiveManager] 업적 '{achive.key}' 달성!");
-            
+            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(achiveSound));
 
             // 업적 팝업 생성 (Canvas의 부모로)
             if (achivePopup != null && Canvas != null){

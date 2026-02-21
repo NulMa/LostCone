@@ -32,6 +32,11 @@ namespace Blade.Managers
             SoundPlayer player = PoolManagerMono.Instance.Pop<SoundPlayer>(soundPlayer);
             player.PlaySound(evt.clip);
 
+            if (evt.withPosition)
+            {
+                player.SetPosition(evt.position);
+            }
+
             if (evt.channel > 0 && evt.clip.loop)
             {
                 if (_soundPlayerDict.TryGetValue(evt.channel, out SoundPlayer beforePlayer))

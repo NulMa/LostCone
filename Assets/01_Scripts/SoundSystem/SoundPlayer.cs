@@ -29,6 +29,8 @@ namespace Blade.SoundSystem
 
         public void PlaySound(SoundSO data)
         {
+            _audioSource.spatialBlend = 0f;
+
             _audioSource.outputAudioMixerGroup = data.audioType switch
             {
                 SoundSO.AudioTypes.SFX => sfxGroup,
@@ -53,6 +55,12 @@ namespace Blade.SoundSystem
             }
 
             _audioSource.Play();
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            _audioSource.spatialBlend = 1.0f;
+            transform.position = position;
         }
 
         private async void DisableSound(float duration)

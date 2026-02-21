@@ -1,5 +1,7 @@
+using Blade.SoundSystem;
 using UnityEngine;
 using DG.Tweening;
+using PaperFlower.Core;
 
 public class ItemGet : MonoBehaviour {
     Collider2D coll;
@@ -9,6 +11,9 @@ public class ItemGet : MonoBehaviour {
     public int StageID; // 스테이지 번호
     public int ItemID; // 아이템 ID
     public bool isHave; // 보유 상태
+    public SoundSO collectSound;
+    
+    private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
 
     private void Awake() {
         if (isHave) {
@@ -26,8 +31,8 @@ public class ItemGet : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
-            AudioManager.Instance?.PlayUISFX(1); // 아이템 획득 사운드 재생
+        if (collision.CompareTag("Player")) { 
+            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(collectSound, gameObject.transform.position));
             DOTween.Kill(transform);
             isHave = true;
             gameObject.SetActive(false);
