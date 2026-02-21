@@ -7,6 +7,7 @@ namespace Code.Player
     public class PlayerFootstep : MonoBehaviour
     {
         public bool canPlay;
+        public bool isPosition;
         
         [SerializeField] private SoundSO[] stepSounds;
         private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
@@ -15,7 +16,10 @@ namespace Code.Player
         {
             if (stepSounds.Length == 0 || !canPlay) return;
             var sound = stepSounds[Random.Range(0, stepSounds.Length)];
-            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(sound));
+            if (isPosition)
+                GameEventBus.RaiseEvent(_playSFXEvent.Initialize(sound, gameObject.transform.position));
+            else
+                GameEventBus.RaiseEvent(_playSFXEvent.Initialize(sound));
         }
     }
 }

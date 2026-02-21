@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/NekoSteal.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/NekoSteal.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Achive/AchiveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Achive/AchiveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/ItemGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/ItemGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/LeverNeko.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/Item.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/Item.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/TestSHunrai.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/TestSHunrai.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/SoundPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/SoundPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/NekoChan/Anim/Run.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/NekoChan/Anim/Run.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +123,7 @@
       <workItem from="1771083283822" duration="5960000" />
       <workItem from="1771117946256" duration="939000" />
       <workItem from="1771125852122" duration="1835000" />
-      <workItem from="1771662108720" duration="1632000" />
+      <workItem from="1771662108720" duration="3540000" />
     </task>
     <servers />
   </component>
