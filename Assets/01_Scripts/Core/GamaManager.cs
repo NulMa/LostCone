@@ -102,6 +102,9 @@ public class GamaManager : MonoBehaviour
         }
     }
 
+
+
+
     public void achiveCall(string key)
     {
         //if key is not exist, return
@@ -253,6 +256,12 @@ public class GamaManager : MonoBehaviour
         // 배경 변경 시 해당 스테이지 BGM 재생
         currentStageID = number;
         PlayBGMForCurrentStage();
+
+        if (ItemDataManager.Instance != null && ItemDataManager.Instance.itemCount != 1)
+        {
+            if (UIManager != null)
+                UIManager.UpdateItemCount(ItemDataManager.Instance.itemCount, ItemDataManager.Instance.bools.Length);
+        }
     }
 
     // 현재 스테이지에 따른 BGM 재생

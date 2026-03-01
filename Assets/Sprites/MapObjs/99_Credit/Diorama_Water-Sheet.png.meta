@@ -1,0 +1,427 @@
+fileFormatVersion: 2
+guid: 2c2469c2a673b5b489aaee3a7da4a45d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7250562409753547366
+    second: Diorama_Water-Sheet_0
+  - first:
+      213: 8619433364846288036
+    second: Diorama_Water-Sheet_1
+  - first:
+      213: -5654566065716430655
+    second: Diorama_Water-Sheet_2
+  - first:
+      213: 3513932003635377223
+    second: Diorama_Water-Sheet_3
+  - first:
+      213: -894669357652166075
+    second: Diorama_Water-Sheet_4
+  - first:
+      213: 8940842632170304452
+    second: Diorama_Water-Sheet_5
+  - first:
+      213: -7206054420866089447
+    second: Diorama_Water-Sheet_6
+  - first:
+      213: 2619430189497912013
+    second: Diorama_Water-Sheet_7
+  - first:
+      213: -6146957356697625831
+    second: Diorama_Water-Sheet_8
+  - first:
+      213: -2607459588562985702
+    second: Diorama_Water-Sheet_9
+  - first:
+      213: -3995816244602888546
+    second: Diorama_Water-Sheet_10
+  - first:
+      213: 2870988673777704250
+    second: Diorama_Water-Sheet_11
+  - first:
+      213: -862881122086629903
+    second: Diorama_Water-Sheet_12
+  - first:
+      213: 5076884069929695292
+    second: Diorama_Water-Sheet_13
+  - first:
+      213: 4541555690687168776
+    second: Diorama_Water-Sheet_14
+  - first:
+      213: 3913873545838182340
+    second: Diorama_Water-Sheet_15
+  - first:
+      213: 1572498752047094706
+    second: Diorama_Water-Sheet_16
+  - first:
+      213: -2787324146904496753
+    second: Diorama_Water-Sheet_17
+  - first:
+      213: -5706507609996814295
+    second: Diorama_Water-Sheet_18
+  - first:
+      213: -581885146526079181
+    second: Diorama_Water-Sheet_19
+  - first:
+      213: -1788470632781027950
+    second: Diorama_Water-Sheet_20
+  - first:
+      213: 1105522876369019796
+    second: Diorama_Water-Sheet_21
+  - first:
+      213: 6837337990802441706
+    second: Diorama_Water-Sheet_22
+  - first:
+      213: 1221585104838077773
+    second: Diorama_Water-Sheet_23
+  - first:
+      213: -8753141083173116360
+    second: Diorama_Water-Sheet_24
+  - first:
+      213: -5536929947494353632
+    second: Diorama_Water-Sheet_25
+  - first:
+      213: 940109613877816076
+    second: Diorama_Water-Sheet_26
+  - first:
+      213: 4582435340768282391
+    second: Diorama_Water-Sheet_27
+  - first:
+      213: 3174918834863352892
+    second: Diorama_Water-Sheet_28
+  - first:
+      213: 4062043373357350348
+    second: Diorama_Water-Sheet_29
+  - first:
+      213: 6885152467418393864
+    second: Diorama_Water-Sheet_30
+  - first:
+      213: 7867858228730416617
+    second: Diorama_Water-Sheet_31
+  - first:
+      213: -6143089234363122399
+    second: Diorama_Water-Sheet_32
+  - first:
+      213: -5707869306361252587
+    second: Diorama_Water-Sheet_33
+  - first:
+      213: 5876777890137559311
+    second: Diorama_Water-Sheet_34
+  - first:
+      213: -4691412345214156432
+    second: Diorama_Water-Sheet_35
+  - first:
+      213: 9096759988003065958
+    second: Diorama_Water-Sheet_36
+  - first:
+      213: 9163792935674275809
+    second: Diorama_Water-Sheet_37
+  - first:
+      213: -7441401680370776353
+    second: Diorama_Water-Sheet_38
+  - first:
+      213: 8628574126487870535
+    second: Diorama_Water-Sheet_39
+  - first:
+      213: -7472724284147732751
+    second: Diorama_Water-Sheet_40
+  - first:
+      213: -5174164212601704869
+    second: Diorama_Water-Sheet_41
+  - first:
+      213: 2674735269852608531
+    second: Diorama_Water-Sheet_42
+  - first:
+      213: -1850808528687430774
+    second: Diorama_Water-Sheet_43
+  - first:
+      213: 4038352030202774569
+    second: Diorama_Water-Sheet_44
+  - first:
+      213: 4146156410200838192
+    second: Diorama_Water-Sheet_45
+  - first:
+      213: -8350583369419380698
+    second: Diorama_Water-Sheet_46
+  - first:
+      213: -8520284137672603842
+    second: Diorama_Water-Sheet_47
+  - first:
+      213: 6023367717943674269
+    second: Diorama_Water-Sheet_48
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6621927b81c2f9460800000000000000
+      internalID: 7250562409753547366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac10d44af06e9770800000000000000
+      internalID: 8619433364846288036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c87ef55f12f681b0800000000000000
+      internalID: -5654566065716430655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74430992a8ef3c030800000000000000
+      internalID: 3513932003635377223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 3072
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a37b995fe7593f0800000000000000
+      internalID: -894669357652166075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3fd2bd001441c70800000000000000
+      internalID: 8940842632170304452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diorama_Water-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 4608
+        y: 0
+        width: 768
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91eb42cfea3fefb90800000000000000
+      internalID: -7206054420866089447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 42630d29d2fb4f542b1ac5f1c830945d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":768.0,"y":512.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Diorama_Water-Sheet_0: 7250562409753547366
+      Diorama_Water-Sheet_1: 8619433364846288036
+      Diorama_Water-Sheet_2: -5654566065716430655
+      Diorama_Water-Sheet_3: 3513932003635377223
+      Diorama_Water-Sheet_4: -894669357652166075
+      Diorama_Water-Sheet_5: 8940842632170304452
+      Diorama_Water-Sheet_6: -7206054420866089447
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
