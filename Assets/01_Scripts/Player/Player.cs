@@ -119,7 +119,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("Parent is : " + transform.parent.name);
         groundcheckDelay = transform.parent.name == "WorstMovingTile" ? ON_MOVING_TILE : 0;
 
         if (isScenePlaying)
@@ -269,7 +268,6 @@ public class Player : MonoBehaviour
 
     void UpdateCrouchState()
     {
-        Debug.Log((inputVec2.y < -0.5f) + " / " + isGrounded + " / " + !IsDashing);
         bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !IsDashing;
 
         if (wantCrouch)
