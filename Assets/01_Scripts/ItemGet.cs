@@ -13,7 +13,7 @@ public class ItemGet : MonoBehaviour {
     public bool isHave; // 보유 상태
     public SoundSO collectSound;
     
-    private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
     private void Awake() {
         if (isHave) {
@@ -32,7 +32,7 @@ public class ItemGet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player")) { 
-            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(collectSound, gameObject.transform.position));
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(collectSound, gameObject.transform.position));
             DOTween.Kill(transform);
             isHave = true;
             gameObject.SetActive(false);

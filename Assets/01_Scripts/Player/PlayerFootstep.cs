@@ -10,16 +10,16 @@ namespace Code.Player
         public bool isPosition;
         
         [SerializeField] private SoundSO[] stepSounds;
-        private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
+        private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
         public void PlayFootstep()
         {
             if (stepSounds.Length == 0 || !canPlay) return;
             var sound = stepSounds[Random.Range(0, stepSounds.Length)];
             if (isPosition)
-                GameEventBus.RaiseEvent(_playSFXEvent.Initialize(sound, gameObject.transform.position));
+                GameEventBus.RaiseEvent(_playSoundEvent.Initialize(sound, gameObject.transform.position));
             else
-                GameEventBus.RaiseEvent(_playSFXEvent.Initialize(sound));
+                GameEventBus.RaiseEvent(_playSoundEvent.Initialize(sound));
         }
     }
 }

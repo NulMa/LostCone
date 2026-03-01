@@ -5,6 +5,7 @@ using Core;
 using KimMin.ObjectPool.RunTime;
 using PaperFlower.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Blade.Managers
 {
@@ -17,17 +18,18 @@ namespace Blade.Managers
         protected override void Awake()
         {
             base.Awake();
-            GameEventBus.AddListener<PlaySFXEvent>(HandlePlaySFXEvent);
+            GameEventBus.AddListener<PlaySoundEvent>(HandlePlaySFXEvent);
             GameEventBus.AddListener<StopSoundEvent>(HandleStopSoundEvent);
+            StopAllLoopSounds();
         }
 
         private void OnDestroy()
         {
-            GameEventBus.RemoveListener<PlaySFXEvent>(HandlePlaySFXEvent);
+            GameEventBus.RemoveListener<PlaySoundEvent>(HandlePlaySFXEvent);
             GameEventBus.RemoveListener<StopSoundEvent>(HandleStopSoundEvent);
         }
 
-        private void HandlePlaySFXEvent(PlaySFXEvent evt)
+        private void HandlePlaySFXEvent(PlaySoundEvent evt)
         {
             SoundPlayer player = PoolManagerMono.Instance.Pop<SoundPlayer>(soundPlayer);
             player.PlaySound(evt.clip);
@@ -59,6 +61,15 @@ namespace Blade.Managers
                 beforePlayer.StopAndGotoPool();
                 _soundPlayerDict.Remove(evt.channel);
             }
+        }
+        
+        public void StopAllLoopSounds()
+        {
+            foreach (var pair in _soundPlayerDict)
+            {
+                pair.Value.StopAndGotoPool();
+            }
+            _soundPlayerDict.Clear();
         }
     }
 }

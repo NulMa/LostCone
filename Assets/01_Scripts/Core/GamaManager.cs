@@ -2,7 +2,9 @@ using System;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
 using Core;
+using PaperFlower.Core;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization;
@@ -41,7 +43,13 @@ public class GamaManager : MonoBehaviour
     public int currentStageID;
 
     public bool isLastSceneCleared = false;
+    
+    public SoundSO[] bgm;
 
+    
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
+    private readonly StopSoundEvent _stopSoundEvent = new StopSoundEvent();
+    private int _channel = 100;
 
     private void Awake()
     {
@@ -250,28 +258,10 @@ public class GamaManager : MonoBehaviour
     // 현재 스테이지에 따른 BGM 재생
     public void PlayBGMForCurrentStage()
     {
-        if (AudioManager.Instance == null)
-        {
-            Debug.LogWarning("AudioManager 인스턴스가 없습니다.");
-            return;
-        }
-
-        // 스테이지별 BGM 인덱스 설정 (필요에 따라 수정)
-        switch (currentStageID)
-        {
-            case 0:
-                AudioManager.Instance.PlayBGM(0); // 첫 번째 BGM
-                break;
-            case 1:
-                AudioManager.Instance.PlayBGM(1); // 두 번째 BGM
-                break;
-            case 2:
-                AudioManager.Instance.PlayBGM(2); // 세 번째 BGM
-                break;
-            default:
-                AudioManager.Instance.PlayBGM(0); // 기본 BGM
-                break;
-        }
+        GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_channel));
+        int channel = 100 + currentStageID;
+        _channel = channel;
+        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(bgm[currentStageID], channel));
     }
 
     // AudioManager SFX 실행 함수들

@@ -48,7 +48,7 @@ public class AchiveManager : MonoBehaviour {
 
     public SoundSO achiveSound;
     
-    private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
     private void Awake() {
         if (instance == null) {
@@ -74,7 +74,7 @@ public class AchiveManager : MonoBehaviour {
             achive.isClear = true;
             SaveAchives();
             Debug.Log($"[AchiveManager] 업적 '{achive.key}' 달성!");
-            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(achiveSound));
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(achiveSound));
 
             // 업적 팝업 생성 (Canvas의 부모로)
             if (achivePopup != null && Canvas != null){

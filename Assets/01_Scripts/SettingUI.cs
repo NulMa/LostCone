@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Blade.Managers;
 using Blade.SoundSystem;
 using PaperFlower.Core;
 using TMPro;
@@ -126,6 +127,7 @@ public class SettingUI : MonoBehaviour
         }
         
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        SoundManager.Instance.StopAllLoopSounds();
     }
 
     public void gameExit(){

@@ -9,14 +9,14 @@ namespace Code.Player
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer renderer;
         [SerializeField] private SoundSO dashSound;
-        private readonly PlaySFXEvent _playSFXEvent = new PlaySFXEvent();
+        private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
         private float _dashCooltime = 0.5f;
 
         public void PlayEffect()
         {
             animator?.SetTrigger("OnDash");
-            GameEventBus.RaiseEvent(_playSFXEvent.Initialize(dashSound));
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(dashSound));
         }
 
         public void SetFlip(bool isFlipX)

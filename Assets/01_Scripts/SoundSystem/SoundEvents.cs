@@ -4,18 +4,18 @@ using UnityEngine;
 
 public static class SoundEvents
 {
-    public static PlaySFXEvent PlaySFXEvent = new PlaySFXEvent();
+    public static PlaySoundEvent PlaySoundEvent = new PlaySoundEvent();
     public static StopSoundEvent StopSoundEvent = new StopSoundEvent();
 }
 
-public class PlaySFXEvent : GameEvent
+public class PlaySoundEvent : GameEvent
 {
     public SoundSO clip;
     public Vector3 position;
     public bool withPosition = false;
     public int channel;
 
-    public PlaySFXEvent Initialize(SoundSO clip, Vector3 position, int channel = 0)
+    public PlaySoundEvent Initialize(SoundSO clip, Vector3 position, int channel = 0)
     {
         this.clip = clip;
         this.position = position;
@@ -24,7 +24,7 @@ public class PlaySFXEvent : GameEvent
         return this;
     }
     
-    public PlaySFXEvent Initialize(SoundSO clip, int channel = 0)
+    public PlaySoundEvent Initialize(SoundSO clip, int channel = 0)
     {
         this.clip = clip;
         this.channel = channel;
