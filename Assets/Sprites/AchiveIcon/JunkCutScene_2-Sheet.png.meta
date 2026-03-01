@@ -1,0 +1,1826 @@
+fileFormatVersion: 2
+guid: 562d4e343fad7a540b556b50de541f07
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8063428784827020403
+    second: JunkCutScene_2-Sheet_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374364702cd07ef60800000000000000
+      internalID: 8063428784827020403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30c9905af0ca773498dcb9b9515c3cd5
+      internalID: -1878057064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4b587aa1f2cc543903b97209f920cb
+      internalID: -1755072052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a169127628cf41b44a2541034b755e54
+      internalID: 1838098704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e5006cff183174eb5b0f7226e57db4
+      internalID: 602786961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e5bbae838db7746aa9c3992ae8170d
+      internalID: -2137052555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925efeca2e3a4f54c90281074aa20596
+      internalID: -1298203633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57751a06513e740488154b187c4ad88c
+      internalID: 467307563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 864
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e4e7db5cda48db4a8887da4b5c4061f
+      internalID: 1860216272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3478f2dae9fadae469df89140dfe5c8d
+      internalID: -1089250361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3052bfff745e412439db05272cc12985
+      internalID: 1048885781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b81783b3615d849bc5b05f5a2104a6
+      internalID: 972649093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ecb6a185fd34b458a09391b8e949b9
+      internalID: 1075163590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f1a21a974d9567438c23fabb44a7447
+      internalID: -1043599325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbab029f434b4414bad66c88dd0af30a
+      internalID: 758478445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4886136f001dbcd4cb27582645ac8045
+      internalID: 1380583404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29506362275e9554a82c32729348f3db
+      internalID: -1008478925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 756
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977cb78862e956e43b73ad1ef8847d8f
+      internalID: -298675957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64667fabfce58f48a357ce1a015fb21
+      internalID: -1380177753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19918874f3d2aae4cb31188321f3acfb
+      internalID: 920861468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c6fde8caab7074e9a091b3ea4a8592
+      internalID: 578942543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d25b33038616314f8d4d7d645dbb485
+      internalID: 1079841130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d48df0d5174b7b441a15a248a988668e
+      internalID: -1869908257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31942a58198ba9946adce80fc573be35
+      internalID: 251243572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cadc5836f6e1a04697cf6af2c96cb49
+      internalID: -1201602990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 117d332cbcd906146892c1027d4a034c
+      internalID: 2041364207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 648
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c47e64f28c415e4fa5e66b5404936bd
+      internalID: 609736336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf4b976ccc5781448d6b4b8cbbd5639
+      internalID: -1697266822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77300f3ff053e8244b7cee4a057b664f
+      internalID: -11673008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0f2707d03c4f5b4aafa2792591a58bf
+      internalID: -1972771199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb6337b2c9621541ad073dc99344904
+      internalID: -958253535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d918b968beac53d4c82a28b8dcd7fa54
+      internalID: -1344188573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511fbe46b8e4d2649a16aa5fa95eba3e
+      internalID: -563081563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ea822795bf709488a4b462b2ed5737
+      internalID: 2025582072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4956543e02be91a42b2fcb21145ab2a2
+      internalID: 1380577519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 540
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a79dff84a623c46bfca43e3467035f
+      internalID: -684179259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1a131e3a731c549b29a048d4dcffce
+      internalID: 1439391589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01aecb28f3d023a48b5146361ec38cc8
+      internalID: 465128766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d898d8198ef8845938c493eebf15f5
+      internalID: 1663144576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e4ed7bd0c232e94587597030e7a10a5
+      internalID: -992261459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fae7090981b9a247900c0ea1e064f18
+      internalID: 1018991313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902c204515e59fc4db5be5e17a4596c5
+      internalID: -1504996366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9276f871a121a541997c956942b8aa2
+      internalID: 1681347371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb21a33a2d6ffa244a454521aa413994
+      internalID: -11546209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 432
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5dba516fab1874ab9ca4e50b2b8f9b
+      internalID: 1802326279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaf4c0322abbb0848bfdde3d8fff0e17
+      internalID: 77551700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fbdadd6ca98228488441562b23996d7
+      internalID: 790465937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 171eb7af1a821af42872c8395fb56d48
+      internalID: -441356445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2633e2a76ad78f4ebbeb8e7b2a1f8cb
+      internalID: -1078633373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6861225146989c84eb826e32442e28d3
+      internalID: -1382244312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ddbc872f629f147a5c7b14918758bd
+      internalID: 1694198047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 248456e2e3f3df24aaeb7d52a94e7d1d
+      internalID: -1122439108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0913f9af7b41d45418c6ad3a8889cb70
+      internalID: -996015366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 324
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0437afd54cfa3c34799208afca5eb7a0
+      internalID: 1675362283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2694f490ddd5ae1418490157872632f4
+      internalID: -1505472822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 014fb4b6b7bee7f42add275ddb9a2609
+      internalID: 658277908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ae1efa63706da4b8e2ac52858aab08
+      internalID: 797957822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ab543166311be4c8cc9d62a8ddcf85
+      internalID: -1293136478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbc2b35948350a45923f62afb06b0d8
+      internalID: 587116125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a0b4d0bc03c894589ecabfb0d3f42c
+      internalID: 1073902534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5121c105b9d9140acebfad2996a218
+      internalID: 1373722757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740b99a8fe3c86d468abe5cc349ff069
+      internalID: 837380665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 216
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8feb407deb15d1947bb42b5d9d90c595
+      internalID: 175884764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f93822dd90ef24693bd965d7ae396c
+      internalID: -766354401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edef2bc14e72f754dbb74ecfcf2ae2a0
+      internalID: 1032155815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e84076d4161ff746b93bd8e9034584d
+      internalID: -591603630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e0b05cdcc6e274cbd1f212efd28678
+      internalID: 752214889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ffdd5058c6e9d4d8f3aa7ce577e7be
+      internalID: 1394069971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dfba91da3e52744ba1a569bd290e341
+      internalID: -401966064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d977bac02bc7020448e0829adda3d510
+      internalID: -308462446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5f731c07afdc942a47f1526a4b3974
+      internalID: 858399359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 108
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0797b6e8d9691142a09c9fe2a3abc7e
+      internalID: 1884580091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 192
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b987a71dfafc9949a3f2fe611e2f103
+      internalID: 1112306477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: JunkCutScene_2-Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 1689
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13f24e93a8d5194b8d00144af11aa61
+      internalID: 1109980257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3b66913ea464ae54a9bc3aa2b5312f8c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":192.0,"y":108.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      JunkCutScene_2-Sheet_0: 8063428784827020403
+      JunkCutScene_2-Sheet_1: -1878057064
+      JunkCutScene_2-Sheet_10: 1048885781
+      JunkCutScene_2-Sheet_11: 972649093
+      JunkCutScene_2-Sheet_12: 1075163590
+      JunkCutScene_2-Sheet_13: -1043599325
+      JunkCutScene_2-Sheet_14: 758478445
+      JunkCutScene_2-Sheet_15: 1380583404
+      JunkCutScene_2-Sheet_16: -1008478925
+      JunkCutScene_2-Sheet_17: -298675957
+      JunkCutScene_2-Sheet_18: -1380177753
+      JunkCutScene_2-Sheet_19: 920861468
+      JunkCutScene_2-Sheet_2: -1755072052
+      JunkCutScene_2-Sheet_20: 578942543
+      JunkCutScene_2-Sheet_21: 1079841130
+      JunkCutScene_2-Sheet_22: -1869908257
+      JunkCutScene_2-Sheet_23: 251243572
+      JunkCutScene_2-Sheet_24: -1201602990
+      JunkCutScene_2-Sheet_25: 2041364207
+      JunkCutScene_2-Sheet_26: 609736336
+      JunkCutScene_2-Sheet_27: -1697266822
+      JunkCutScene_2-Sheet_28: -11673008
+      JunkCutScene_2-Sheet_29: -1972771199
+      JunkCutScene_2-Sheet_3: 1838098704
+      JunkCutScene_2-Sheet_30: -958253535
+      JunkCutScene_2-Sheet_31: -1344188573
+      JunkCutScene_2-Sheet_32: -563081563
+      JunkCutScene_2-Sheet_33: 2025582072
+      JunkCutScene_2-Sheet_34: 1380577519
+      JunkCutScene_2-Sheet_35: -684179259
+      JunkCutScene_2-Sheet_36: 1439391589
+      JunkCutScene_2-Sheet_37: 465128766
+      JunkCutScene_2-Sheet_38: 1663144576
+      JunkCutScene_2-Sheet_39: -992261459
+      JunkCutScene_2-Sheet_4: 602786961
+      JunkCutScene_2-Sheet_40: 1018991313
+      JunkCutScene_2-Sheet_41: -1504996366
+      JunkCutScene_2-Sheet_42: 1681347371
+      JunkCutScene_2-Sheet_43: -11546209
+      JunkCutScene_2-Sheet_44: 1802326279
+      JunkCutScene_2-Sheet_45: 77551700
+      JunkCutScene_2-Sheet_46: 790465937
+      JunkCutScene_2-Sheet_47: -441356445
+      JunkCutScene_2-Sheet_48: -1078633373
+      JunkCutScene_2-Sheet_49: -1382244312
+      JunkCutScene_2-Sheet_5: -2137052555
+      JunkCutScene_2-Sheet_50: 1694198047
+      JunkCutScene_2-Sheet_51: -1122439108
+      JunkCutScene_2-Sheet_52: -996015366
+      JunkCutScene_2-Sheet_53: 1675362283
+      JunkCutScene_2-Sheet_54: -1505472822
+      JunkCutScene_2-Sheet_55: 658277908
+      JunkCutScene_2-Sheet_56: 797957822
+      JunkCutScene_2-Sheet_57: -1293136478
+      JunkCutScene_2-Sheet_58: 587116125
+      JunkCutScene_2-Sheet_59: 1073902534
+      JunkCutScene_2-Sheet_6: -1298203633
+      JunkCutScene_2-Sheet_60: 1373722757
+      JunkCutScene_2-Sheet_61: 837380665
+      JunkCutScene_2-Sheet_62: 175884764
+      JunkCutScene_2-Sheet_63: -766354401
+      JunkCutScene_2-Sheet_64: 1032155815
+      JunkCutScene_2-Sheet_65: -591603630
+      JunkCutScene_2-Sheet_66: 752214889
+      JunkCutScene_2-Sheet_67: 1394069971
+      JunkCutScene_2-Sheet_68: -401966064
+      JunkCutScene_2-Sheet_69: -308462446
+      JunkCutScene_2-Sheet_7: 467307563
+      JunkCutScene_2-Sheet_70: 858399359
+      JunkCutScene_2-Sheet_71: 1884580091
+      JunkCutScene_2-Sheet_72: 1112306477
+      JunkCutScene_2-Sheet_73: 1109980257
+      JunkCutScene_2-Sheet_8: 1860216272
+      JunkCutScene_2-Sheet_9: -1089250361
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
