@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Tongary
 {
     public class MessageSender : MonoBehaviour
     {
