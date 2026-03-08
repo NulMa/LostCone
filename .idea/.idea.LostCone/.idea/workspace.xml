@@ -5,20 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/AirFan.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/AirFan.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/PunchMachine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/PunchMachine.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/SFXPlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/SFXPlayer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene_feat2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene_feat2.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/DashEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/MessageDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/MessageDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/MessageSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/MessageSender.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/PlayerFootstep.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/DontDestroy/SettingUI.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/DontDestroy/SettingUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/Map/PunchMachine/PunchMachine.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/Map/PunchMachine/PunchMachine.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Clips/DashEffect.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Clips/click.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Clips/collect.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Clips/interactFail.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/Clips/notification1.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/Achivement.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/Achivement.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/CollectItem.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/CollectItem.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/Dash.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/Dash.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/InteractFail.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/InteractFail.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/InteractSucess.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/InteractSucess.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +40,7 @@
     <setting file="file://$USER_HOME$/OneDrive/문서/GitHub/LostCone/Assets/01_Scripts/Map/NPCs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/OneDrive/문서/GitHub/LostCone/Assets/01_Scripts/Player/PlayerFootstep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/OneDrive/문서/GitHub/LostCone/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/01_Scripts/Map/SFXPlayer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -138,7 +145,7 @@
       <workItem from="1772341712612" duration="1400000" />
       <workItem from="1772351831806" duration="10179000" />
       <workItem from="1772952465320" duration="4208000" />
-      <workItem from="1772956934958" duration="2418000" />
+      <workItem from="1772956934958" duration="4856000" />
     </task>
     <servers />
   </component>
