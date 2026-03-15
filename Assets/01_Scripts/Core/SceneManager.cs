@@ -32,6 +32,7 @@ public class SceneManager : MonoBehaviour{
         Debug.Log("isdone");
         scenes[sceneNum].isDone = true;
         SaveSceneData();
+        ItemDataManager.Instance.itemCount = 0;
         GamaManager.Instance.SaveGame();
         GamaManager.Instance.player.isScenePlaying = false;
     }

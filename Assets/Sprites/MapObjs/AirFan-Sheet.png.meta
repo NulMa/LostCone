@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 28e919ce9f757e44099ac80d7d846a93
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3614998024604481072
+    second: AirFan-Sheet_0
+  - first:
+      213: 8883193828041876616
+    second: AirFan-Sheet_1
+  - first:
+      213: 7175515286977605454
+    second: AirFan-Sheet_2
+  - first:
+      213: -1156373837333881083
+    second: AirFan-Sheet_3
+  - first:
+      213: 5998155793513592970
+    second: AirFan-Sheet_4
+  - first:
+      213: 4991641470842543380
+    second: AirFan-Sheet_5
+  - first:
+      213: 6488780984693813717
+    second: AirFan-Sheet_6
+  - first:
+      213: 8511899424631433940
+    second: AirFan-Sheet_7
+  - first:
+      213: -3259677741608496280
+    second: AirFan-Sheet_8
+  - first:
+      213: 5300000471340311872
+    second: AirFan-Sheet_9
+  - first:
+      213: 9130487956546443744
+    second: AirFan-Sheet_10
+  - first:
+      213: -3834705229266242902
+    second: AirFan-Sheet_11
+  - first:
+      213: -2711642542370792536
+    second: AirFan-Sheet_12
+  - first:
+      213: -4194792420627900854
+    second: AirFan-Sheet_13
+  - first:
+      213: -6534030875608482112
+    second: AirFan-Sheet_14
+  - first:
+      213: -1420821163729939056
+    second: AirFan-Sheet_15
+  - first:
+      213: 5935086564139592522
+    second: AirFan-Sheet_16
+  - first:
+      213: -1460326743745905940
+    second: AirFan-Sheet_17
+  - first:
+      213: 1941352651178553902
+    second: AirFan-Sheet_18
+  - first:
+      213: -7546957076689348300
+    second: AirFan-Sheet_19
+  - first:
+      213: -1819610968702124770
+    second: AirFan-Sheet_20
+  - first:
+      213: 4667435509144383685
+    second: AirFan-Sheet_21
+  - first:
+      213: 933122453389526816
+    second: AirFan-Sheet_22
+  - first:
+      213: 1185318075698308790
+    second: AirFan-Sheet_23
+  - first:
+      213: -2140787495978065888
+    second: AirFan-Sheet_24
+  - first:
+      213: 1359099335396731349
+    second: AirFan-Sheet_25
+  - first:
+      213: -6523111415932956952
+    second: AirFan-Sheet_26
+  - first:
+      213: -1322397109447588197
+    second: AirFan-Sheet_27
+  - first:
+      213: -1996913393460041573
+    second: AirFan-Sheet_28
+  - first:
+      213: 6514795914080287809
+    second: AirFan-Sheet_29
+  - first:
+      213: 4455478934804920095
+    second: AirFan-Sheet_30
+  - first:
+      213: -3956406458826973202
+    second: AirFan-Sheet_31
+  - first:
+      213: 5880359870288964664
+    second: AirFan-Sheet_32
+  - first:
+      213: -4269123975867902027
+    second: AirFan-Sheet_33
+  - first:
+      213: -691667523353482395
+    second: AirFan-Sheet_34
+  - first:
+      213: -7340230564332581284
+    second: AirFan-Sheet_35
+  - first:
+      213: -8198890244383713419
+    second: AirFan-Sheet_36
+  - first:
+      213: 4224284157936483263
+    second: AirFan-Sheet_37
+  - first:
+      213: -3033938782944895927
+    second: AirFan-Sheet_38
+  - first:
+      213: 5985502096371408567
+    second: AirFan-Sheet_39
+  - first:
+      213: 532469951342613634
+    second: AirFan-Sheet_40
+  - first:
+      213: -4971093888174590343
+    second: AirFan-Sheet_41
+  - first:
+      213: -7848019080622820302
+    second: AirFan-Sheet_42
+  - first:
+      213: -5007534462033911854
+    second: AirFan-Sheet_43
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AirFan-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 036f940ec8d0b2230800000000000000
+      internalID: 3614998024604481072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AirFan-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 884e06fa8b1774b70800000000000000
+      internalID: 8883193828041876616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AirFan-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f6fa0d22d849360800000000000000
+      internalID: 7175515286977605454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AirFan-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f98262f1cb3ffe0800000000000000
+      internalID: -1156373837333881083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":2.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      AirFan-Sheet_0: 3614998024604481072
+      AirFan-Sheet_1: 8883193828041876616
+      AirFan-Sheet_2: 7175515286977605454
+      AirFan-Sheet_3: -1156373837333881083
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

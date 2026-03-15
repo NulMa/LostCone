@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using UnityEngine.Localization.Settings;
 
 public enum AchiveType {
@@ -14,16 +16,18 @@ public enum AchiveType {
 
 [Serializable]
 public class AchiveData {
-    public string key;
-    public bool isClear;
-    public AchiveType type;
-    public AnimationClip clearAnimation;
-    public Sprite icon;
+    public string key;         // 업적 고유 키 (로컬화용)
+    public bool isClear;       // 클리어 여부
+    public AchiveType type;    // 업적 타입
+    
+    // [추가] 업적 아이콘을 저장할 Sprite 타입의 필드
+    // public으로 선언해야 Unity Inspector 창에서 보입니다.
+    public Sprite icon;        
 
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
-        this.icon = null;
+        this.icon = null; // 생성자에서 기본값은 null로 설정
         isClear = false;
     }
 }
@@ -33,12 +37,18 @@ public class AchiveManager : MonoBehaviour {
     public static AchiveManager instance;
     public List<AchiveData> achives = new List<AchiveData>();
     public GameObject achivePopup;
-    public Canvas Canvas;
-    public Slider achiveSlider;
-    public TextMeshProUGUI achivePercentText;
-    public Sprite lockIcon;
-    public Transform achiveListParent;
-    public GameObject achiveItemPrefab;
+    public Canvas Canvas; // 업적 팝업을 표시할 캔버스 (UI용, 필요시 할당)
+
+    public Slider achiveSlider; // 업적 달성률 슬라이더 (UI용, 필요시 할당)
+    public TextMeshProUGUI achivePercentText; // 업적 달성률 % 표시 (UI용, 필요시 할당)
+
+    // UI용
+    public Transform achiveListParent; // 업적 리스트 UI 부모 오브젝트
+    public GameObject achiveItemPrefab; // 업적 리스트 프리팹 (TextMeshProUGUI 2개: 이름, 설명)
+
+    public SoundSO achiveSound;
+    
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
     private void Awake() {
         if (instance == null) {
@@ -52,16 +62,28 @@ public class AchiveManager : MonoBehaviour {
         }
     }
 
+    public void AchiveSort()
+    {
+
+    }
+
+    // 업적 달성 설정 (외부에서 호출)
     public void SetAchiveClear(string key) {
         var achive = achives.Find(a => a.key == key);
         if (achive != null && !achive.isClear) {
             achive.isClear = true;
             SaveAchives();
+            Debug.Log($"[AchiveManager] 업적 '{achive.key}' 달성!");
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(achiveSound));
+
+            // 업적 팝업 생성 (Canvas의 부모로)
             if (achivePopup != null && Canvas != null){
                 GameObject popupObj = Instantiate(achivePopup, Canvas.transform);
+
+                // 1번째 자식의 TextMeshProUGUI에 업적 이름 입력
                 if (popupObj.transform.childCount > 1){
                     Transform child = popupObj.transform.GetChild(1);
-                    var tmp = child.GetComponent<TextMeshProUGUI>();
+                    var tmp = child.GetComponent<TMPro.TextMeshProUGUI>();
                     if (tmp != null){
                         string name = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_name");
                         tmp.text = name;
@@ -71,6 +93,7 @@ public class AchiveManager : MonoBehaviour {
         }
     }
 
+    // 업적 저장
     public void SaveAchives() {
         foreach (var achive in achives) {
             PlayerPrefs.SetInt("achive_" + achive.key, achive.isClear ? 1 : 0);
@@ -78,93 +101,86 @@ public class AchiveManager : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
+    // 업적 불러오기
     public void LoadAchives() {
         foreach (var achive in achives) {
             achive.isClear = PlayerPrefs.GetInt("achive_" + achive.key, 0) == 1;
         }
     }
 
+    // 업적 UI 새로고침
     public void RefreshUI() {
         if (achiveListParent == null || achiveItemPrefab == null)
             return;
 
+        // 기존 UI 오브젝트 삭제
         foreach (Transform child in achiveListParent)
             Destroy(child.gameObject);
 
         int clearCount = 0;
         foreach (var achive in achives) {
+            // 프리팹 생성
             GameObject go = Instantiate(achiveItemPrefab, achiveListParent);
-            var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
             
-            Image backgroundImage = go.GetComponent<Image>();
-            if (backgroundImage != null) {
-                backgroundImage.color = achive.isClear ? Color.white : new Color(0.6f, 0.6f, 0.6f);
-            }
+            // 컴포넌트 찾아오기
+            var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
+            var image = go.GetComponent<Image>();
 
+            // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
             Image iconImage = null;
-            Transform iconTransform = go.transform.Find("IconImage");
+            // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
+            Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
             if (iconTransform != null) {
                 iconImage = iconTransform.GetComponent<Image>();
+            }
+            // [수정 끝]
+
+            if (image != null) {
+                image.color = achive.isClear ? Color.white : new Color(0.6f, 0.6f, 0.6f);
             }
 
             if (texts.Length >= 3) {
                 if (achive.isClear) {
+                    // 업적 클리어 시
+                    string name = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_name");
+                    string desc = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_desc");
+                    string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
+                    texts[0].text = name;
+                    texts[1].text = desc;
+                    texts[2].text = location; // 업적 위치 표시
                     clearCount++;
-                    texts[0].text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_name");
-                    texts[1].text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.key + "_desc");
-                    texts[2].text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
 
-                    if (iconImage != null) {
-                        // 기본 아이콘 설정
-                        if (achive.icon != null) {
-                            iconImage.sprite = achive.icon;
-                        }
-                        iconImage.color = Color.white;
-
-                        Animator animator = iconImage.GetComponent<Animator>();
-                        if (achive.clearAnimation != null && animator != null) {
-                            animator.enabled = true;
-                            
-                            // AnimatorOverrideController 생성 및 적용
-                            var overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-                            var overrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
-                            
-                            // 원본 컨트롤러의 모든 클립을 목표 클립으로 교체
-                            foreach (var clip in animator.runtimeAnimatorController.animationClips) {
-                                overrides.Add(new KeyValuePair<AnimationClip, AnimationClip>(clip, achive.clearAnimation));
-                            }
-                            
-                            overrideController.ApplyOverrides(overrides);
-                            animator.runtimeAnimatorController = overrideController;
-
-                            // 중요: Rebind 후 수동으로 Play 호출
-                            animator.Rebind();
-                            animator.Play(0, -1, 0f);
-                        }
-                        else if (animator != null) {
-                            animator.enabled = false;
-                        }
+                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시합니다.
+                    if (iconImage != null && achive.icon != null) {
+                        iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
+                        iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
                     }
+                    // [수정 끝]
                 }
                 else {
+                    // 업적 미달성 시
+                    string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = "???";
                     texts[1].text = "???";
-                    texts[2].text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
+                    texts[2].text = location; // 업적 위치 표시
+
+                    // [수정 시작] 클리어하지 않았다면 아이콘을 숨깁니다.
                     if (iconImage != null) {
-                        iconImage.sprite = lockIcon;
-                        iconImage.color = Color.white;
-                        Animator animator = iconImage.GetComponent<Animator>();
-                        if (animator != null) animator.enabled = false;
+                        iconImage.sprite = null;
+                        iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
                     }
+                    // [수정 끝]
                 }
             }
         }
 
-        if (achiveSlider != null) achiveSlider.value = achives.Count > 0 ? clearCount / (float)achives.Count : 0;
-        if (achivePercentText != null) achivePercentText.text = $"{clearCount} / {achives.Count}";
+        // 전체 달성률 UI 업데이트
+        achiveSlider.value = clearCount / (float)achives.Count;
+        achivePercentText.text = $"{clearCount} / {achives.Count}";
     }
     
-    public bool IsAchiveCleared(string key) {
+    public bool IsAchiveCleared(string key)
+    {
         var achive = achives.Find(a => a.key == key);
         return achive != null && achive.isClear;
     }

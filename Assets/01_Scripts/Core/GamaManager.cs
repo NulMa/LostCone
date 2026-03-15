@@ -267,12 +267,6 @@ public class GamaManager : MonoBehaviour
     // 현재 스테이지에 따른 BGM 재생
     public void PlayBGMForCurrentStage()
     {
-        if (bgm == null || currentStageID < 0 || currentStageID >= bgm.Length)
-        {
-            Debug.LogWarning($"BGM array is too small or currentStageID({currentStageID}) is invalid.");
-            return;
-        }
-
         GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_channel));
         int channel = 100 + currentStageID;
         _channel = channel;

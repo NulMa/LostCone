@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Code.Tongary;
 using Core;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -41,16 +42,18 @@ public class Player : MonoBehaviour
     private bool isMoveSfxPlaying = false;
 
     public GameObject cone;
+    public Rigidbody2D rigid;
 
     Animator anim;
     SpriteRenderer sprite;
-    Rigidbody2D rigid;
+    PlayerFootstep footstep;
 
     // 대시 관련 변수
     public float dashMultiplier = 2.5f; // 대시 시 속도 배수 (2~3 정도 추천)
     public float dashDuration = 0.2f; // 대시 지속 시간(초)
     public float dashCooldown = 1f; // 대시 쿨타임(초)
     private float lastDashTime;
+    public DashEffect dashEffect;
     
     public bool IsDashing => Time.time - lastDashTime < dashDuration;
 
@@ -59,7 +62,10 @@ public class Player : MonoBehaviour
     public LayerMask platformLayer; // 통과 바닥 레이어 마스크
     private Collider2D playerCollider;
     private Vector3 dashDirection; // 대시 방향 저장변수
-
+    [SerializeField] float knockbackDecay = 10f;
+    
+    Vector2 knockbackVelocity;
+    
     // --- Crouch Collider Resize ---
     Vector2 originalColliderSize;
     Vector2 originalColliderOffset;
@@ -78,7 +84,21 @@ public class Player : MonoBehaviour
 
     [SerializeField] Transform groundCheck; // 발 위치 기준 Transform (없으면 자동 생성)
     [SerializeField] float groundCheckRadius = 0.12f;
-    bool isGrounded; // 현재 지상 여부
+    public bool isGrounded; // 현재 지상 여부
+
+    public bool IsGround
+    {
+        get => isGrounded;
+        set
+        {
+            isGrounded = value;
+            if (footstep != null)
+            {
+                footstep.canPlay = value;
+            }
+        }
+    }
+    
     bool wasGroundedLastFrame; // 이전 프레임 지상 여부
     bool isDroppingThrough; // 아래점프 중 여부
 
@@ -99,6 +119,7 @@ public class Player : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<Collider2D>();
+        footstep = GetComponent<PlayerFootstep>();
         baseSpeed = speed; // 속도 기준 저장
         CacheOriginalColliderDimensions();
         if (groundCheck == null)
@@ -139,7 +160,10 @@ public class Player : MonoBehaviour
         //baseSpeed = speed; // 매 프레임 기본 속도 복구
         // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
-        rigid.linearVelocity = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
+        Vector2 moveVel = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
+
+        rigid.linearVelocity = moveVel + knockbackVelocity;
+        knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, knockbackDecay * Time.fixedDeltaTime);
     }
 
     void Update()
@@ -179,7 +203,7 @@ public class Player : MonoBehaviour
             {
                 // 앉은 상태에서는 점프 금지
                 jumpBufferCounter = jumpBufferTime;
-                if ((isGrounded || coyoteCounter > 0f) && !isJumping)
+                if ((IsGround || coyoteCounter > 0f) && !isJumping)
                 {
                     ExecuteJump();
                     jumpBufferCounter = 0f;
@@ -205,6 +229,11 @@ public class Player : MonoBehaviour
         {
             OnDownJump();
         }
+    }
+    
+    public void ApplyKnockback(Vector2 force)
+    {
+        knockbackVelocity += force;
     }
 
     void UpdateLocomotionAnim()
@@ -252,7 +281,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("isMove", isMoving);
             }
 
-            bool wantWalkSound = isMoving && isGrounded && !isJumping;
+            bool wantWalkSound = isMoving && IsGround && !isJumping;
             if (wantWalkSound && !isMoveSfxPlaying)
             {
                 AudioManager.Instance?.PlayLoopSFX(0, gameObject);
@@ -269,8 +298,8 @@ public class Player : MonoBehaviour
 
     void UpdateCrouchState()
     {
-        Debug.Log((inputVec2.y < -0.5f) + " / " + isGrounded + " / " + !IsDashing);
-        bool wantCrouch = inputVec2.y < -0.5f && isGrounded && !IsDashing;
+        Debug.Log((inputVec2.y < -0.5f) + " / " + IsGround + " / " + !IsDashing);
+        bool wantCrouch = inputVec2.y < -0.5f && IsGround && !IsDashing;
 
         if (wantCrouch)
         {
@@ -280,7 +309,7 @@ public class Player : MonoBehaviour
         else
         {
             // 일어서려고 하는 상황: 현재 crouch 중 + 입력 해제 + 지상
-            if (isCrouching && isGrounded)
+            if (isCrouching && IsGround)
             {
                 if (!CeilingBlocked())
                 {
@@ -444,30 +473,30 @@ public class Player : MonoBehaviour
         if(!isCheckAllowed)
             return;
 
-        wasGroundedLastFrame = isGrounded;
+        wasGroundedLastFrame = IsGround;
 
         if (isDroppingThrough)
         {
-            isGrounded = false;
+            IsGround = false;
         }
         else
         {
             if (groundCheck != null)
             {
-                isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
+                IsGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundMask);
             }
             else
             {
                 Vector2 rayStart = new Vector2(playerCollider.bounds.center.x, playerCollider.bounds.min.y);
                 float rayLength = playerCollider.bounds.extents.y + 0.05f;
-                isGrounded = Physics2D.Raycast(rayStart, Vector2.down, rayLength, groundMask);
+                IsGround = Physics2D.Raycast(rayStart, Vector2.down, rayLength, groundMask);
             }
         }
 
-        if (isGrounded) coyoteCounter = coyoteTime;
+        if (IsGround) coyoteCounter = coyoteTime;
         else coyoteCounter -= Time.fixedDeltaTime;
 
-        if (!wasGroundedLastFrame && isGrounded)
+        if (!wasGroundedLastFrame && IsGround)
         {
             anim.SetBool("isJump", false);
             isJumping = false;
@@ -484,7 +513,7 @@ public class Player : MonoBehaviour
         if (jumpBufferCounter > 0f)
         {
             jumpBufferCounter -= Time.fixedDeltaTime;
-            if ((isGrounded || coyoteCounter > 0f) && !isJumping)
+            if ((IsGround || coyoteCounter > 0f) && !isJumping)
             {
                 ExecuteJump();
                 jumpBufferCounter = 0f;
@@ -495,7 +524,7 @@ public class Player : MonoBehaviour
     void ExecuteJump()
     {
         isJumping = true;
-        isGrounded = false;
+        IsGround = false;
         anim.SetBool("isJump", true);
         rigid.linearVelocity = new Vector2(rigid.linearVelocity.x, 0f);
         rigid.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -513,6 +542,8 @@ public class Player : MonoBehaviour
         Vector2 dir = sprite.flipX ? Vector2.left : Vector2.right;
         rigid.AddForce(dir * (speed * dashMultiplier), ForceMode2D.Impulse);
         lastDashTime = Time.time;
+        dashEffect.PlayEffect();
+        dashEffect.SetFlip(sprite.flipX);
         //StartCoroutine(DashRoutine());
     }
 
@@ -538,7 +569,7 @@ public class Player : MonoBehaviour
 
     public void OnDownJump()
     {
-        if (isScenePlaying || !isGrounded) return;
+        if (isScenePlaying || !IsGround) return;
 
         Vector2 origin = new Vector2(transform.position.x, playerCollider.bounds.min.y - 0.05f);
         RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, downJumpRayLength, platformLayer);
@@ -561,7 +592,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator ResetInteracting()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.02f); // 0.1초 대기
         isInteracting = false;
     }
 

@@ -15,7 +15,6 @@ public class MapNumbers : MonoBehaviour{
             // [수정] ItemDataManager의 맵 ID도 즉시 동기화시켜주어야 합니다.
             GamaManager.Instance.ItemDataManager.CurrentMapID = mapNumber;
             GamaManager.Instance.BGOn(mapNumber);
-            AudioManager.Instance.PlayBGM(mapNumber, true, 3f);
 
             // [수정] 새 맵의 데이터를 명시적으로 로드하도록 로직 추가
             MapItems newMap = null;

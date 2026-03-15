@@ -3,7 +3,7 @@ using PaperFlower.Core;
 using PaperFlower.Events;
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Tongary
 {
     public class MessageDetector : MonoBehaviour
     {

@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using UnityEngine;
 
 public class LeverNeko : MonoBehaviour
@@ -10,7 +12,9 @@ public class LeverNeko : MonoBehaviour
     public GameObject Lever;
 
     public Sprite clearedSprite;
+    public SoundSO doorSound;
     Animator anim;
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
     
     void Start()
     {
@@ -30,6 +34,8 @@ public class LeverNeko : MonoBehaviour
             anim.SetTrigger("ActiveLever");
             Gate.GetComponent<Animator>().SetBool("Close", true);
             Lever.GetComponent<Animator>().SetBool("Close", true);
+            backDoor.GetComponent<Animator>().SetBool("Close", true);
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(doorSound, Gate.transform.position));
         }
     }
 
@@ -40,6 +46,8 @@ public class LeverNeko : MonoBehaviour
             anim.SetTrigger("ActiveLever");
             Gate.GetComponent<Animator>().SetBool("Close", false);
             Lever.GetComponent<Animator>().SetBool("Close", false);
+            backDoor.GetComponent<Animator>().SetBool("Close", false);
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(doorSound, Gate.transform.position));
         }
     }
 
@@ -48,12 +56,13 @@ public class LeverNeko : MonoBehaviour
     {
         Gate.GetComponent<Animator>().SetBool("Close", false);
         Lever.GetComponent<Animator>().SetBool("Close", false);
+        backDoor.GetComponent<Animator>().SetBool("Close", false);
 
         //just deactivate components
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Animator>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
-
+        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(doorSound, Gate.transform.position));
     }
 
 }

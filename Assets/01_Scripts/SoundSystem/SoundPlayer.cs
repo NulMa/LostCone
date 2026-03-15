@@ -29,8 +29,6 @@ namespace Blade.SoundSystem
 
         public void PlaySound(SoundSO data)
         {
-            if (data == null || _audioSource == null) return;
-
             _audioSource.spatialBlend = 0f;
 
             _audioSource.outputAudioMixerGroup = data.audioType switch
@@ -47,13 +45,6 @@ namespace Blade.SoundSystem
             {
                 _audioSource.pitch += Random.Range(-data.randomPitchModifier, data.randomPitchModifier);
             }
-
-            if (data.clip == null)
-            {
-                Debug.LogWarning($"Sound clip is missing in SoundSO: {data.name}");
-                return;
-            }
-
             _audioSource.clip = data.clip;
             _audioSource.loop = data.loop;
 

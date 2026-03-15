@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using Blade.SoundSystem;
+using PaperFlower.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -12,7 +14,11 @@ public class NPCs : MonoBehaviour {
     public GameObject[] chained; // 연결된 오브젝트
     public GameObject video;
 
+    public SoundSO interactFailSound;
+    public SoundSO interactSucessSound;
     public bool isPlayed;
+    
+    private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
     private void Awake()
     {
@@ -80,7 +86,6 @@ public class NPCs : MonoBehaviour {
                 Debug.Log("[NPCs] Player is interacting with " + gameObject.name);
                 // 인터렉션에 대한 처리
                 OnInteract?.Invoke();
-
                 switch (gameObject.name)
                 {
                     case "Lemon_Sprout":
@@ -91,12 +96,16 @@ public class NPCs : MonoBehaviour {
                             if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed)
                             {
                                 GamaManager.Instance.UIManager.PrintMSG("Lemon_Sprout");
+                                GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactFailSound));
+
                                 return;
                             }
                             else
                             {
                                 // video 오브젝트 활성화
                                 GamaManager.Instance.achiveCall("HalfCut");
+                                GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactSucessSound));
+
                                 playVideo();
                             }
 
@@ -107,12 +116,16 @@ public class NPCs : MonoBehaviour {
                         if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1) return;
                         if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
                             GamaManager.Instance.UIManager.PrintMSG("Gumi_Need_Help");
+                            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactFailSound));
+
                             return;
                         }
 
                         else{
                             playVideo();
                             GamaManager.Instance.achiveCall("Alive");
+                            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactSucessSound));
+
                             animator.SetTrigger("Front");
                         }
                         break;
@@ -120,14 +133,20 @@ public class NPCs : MonoBehaviour {
                     case "GarakutaKun_0":
                         if (GamaManager.Instance.ItemDataManager.itemCount != GamaManager.Instance.ItemDataManager.bools.Length && !isPlayed){
                             Debug.Log("GarakutaKun_0 need help");
+                            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactFailSound));
+
                             return;
                         }
 
                         else{
                             playVideo();
                             PlayerPrefs.SetInt("GarakutaKun_0_Clear", 1);
+                            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactSucessSound));
+
                             Debug.Log("Clear GarakutaKun_0");
                         }
+                        break;
+                    default:
                         break;
                 }
                 StartCoroutine(ResetPlayerInteraction(player)); // 인터렉션 상태 초기화
@@ -188,7 +207,7 @@ public class NPCs : MonoBehaviour {
 
             case "CatchNeko" :  
                 chained[0].GetComponent<SpriteRenderer>().enabled = false;
-                chained[0].GetComponent<LeverNeko>().Gate.GetComponent<BoxCollider2D>().enabled = false;
+                chained[0].GetComponent<LeverNeko>().Cleard();
                 chained[0].GetComponent<BoxCollider2D>().enabled = false;
                 chained[0].GetComponent<Animator>().enabled = false;
 
@@ -198,7 +217,7 @@ public class NPCs : MonoBehaviour {
     }
 
     private IEnumerator ResetPlayerInteraction(Player player) {
-        yield return new WaitForSeconds(0.1f); // 0.1초 대기
+        yield return new WaitForSeconds(0.02f); // 0.1초 대기
         player.isInteracting = false; // 플레이어의 인터렉션 상태 초기화
     }
     private IEnumerator FadeInVideoAndPlayAnimator() {
