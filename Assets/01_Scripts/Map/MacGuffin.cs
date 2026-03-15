@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
 using UnityEngine;
 
-public class MacGuffin : MonoBehaviour{
-
+public class MacGuffin : MonoBehaviour
+{
+    public SoundSO macGuffinSound;
     public GameObject wareWolf;
     public Transform destinaion;
 

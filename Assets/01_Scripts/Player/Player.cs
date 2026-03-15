@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Blade.SoundSystem;
 using Code.Tongary;
 using Core;
+using PaperFlower.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -85,6 +87,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform groundCheck; // 발 위치 기준 Transform (없으면 자동 생성)
     [SerializeField] float groundCheckRadius = 0.12f;
     public bool isGrounded; // 현재 지상 여부
+
+    public SoundSO redoutSound;
 
     public bool IsGround
     {
@@ -644,6 +648,8 @@ public class Player : MonoBehaviour
         if(collision.name == "RedOut")
         {
             StartCoroutine(MakeAlphaZero(collision.GetComponent<SpriteRenderer>(), 2f));
+            var evt = new PlaySoundEvent();
+            GameEventBus.RaiseEvent(evt.Initialize(redoutSound, collision.transform.position, 1));
 
             if (collision.gameObject.transform.parent.name == "RedOutRabbit")
                 collision.gameObject.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;

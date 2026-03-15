@@ -1,5 +1,7 @@
 using System;
+using Blade.SoundSystem;
 using DG.Tweening;
+using PaperFlower.Core;
 using UnityEngine;
 
 namespace Code.Map
@@ -10,6 +12,9 @@ namespace Code.Map
         [SerializeField] private float force = 100f;
         [SerializeField] private Vector2 overlapSize;
         [SerializeField] private LayerMask whatIsPlayer;
+        [SerializeField] private SoundSO punchSound;
+        
+        private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
         public void OnPunch()
         {
@@ -20,6 +25,7 @@ namespace Code.Map
             if (target.TryGetComponent(out Player player))
             {
                 player.ApplyKnockback(dir * force);
+                GameEventBus.RaiseEvent(_playSoundEvent.Initialize(punchSound, transform.position));
             }
         }
 

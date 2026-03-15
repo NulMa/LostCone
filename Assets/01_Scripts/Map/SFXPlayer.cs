@@ -34,7 +34,7 @@ namespace Code.Map
         {
             yield return new WaitForSeconds(delay);
 
-            int id = sound.loop ? 1 : 0;
+            int id = sound.loop ? GetInstanceID() : 0;
             if (isSpread)
                 GameEventBus.RaiseEvent(_playSoundEvent.Initialize(sound, transform.position, id));
             else
