@@ -1,0 +1,144 @@
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
+using UnityEngine;
+
+[DefaultExecutionOrder(-10)]
+public class ItemDataManager : MonoBehaviour {
+    public static ItemDataManager Instance { get; private set; }
+    public bool[] bools; // 해당 아이템을 플레이어가 가진 여부 배열
+
+    public int itemCount; // 아이템 개수 
+    public int CurrentMapID; // 현재 맵 번호
+    public Dictionary<int, bool> MapClearStatus = new Dictionary<int, bool>(); // 맵 클리어 상태
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        }
+        else {
+            Destroy(gameObject);
+        }
+
+        // 현재 맵 ID 불러오기
+        CurrentMapID = PlayerPrefs.GetInt("CurrentMapID", 0);
+
+        // 맵 클리어 상태 불러오기
+        foreach (var mapID in MapClearStatus.Keys.ToList()) {
+            MapClearStatus[mapID] = PlayerPrefs.GetInt($"Map_{mapID}_Clear", 0) == 1;
+        }
+
+        // 현재 맵의 아이템 소유 상태 불러오기
+        UpdateItemOwnershipArray();
+
+        Debug.Log($"[ItemDataManager] 데이터 로드 완료: CurrentMapID={CurrentMapID}, 아이템 개수={itemCount}");
+    }
+
+    public void changeStageNum(int number) {
+        // 새로운 맵 번호 설정
+        CurrentMapID = number;
+
+        // PlayerPrefs에 새로운 맵 번호 저장
+        PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
+        PlayerPrefs.Save();
+    }
+
+    public void SaveCurrentMapData() {
+        PlayerPrefs.SetInt("CurrentMapID", CurrentMapID);
+
+        // 전체 맵 클리어 상태 저장
+        foreach (var map in MapClearStatus) {
+            PlayerPrefs.SetInt($"Map_{map.Key}_Clear", map.Value ? 1 : 0);
+        }
+
+        // 전체 맵의 아이템 소유 상태 저장
+        foreach (Transform child in transform) {
+            MapItems mapItems = child.GetComponent<MapItems>();
+            if (mapItems != null) {
+                foreach (var item in mapItems.Items) {
+                    PlayerPrefs.SetInt($"Map_{mapItems.MapID}_Item_{item.ItemID}_Have", item.isHave ? 1 : 0);
+                }
+            }
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    public void LoadCurrentMapData() {
+        CurrentMapID = PlayerPrefs.GetInt("CurrentMapID", 0);
+
+        // 전체 맵 클리어 상태 불러오기
+        foreach (var map in MapClearStatus.Keys.ToList()) {
+            MapClearStatus[map] = PlayerPrefs.GetInt($"Map_{map}_Clear", 0) == 1;
+        }
+
+        // 전체 맵의 아이템 소유 상태 불러오기 및 비활성화 처리
+        foreach (Transform child in transform) {
+            MapItems mapItems = child.GetComponent<MapItems>();
+            if (mapItems != null) {
+                // 맵 클리어 상태 반영
+                mapItems.IsCleared = MapClearStatus.ContainsKey(mapItems.MapID) && MapClearStatus[mapItems.MapID];
+
+                // 아이템 소유 상태 반영 및 비활성화
+                foreach (var item in mapItems.Items) {
+                    int haveValue = PlayerPrefs.GetInt($"Map_{mapItems.MapID}_Item_{item.ItemID}_Have", 0);
+                    item.isHave = haveValue == 1;
+                    if (item.isHave) {
+                        item.gameObject.SetActive(false);
+                    }
+                }
+            }
+        }
+    }
+
+    private void Update() {
+        // 현재 활성화된 아이템 소유 상태 배열을 업데이트
+        //UpdateItemOwnershipArray();
+    }
+
+    public void UpdateItemOwnershipArray() {
+        if (CurrentMapID == -1)
+            return;
+
+        // 현재 맵에 활성화된 아이템들을 대상으로 하는 MapItems를 찾기
+        MapItems currentMap = null;
+
+        // ItemDataManager의 자식 오브젝트 중 MapItems를 찾기
+        foreach (Transform child in transform) {
+            MapItems mapItems = child.GetComponent<MapItems>();
+            if (mapItems != null && mapItems.MapID == CurrentMapID) {
+                currentMap = mapItems;
+                break;
+            }
+        }
+
+        // MapItems를 찾지 못하거나 MapID가 일치하지 않는 경우 처리
+        if (currentMap == null) {
+            Debug.LogWarning($"[ItemDataManager] MapID {CurrentMapID}에 해당하는 MapItems를 찾을 수 없습니다.");
+            return;
+        }
+
+        // 아이템 개수 업데이트
+        currentMap?.LoadMapData();
+        int itemCountInMap = currentMap.Items.Count; // List에서는 Count를 사용
+        itemCount = 0;
+
+        // 아이템 개수에 맞게 bools 배열 초기화
+        if (bools == null || bools.Length != itemCountInMap) {
+            bools = new bool[itemCountInMap];
+        }
+
+        // isHave가 true인 경우 bools 배열과 itemCount 업데이트
+        for (int i = 0; i < itemCountInMap; i++) {
+            if (currentMap.Items[i].isHave) {
+                bools[i] = true;
+                itemCount++;
+            }
+            else {
+                bools[i] = false;
+            }
+        }
+        
+    }
+}

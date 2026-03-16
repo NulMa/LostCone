@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 7c0c5019b92f1254aacda1c8ffbab7c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8063428784827020403
+    second: JunkCutScene_2-Sheet_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UB
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 764
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4886136f001dbcd4cb27582645ac8045
+      internalID: 1380583404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3b66913ea464ae54a9bc3aa2b5312f8c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":192.0,"y":108.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      JunkCutScene_2-Sheet_0: 8063428784827020403
+      JunkCutScene_2-Sheet_1: -1878057064
+      JunkCutScene_2-Sheet_10: 1048885781
+      JunkCutScene_2-Sheet_11: 972649093
+      JunkCutScene_2-Sheet_12: 1075163590
+      JunkCutScene_2-Sheet_13: -1043599325
+      JunkCutScene_2-Sheet_14: 758478445
+      JunkCutScene_2-Sheet_16: -1008478925
+      JunkCutScene_2-Sheet_17: -298675957
+      JunkCutScene_2-Sheet_18: -1380177753
+      JunkCutScene_2-Sheet_19: 920861468
+      JunkCutScene_2-Sheet_2: -1755072052
+      JunkCutScene_2-Sheet_20: 578942543
+      JunkCutScene_2-Sheet_21: 1079841130
+      JunkCutScene_2-Sheet_22: -1869908257
+      JunkCutScene_2-Sheet_23: 251243572
+      JunkCutScene_2-Sheet_24: -1201602990
+      JunkCutScene_2-Sheet_25: 2041364207
+      JunkCutScene_2-Sheet_26: 609736336
+      JunkCutScene_2-Sheet_27: -1697266822
+      JunkCutScene_2-Sheet_28: -11673008
+      JunkCutScene_2-Sheet_29: -1972771199
+      JunkCutScene_2-Sheet_3: 1838098704
+      JunkCutScene_2-Sheet_30: -958253535
+      JunkCutScene_2-Sheet_31: -1344188573
+      JunkCutScene_2-Sheet_32: -563081563
+      JunkCutScene_2-Sheet_33: 2025582072
+      JunkCutScene_2-Sheet_34: 1380577519
+      JunkCutScene_2-Sheet_35: -684179259
+      JunkCutScene_2-Sheet_36: 1439391589
+      JunkCutScene_2-Sheet_37: 465128766
+      JunkCutScene_2-Sheet_38: 1663144576
+      JunkCutScene_2-Sheet_39: -992261459
+      JunkCutScene_2-Sheet_4: 602786961
+      JunkCutScene_2-Sheet_40: 1018991313
+      JunkCutScene_2-Sheet_41: -1504996366
+      JunkCutScene_2-Sheet_42: 1681347371
+      JunkCutScene_2-Sheet_43: -11546209
+      JunkCutScene_2-Sheet_44: 1802326279
+      JunkCutScene_2-Sheet_45: 77551700
+      JunkCutScene_2-Sheet_46: 790465937
+      JunkCutScene_2-Sheet_47: -441356445
+      JunkCutScene_2-Sheet_48: -1078633373
+      JunkCutScene_2-Sheet_49: -1382244312
+      JunkCutScene_2-Sheet_5: -2137052555
+      JunkCutScene_2-Sheet_50: 1694198047
+      JunkCutScene_2-Sheet_51: -1122439108
+      JunkCutScene_2-Sheet_52: -996015366
+      JunkCutScene_2-Sheet_53: 1675362283
+      JunkCutScene_2-Sheet_54: -1505472822
+      JunkCutScene_2-Sheet_55: 658277908
+      JunkCutScene_2-Sheet_56: 797957822
+      JunkCutScene_2-Sheet_57: -1293136478
+      JunkCutScene_2-Sheet_58: 587116125
+      JunkCutScene_2-Sheet_59: 1073902534
+      JunkCutScene_2-Sheet_6: -1298203633
+      JunkCutScene_2-Sheet_60: 1373722757
+      JunkCutScene_2-Sheet_61: 837380665
+      JunkCutScene_2-Sheet_62: 175884764
+      JunkCutScene_2-Sheet_63: -766354401
+      JunkCutScene_2-Sheet_64: 1032155815
+      JunkCutScene_2-Sheet_65: -591603630
+      JunkCutScene_2-Sheet_66: 752214889
+      JunkCutScene_2-Sheet_67: 1394069971
+      JunkCutScene_2-Sheet_68: -401966064
+      JunkCutScene_2-Sheet_69: -308462446
+      JunkCutScene_2-Sheet_7: 467307563
+      JunkCutScene_2-Sheet_70: 858399359
+      JunkCutScene_2-Sheet_71: 1884580091
+      JunkCutScene_2-Sheet_72: 1112306477
+      JunkCutScene_2-Sheet_8: 1860216272
+      JunkCutScene_2-Sheet_9: -1089250361
+      UB: 1380583404
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,31 +17,49 @@ public class MainMenuManager : MonoBehaviour {
         {
             loadButton.interactable = false; // 이어하기 버튼 비활성화
         }
+        
+        loadButton.interactable = true; 
     }
 
     
     public void NewGame() {
+        Debug.Log("NewGame");
+        SaveManager.Instance.ClearAllData();
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        
+
         // 업적 매니저가 존재한다면 업적 초기화
-        if (AchiveManager.instance != null) {
+        if (AchiveManager.instance != null)
+        {
             // 모든 업적을 미달성 상태로 초기화
-            foreach (var achive in AchiveManager.instance.achives) {
+            foreach (var achive in AchiveManager.instance.achives)
+            {
                 achive.isClear = false;
             }
             // 업적 UI 새로고침
             AchiveManager.instance.RefreshUI();
         }
-        
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene"); // Unity의 SceneManager 사용
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
     }
 
-    public void ContinueGame() {
-        // 이어하기: 씬을 먼저 로드 후 LoadGame() 호출
-        Debug.Log("1");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene");
-        StartCoroutine(LoadGameAfterSceneLoad());
+    public void HardReset()
+    {
+        SaveManager.Instance.ClearAllData();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        // 업적 매니저가 존재한다면 업적 초기화
+        if (AchiveManager.instance != null)
+        {
+            // 모든 업적을 미달성 상태로 초기화
+            foreach (var achive in AchiveManager.instance.achives)
+            {
+                achive.isClear = false;
+            }
+            // 업적 UI 새로고침
+            AchiveManager.instance.RefreshUI();
+        }
     }
 
     public void settings(){
@@ -60,24 +79,7 @@ public class MainMenuManager : MonoBehaviour {
         }
         return;
     }
-
-    private System.Collections.IEnumerator LoadGameAfterSceneLoad()
-    {
-        while (!UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals("DefaultScene"))
-        {
-            yield return null;
-        }
-
-        // GamaManager.Instance가 null인지 확인
-        if (GamaManager.Instance != null)
-        {
-            GamaManager.Instance.LoadGame();
-        }
-        else
-        {
-            Debug.LogError("GamaManager.Instance가 null입니다. GamaManager가 DefaultScene에 포함되어 있는지 확인하세요.");
-        }
-    }
+    
     public void gameExit() {
         Application.Quit();
     }
