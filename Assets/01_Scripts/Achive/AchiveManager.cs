@@ -6,6 +6,7 @@ using System;
 using Blade.SoundSystem;
 using PaperFlower.Core;
 using UnityEngine.Localization.Settings;
+using DG.Tweening;
 
 public enum AchiveType {
     Lemon,
@@ -21,7 +22,6 @@ public class AchiveData {
     public AchiveType type;    // 업적 타입
     
     // [추가] 업적 아이콘을 저장할 Sprite 타입의 필드
-    // public으로 선언해야 Unity Inspector 창에서 보입니다.
     public Sprite icon;        
 
     // [추가] 업적 애니메이션을 저장할 필드
@@ -30,7 +30,7 @@ public class AchiveData {
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
-        this.icon = null; // 생성자에서 기본값은 null로 설정
+        this.icon = null; 
         this.achiveClip = null;
         isClear = false;
     }
@@ -41,18 +41,23 @@ public class AchiveManager : MonoBehaviour {
     public static AchiveManager instance;
     public List<AchiveData> achives = new List<AchiveData>();
     public GameObject achivePopup;
-    public Canvas Canvas; // 업적 팝업을 표시할 캔버스 (UI용, 필요시 할당)
+    public Canvas Canvas; 
 
-    public RuntimeAnimatorController baseAnimatorController; // [추가] 클립을 갈아끼울 기본 컨트롤러
+    public RuntimeAnimatorController baseAnimatorController; 
 
-    public Slider achiveSlider; // 업적 달성률 슬라이더 (UI용, 필요시 할당)
-    public TextMeshProUGUI achivePercentText; // 업적 달성률 % 표시 (UI용, 필요시 할당)
+    public Slider achiveSlider; 
+    public TextMeshProUGUI achivePercentText; 
 
-    // UI용
-    public Transform achiveListParent; // 업적 리스트 UI 부모 오브젝트
-    public GameObject achiveItemPrefab; // 업적 리스트 프리팹 (TextMeshProUGUI 2개: 이름, 설명)
+    public Transform achiveListParent; 
+    public GameObject achiveItemPrefab; 
 
     public SoundSO achiveSound;
+
+    [Header("Developer Easter Egg UI")]
+    public GameObject devEggPanel;      // 사진 조각 패널
+    public Image[] photoPieces;         // 3개의 조각 이미지 (인덱스 0, 1, 2)
+    public Image fullPhoto;             // 합쳐진 완성 사진 이미지
+    public CanvasGroup devEggCanvasGroup; // 페이드 효과용
     
     private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
@@ -62,6 +67,10 @@ public class AchiveManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             LoadAchives();
             RefreshUI();
+
+            // 개발자 이스터에그 UI 초기화
+            if (devEggPanel != null) devEggPanel.SetActive(false);
+            if (fullPhoto != null) fullPhoto.gameObject.SetActive(false);
         }
         else {
             Destroy(gameObject);
@@ -106,8 +115,7 @@ public class AchiveManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
-
-    // 업적 불러오기
+// 기존 UI 오브젝트 삭제
     public void LoadAchives() {
         foreach (var achive in achives) {
             achive.isClear = PlayerPrefs.GetInt("achive_" + achive.key, 0) == 1;
@@ -135,9 +143,7 @@ public class AchiveManager : MonoBehaviour {
             // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
             Image iconImage = null;
             Animator animator = null;
-
-            // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
-            Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
+            Transform iconTransform = go.transform.Find("IconImage");
             if (iconTransform != null) {
                 iconImage = iconTransform.GetComponent<Image>();
                 animator = iconTransform.GetComponent<Animator>();
@@ -156,13 +162,13 @@ public class AchiveManager : MonoBehaviour {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = name;
                     texts[1].text = desc;
-                    texts[2].text = location; // 업적 위치 표시
+                    texts[2].text = location;
                     clearCount++;
 
                     // [수정 시작] 클리어했다면 아이콘을 찾아 표시하고 애니메이션을 할당합니다.
                     if (iconImage != null && achive.icon != null) {
-                        iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
-                        iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
+                        iconImage.sprite = achive.icon;
+                        iconImage.color = Color.white;
                     }
 
                     if (animator != null && achive.achiveClip != null && baseAnimatorController != null) {
@@ -176,11 +182,11 @@ public class AchiveManager : MonoBehaviour {
                         }
 
                         animator.runtimeAnimatorController = overrideController;
-                        animator.updateMode = AnimatorUpdateMode.UnscaledTime; // 일시정지 중에도 재생
+                        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
                         animator.enabled = true;
                     }
                     else if (animator != null) {
-                        animator.enabled = false; // 애니메이션이 없는 경우 비활성화
+                        animator.enabled = false;
                     }
                     // [수정 끝]
                 }
@@ -189,30 +195,96 @@ public class AchiveManager : MonoBehaviour {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = "???";
                     texts[1].text = "???";
-                    texts[2].text = location; // 업적 위치 표시
+                    texts[2].text = location;
 
                     // [수정 시작] 클리어하지 않았다면 아이콘과 애니메이션을 숨깁니다.
                     if (iconImage != null) {
                         iconImage.sprite = null;
-                        iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
+                        iconImage.color = new Color(1, 1, 1, 0);
                     }
-
-                    if (animator != null) {
-                        animator.enabled = false;
-                    }
-                    // [수정 끝]
+                    if (animator != null) animator.enabled = false;
                 }
             }
         }
 
-        // 전체 달성률 UI 업데이트
         achiveSlider.value = clearCount / (float)achives.Count;
         achivePercentText.text = $"{clearCount} / {achives.Count}";
     }
     
-    public bool IsAchiveCleared(string key)
-    {
+    public bool IsAchiveCleared(string key) {
         var achive = achives.Find(a => a.key == key);
         return achive != null && achive.isClear;
+    }
+
+    // ==========================================
+    // 개발자 이스터에그 전용 로직
+    // ==========================================
+
+    public void CollectDevEggPiece(int stageId) {
+        if (devEggPanel == null) {
+            Debug.LogError("[AchiveManager] devEggPanel이 할당되지 않았습니다!");
+            return;
+        }
+
+        // 1. 조각 수집 상태 저장
+        PlayerPrefs.SetInt($"DevEgg_Piece_{stageId}", 1);
+        PlayerPrefs.Save();
+
+        // 2. UI 표시 초기화
+        devEggPanel.SetActive(true);
+        if (devEggCanvasGroup != null) {
+            devEggCanvasGroup.alpha = 0;
+            devEggCanvasGroup.DOFade(1f, 0.5f).SetUpdate(true);
+        }
+
+        for (int i = 0; i < photoPieces.Length; i++) {
+            if (photoPieces[i] != null) {
+                photoPieces[i].gameObject.SetActive(i == (stageId - 1));
+                photoPieces[i].color = Color.white;
+                photoPieces[i].transform.localScale = Vector3.one;
+            }
+        }
+        
+        if (fullPhoto != null) fullPhoto.gameObject.SetActive(false);
+
+        // 3. 모든 조각 수집 여부 체크
+        bool isPiece1Collected = PlayerPrefs.GetInt("DevEgg_Piece_1", 0) == 1;
+        bool isPiece2Collected = PlayerPrefs.GetInt("DevEgg_Piece_2", 0) == 1;
+        bool isPiece3Collected = PlayerPrefs.GetInt("DevEgg_Piece_3", 0) == 1;
+
+        if (isPiece1Collected && isPiece2Collected && isPiece3Collected) {
+            PerformMergeAnimation();
+        } else {
+            DOVirtual.DelayedCall(3f, CloseDevEggPanel).SetUpdate(true);
+        }
+    }
+
+    private void PerformMergeAnimation() {
+        if (fullPhoto == null) {
+            Debug.LogError("[AchiveManager] fullPhoto가 할당되지 않았습니다!");
+            return;
+        }
+
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
+        seq.AppendInterval(1.5f);
+        seq.Append(photoPieces[2].transform.DOScale(1.1f, 0.3f));
+        seq.AppendCallback(() => {
+            fullPhoto.gameObject.SetActive(true);
+            fullPhoto.color = new Color(1, 1, 1, 0);
+        });
+        seq.Append(fullPhoto.DOFade(1f, 1f));
+        seq.Join(photoPieces[2].DOFade(0f, 1f));
+        seq.AppendInterval(3f);
+        seq.AppendCallback(() => {
+            SetAchiveClear("DevEgg"); // 최종 업적 달성
+            CloseDevEggPanel();
+        });
+    }
+
+    public void CloseDevEggPanel() {
+        if (devEggCanvasGroup == null) return;
+        devEggCanvasGroup.DOFade(0f, 0.5f).SetUpdate(true).OnComplete(() => {
+            devEggPanel.SetActive(false);
+        });
     }
 }
