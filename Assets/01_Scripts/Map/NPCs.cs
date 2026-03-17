@@ -146,6 +146,36 @@ public class NPCs : MonoBehaviour {
                             Debug.Log("Clear GarakutaKun_0");
                         }
                         break;
+
+                    case "Lever_Stage2":
+                        if (isPlayed) break;
+
+                        // 1. 사운드 피드백 (인스펙터에서 interactSucessSound 할당 필요)
+                        // if (interactSucessSound != null) {
+                        //     GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactSucessSound));
+                        // }
+
+                        // 2. 레버 애니메이션
+                        
+                        if (animator != null) {
+                            animator.SetTrigger("Activate"); 
+                        }
+                        
+
+                        // 3. 연결된(chained) 히든월 제거
+                        if (chained != null) {
+                            foreach (GameObject obj in chained) {
+                                if (obj != null) {
+                                    var wall = obj.GetComponent<HiddenWall>();
+                                    if (wall != null) {
+                                        wall.HideWallByFunction();
+                                    }
+                                }
+                            }
+                        }
+
+                        isPlayed = true;
+                        break;
                     default:
                         break;
                 }

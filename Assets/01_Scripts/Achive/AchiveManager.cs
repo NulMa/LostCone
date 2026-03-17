@@ -24,10 +24,14 @@ public class AchiveData {
     // public으로 선언해야 Unity Inspector 창에서 보입니다.
     public Sprite icon;        
 
+    // [추가] 업적 애니메이션을 저장할 필드
+    public AnimationClip achiveClip;
+
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
         this.icon = null; // 생성자에서 기본값은 null로 설정
+        this.achiveClip = null;
         isClear = false;
     }
 }
@@ -38,6 +42,8 @@ public class AchiveManager : MonoBehaviour {
     public List<AchiveData> achives = new List<AchiveData>();
     public GameObject achivePopup;
     public Canvas Canvas; // 업적 팝업을 표시할 캔버스 (UI용, 필요시 할당)
+
+    public RuntimeAnimatorController baseAnimatorController; // [추가] 클립을 갈아끼울 기본 컨트롤러
 
     public Slider achiveSlider; // 업적 달성률 슬라이더 (UI용, 필요시 할당)
     public TextMeshProUGUI achivePercentText; // 업적 달성률 % 표시 (UI용, 필요시 할당)
@@ -128,10 +134,13 @@ public class AchiveManager : MonoBehaviour {
 
             // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
             Image iconImage = null;
+            Animator animator = null;
+
             // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
             Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
             if (iconTransform != null) {
                 iconImage = iconTransform.GetComponent<Image>();
+                animator = iconTransform.GetComponent<Animator>();
             }
             // [수정 끝]
 
@@ -150,10 +159,28 @@ public class AchiveManager : MonoBehaviour {
                     texts[2].text = location; // 업적 위치 표시
                     clearCount++;
 
-                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시합니다.
+                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시하고 애니메이션을 할당합니다.
                     if (iconImage != null && achive.icon != null) {
                         iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
                         iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
+                    }
+
+                    if (animator != null && achive.achiveClip != null && baseAnimatorController != null) {
+                        // AnimatorOverrideController를 사용하여 클립을 동적으로 교체
+                        AnimatorOverrideController overrideController = new AnimatorOverrideController(baseAnimatorController);
+                        
+                        // 기본 컨트롤러의 첫 번째 애니메이션 클립 이름을 가져와 교체
+                        var clips = baseAnimatorController.animationClips;
+                        if (clips.Length > 0) {
+                            overrideController[clips[0].name] = achive.achiveClip;
+                        }
+
+                        animator.runtimeAnimatorController = overrideController;
+                        animator.updateMode = AnimatorUpdateMode.UnscaledTime; // 일시정지 중에도 재생
+                        animator.enabled = true;
+                    }
+                    else if (animator != null) {
+                        animator.enabled = false; // 애니메이션이 없는 경우 비활성화
                     }
                     // [수정 끝]
                 }
@@ -164,10 +191,14 @@ public class AchiveManager : MonoBehaviour {
                     texts[1].text = "???";
                     texts[2].text = location; // 업적 위치 표시
 
-                    // [수정 시작] 클리어하지 않았다면 아이콘을 숨깁니다.
+                    // [수정 시작] 클리어하지 않았다면 아이콘과 애니메이션을 숨깁니다.
                     if (iconImage != null) {
                         iconImage.sprite = null;
                         iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
+                    }
+
+                    if (animator != null) {
+                        animator.enabled = false;
                     }
                     // [수정 끝]
                 }

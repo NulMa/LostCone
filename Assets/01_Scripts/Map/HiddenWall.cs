@@ -10,11 +10,14 @@ public class HiddenWall : MonoBehaviour {
 
     Tilemap tilemap;
     TilemapRenderer tilemapRenderer;
-    private string saveKey;
+    TilemapCollider2D tilemapCollider;
 
+    private string saveKey;
+    
     private void Awake() {
         tilemap = GetComponent<Tilemap>();
         tilemapRenderer = GetComponent<TilemapRenderer>();
+        tilemapCollider = GetComponent<TilemapCollider2D>();
 
         // 타입과 벽의 번호를 조합한 저장 키 생성
         saveKey = $"HiddenWall_{type}_{wallId}";
@@ -34,7 +37,7 @@ public class HiddenWall : MonoBehaviour {
             HideWall();
         }
     }
-
+    
     // 외부에서 호출할 함수
     public void HideWallByFunction() {
         if (type != HiddenWallType.OnFunction) return;
@@ -43,6 +46,7 @@ public class HiddenWall : MonoBehaviour {
 
     private void HideWall() {
         if (tilemapRenderer != null && tilemapRenderer.material != null) {
+            tilemapCollider.enabled = false;
             tilemapRenderer.material.DOFade(0f, 1f).OnComplete(() => {
                 tilemap.gameObject.SetActive(false);
                 PlayerPrefs.SetInt(saveKey, 1);
