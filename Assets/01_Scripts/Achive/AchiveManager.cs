@@ -267,7 +267,6 @@ public class AchiveManager : MonoBehaviour {
 
         Sequence seq = DOTween.Sequence().SetUpdate(true);
         seq.AppendInterval(1.5f);
-        seq.Append(photoPieces[2].transform.DOScale(1.1f, 0.3f));
         seq.AppendCallback(() => {
             fullPhoto.gameObject.SetActive(true);
             fullPhoto.color = new Color(1, 1, 1, 0);
