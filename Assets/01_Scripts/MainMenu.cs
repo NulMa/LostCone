@@ -40,7 +40,7 @@ public class MainMenuManager : MonoBehaviour {
             AchiveManager.instance.RefreshUI();
         }
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene_03"); // Unity의 SceneManager 사용
+        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
     }
 
     public void HardReset()

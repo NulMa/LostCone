@@ -23,15 +23,19 @@ public class AchiveData {
     
     // [추가] 업적 아이콘을 저장할 Sprite 타입의 필드
     public Sprite icon;        
+    public Sprite orgIcon;     // [추가] 원본 아이콘 (상세 보기용)
 
     // [추가] 업적 애니메이션을 저장할 필드
     public AnimationClip achiveClip;
+    public AnimationClip orgClip;  // [추가] 원본 애니메이션 (상세 보기용)
 
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
         this.icon = null; 
+        this.orgIcon = null;
         this.achiveClip = null;
+        this.orgClip = null;
         isClear = false;
     }
 }
@@ -58,6 +62,13 @@ public class AchiveManager : MonoBehaviour {
     public Image[] photoPieces;         // 3개의 조각 이미지 (인덱스 0, 1, 2)
     public Image fullPhoto;             // 합쳐진 완성 사진 이미지
     public CanvasGroup devEggCanvasGroup; // 페이드 효과용
+
+    [Header("Achive Detail UI")]
+    public GameObject detailPanel;      // 상세 보기 패널
+    public Image detailIconImage;       // 상세 보기용 큰 아이콘
+    public Animator detailAnimator;     // 상세 보기용 큰 애니메이터
+    public TextMeshProUGUI detailNameText; // 상세 보기용 이름
+    public TextMeshProUGUI detailDescText; // 상세 보기용 설명
     
     private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
@@ -71,6 +82,9 @@ public class AchiveManager : MonoBehaviour {
             // 개발자 이스터에그 UI 초기화
             if (devEggPanel != null) devEggPanel.SetActive(false);
             if (fullPhoto != null) fullPhoto.gameObject.SetActive(false);
+
+            // 상세 보기 패널 초기화
+            if (detailPanel != null) detailPanel.SetActive(false);
         }
         else {
             Destroy(gameObject);
@@ -136,6 +150,15 @@ public class AchiveManager : MonoBehaviour {
             // 프리팹 생성
             GameObject go = Instantiate(achiveItemPrefab, achiveListParent);
             
+            // [추가 시작] 클릭 이벤트 연결
+            Button btn = go.GetComponent<Button>();
+            if (btn == null) btn = go.AddComponent<Button>();
+            
+            AchiveData currentData = achive; // 람다 캡처용
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => ShowAchiveDetail(currentData));
+            // [추가 끝]
+
             // 컴포넌트 찾아오기
             var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
             var image = go.GetComponent<Image>();
@@ -285,5 +308,87 @@ public class AchiveManager : MonoBehaviour {
         devEggCanvasGroup.DOFade(0f, 0.5f).SetUpdate(true).OnComplete(() => {
             devEggPanel.SetActive(false);
         });
+    }
+
+    // ==========================================
+    // 업적 상세 보기 로직
+    // ==========================================
+
+    public void ShowAchiveDetail(AchiveData data) {
+        if (!data.isClear || detailPanel == null) return;
+
+        detailPanel.SetActive(true);
+        
+        // 텍스트 설정
+        if (detailNameText != null) 
+            detailNameText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", data.key + "_name");
+        if (detailDescText != null) 
+            detailDescText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", data.key + "_desc");
+
+        // [수정] 원본 리소스가 있다면 우선 사용, 없다면 기존 리소스 사용 (Fallback)
+        AnimationClip targetClip = data.orgClip != null ? data.orgClip : data.achiveClip;
+        Sprite targetIcon = data.orgIcon != null ? data.orgIcon : data.icon;
+
+        bool hasAnimation = targetClip != null && baseAnimatorController != null;
+
+        // 1. 일반 이미지 설정 (애니메이션이 없을 때만)
+        if (detailIconImage != null) {
+            detailIconImage.gameObject.SetActive(!hasAnimation);
+            if (!hasAnimation && targetIcon != null) {
+                detailIconImage.sprite = targetIcon;
+            }
+        }
+
+        // 2. 애니메이터 설정
+        if (detailAnimator != null) {
+            // [핵심] 잔상 제거를 위해 오브젝트를 껐다 켬 + 스프라이트 즉시 제거
+            detailAnimator.gameObject.SetActive(false);
+            Image animImage = detailAnimator.GetComponent<Image>();
+            if (animImage != null) animImage.sprite = null;
+
+            if (hasAnimation) {
+                detailAnimator.gameObject.SetActive(true);
+                detailAnimator.enabled = false;
+                detailAnimator.runtimeAnimatorController = null;
+
+                // 새로운 OverrideController 생성
+                AnimatorOverrideController overrideController = new AnimatorOverrideController(baseAnimatorController);
+                
+                // [개선] GetOverrides를 사용하여 모든 애니메이션 슬롯을 타겟 클립으로 정확히 교체
+                List<KeyValuePair<AnimationClip, AnimationClip>> overrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+                overrideController.GetOverrides(overrides);
+                for (int i = 0; i < overrides.Count; i++) {
+                    overrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(overrides[i].Key, targetClip);
+                }
+                overrideController.ApplyOverrides(overrides);
+
+                detailAnimator.runtimeAnimatorController = overrideController;
+                detailAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                detailAnimator.enabled = true;
+
+                // 상태 완전 초기화 및 강제 재생
+                detailAnimator.Rebind();
+                detailAnimator.Play(0, -1, 0f);
+                detailAnimator.Update(0f);
+            }
+        }
+
+        // 상세 패널 페이드 효과
+        CanvasGroup cg = detailPanel.GetComponent<CanvasGroup>();
+        if (cg != null) {
+            cg.alpha = 0;
+            cg.DOFade(1f, 0.3f).SetUpdate(true);
+        }
+    }
+
+    public void CloseAchiveDetail() {
+        if (detailPanel == null) return;
+        
+        CanvasGroup cg = detailPanel.GetComponent<CanvasGroup>();
+        if (cg != null) {
+            cg.DOFade(0f, 0.3f).SetUpdate(true).OnComplete(() => detailPanel.SetActive(false));
+        } else {
+            detailPanel.SetActive(false);
+        }
     }
 }
