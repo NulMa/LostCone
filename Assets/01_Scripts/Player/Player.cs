@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Code.Player;
+using Blade.SoundSystem;
+using Code.Tongary;
 using Core;
+using PaperFlower.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -42,10 +44,10 @@ public class Player : MonoBehaviour
     private bool isMoveSfxPlaying = false;
 
     public GameObject cone;
+    public Rigidbody2D rigid;
 
     Animator anim;
     SpriteRenderer sprite;
-    Rigidbody2D rigid;
     PlayerFootstep footstep;
 
     // 대시 관련 변수
@@ -62,7 +64,10 @@ public class Player : MonoBehaviour
     public LayerMask platformLayer; // 통과 바닥 레이어 마스크
     private Collider2D playerCollider;
     private Vector3 dashDirection; // 대시 방향 저장변수
-
+    [SerializeField] float knockbackDecay = 10f;
+    
+    Vector2 knockbackVelocity;
+    
     // --- Crouch Collider Resize ---
     Vector2 originalColliderSize;
     Vector2 originalColliderOffset;
@@ -82,6 +87,8 @@ public class Player : MonoBehaviour
     [SerializeField] Transform groundCheck; // 발 위치 기준 Transform (없으면 자동 생성)
     [SerializeField] float groundCheckRadius = 0.12f;
     public bool isGrounded; // 현재 지상 여부
+
+    public SoundSO redoutSound;
 
     public bool IsGround
     {
@@ -157,7 +164,10 @@ public class Player : MonoBehaviour
         //baseSpeed = speed; // 매 프레임 기본 속도 복구
         // InputManager로부터 받은 입력으로 이동 처리
         float appliedSpeed = isCrouching ? baseSpeed * crouchSpeedMultiplier : baseSpeed;
-        rigid.linearVelocity = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
+        Vector2 moveVel = new Vector2(inputVec2.x * appliedSpeed, rigid.linearVelocity.y);
+
+        rigid.linearVelocity = moveVel + knockbackVelocity;
+        knockbackVelocity = Vector2.Lerp(knockbackVelocity, Vector2.zero, knockbackDecay * Time.fixedDeltaTime);
     }
 
     void Update()
@@ -223,6 +233,11 @@ public class Player : MonoBehaviour
         {
             OnDownJump();
         }
+    }
+    
+    public void ApplyKnockback(Vector2 force)
+    {
+        knockbackVelocity += force;
     }
 
     void UpdateLocomotionAnim()
@@ -633,6 +648,8 @@ public class Player : MonoBehaviour
         if(collision.name == "RedOut")
         {
             StartCoroutine(MakeAlphaZero(collision.GetComponent<SpriteRenderer>(), 2f));
+            var evt = new PlaySoundEvent();
+            GameEventBus.RaiseEvent(evt.Initialize(redoutSound, collision.transform.position, 1));
 
             if (collision.gameObject.transform.parent.name == "RedOutRabbit")
                 collision.gameObject.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;

@@ -2,7 +2,7 @@ using Blade.SoundSystem;
 using PaperFlower.Core;
 using UnityEngine;
 
-namespace Code.Player
+namespace Code.Tongary
 {
     public class PlayerFootstep : MonoBehaviour
     {
