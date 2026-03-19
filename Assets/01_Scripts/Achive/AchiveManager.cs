@@ -6,6 +6,7 @@ using System;
 using Blade.SoundSystem;
 using PaperFlower.Core;
 using UnityEngine.Localization.Settings;
+using DG.Tweening;
 
 public enum AchiveType {
     Lemon,
@@ -21,13 +22,20 @@ public class AchiveData {
     public AchiveType type;    // 업적 타입
     
     // [추가] 업적 아이콘을 저장할 Sprite 타입의 필드
-    // public으로 선언해야 Unity Inspector 창에서 보입니다.
     public Sprite icon;        
+    public Sprite orgIcon;     // [추가] 원본 아이콘 (상세 보기용)
+
+    // [추가] 업적 애니메이션을 저장할 필드
+    public AnimationClip achiveClip;
+    public AnimationClip orgClip;  // [추가] 원본 애니메이션 (상세 보기용)
 
     public AchiveData(string key, AchiveType type) {
         this.key = key;
         this.type = type;
-        this.icon = null; // 생성자에서 기본값은 null로 설정
+        this.icon = null; 
+        this.orgIcon = null;
+        this.achiveClip = null;
+        this.orgClip = null;
         isClear = false;
     }
 }
@@ -37,16 +45,30 @@ public class AchiveManager : MonoBehaviour {
     public static AchiveManager instance;
     public List<AchiveData> achives = new List<AchiveData>();
     public GameObject achivePopup;
-    public Canvas Canvas; // 업적 팝업을 표시할 캔버스 (UI용, 필요시 할당)
+    public Canvas Canvas; 
 
-    public Slider achiveSlider; // 업적 달성률 슬라이더 (UI용, 필요시 할당)
-    public TextMeshProUGUI achivePercentText; // 업적 달성률 % 표시 (UI용, 필요시 할당)
+    public RuntimeAnimatorController baseAnimatorController; 
 
-    // UI용
-    public Transform achiveListParent; // 업적 리스트 UI 부모 오브젝트
-    public GameObject achiveItemPrefab; // 업적 리스트 프리팹 (TextMeshProUGUI 2개: 이름, 설명)
+    public Slider achiveSlider; 
+    public TextMeshProUGUI achivePercentText; 
+
+    public Transform achiveListParent; 
+    public GameObject achiveItemPrefab; 
 
     public SoundSO achiveSound;
+
+    [Header("Developer Easter Egg UI")]
+    public GameObject devEggPanel;      // 사진 조각 패널
+    public Image[] photoPieces;         // 3개의 조각 이미지 (인덱스 0, 1, 2)
+    public Image fullPhoto;             // 합쳐진 완성 사진 이미지
+    public CanvasGroup devEggCanvasGroup; // 페이드 효과용
+
+    [Header("Achive Detail UI")]
+    public GameObject detailPanel;      // 상세 보기 패널
+    public Image detailIconImage;       // 상세 보기용 큰 아이콘
+    public Animator detailAnimator;     // 상세 보기용 큰 애니메이터
+    public TextMeshProUGUI detailNameText; // 상세 보기용 이름
+    public TextMeshProUGUI detailDescText; // 상세 보기용 설명
     
     private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
 
@@ -56,6 +78,13 @@ public class AchiveManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
             LoadAchives();
             RefreshUI();
+
+            // 개발자 이스터에그 UI 초기화
+            if (devEggPanel != null) devEggPanel.SetActive(false);
+            if (fullPhoto != null) fullPhoto.gameObject.SetActive(false);
+
+            // 상세 보기 패널 초기화
+            if (detailPanel != null) detailPanel.SetActive(false);
         }
         else {
             Destroy(gameObject);
@@ -100,8 +129,7 @@ public class AchiveManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
-
-    // 업적 불러오기
+// 기존 UI 오브젝트 삭제
     public void LoadAchives() {
         foreach (var achive in achives) {
             achive.isClear = PlayerPrefs.GetInt("achive_" + achive.key, 0) == 1;
@@ -122,16 +150,26 @@ public class AchiveManager : MonoBehaviour {
             // 프리팹 생성
             GameObject go = Instantiate(achiveItemPrefab, achiveListParent);
             
+            // [추가 시작] 클릭 이벤트 연결
+            Button btn = go.GetComponent<Button>();
+            if (btn == null) btn = go.AddComponent<Button>();
+            
+            AchiveData currentData = achive; // 람다 캡처용
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(() => ShowAchiveDetail(currentData));
+            // [추가 끝]
+
             // 컴포넌트 찾아오기
             var texts = go.GetComponentsInChildren<TextMeshProUGUI>();
             var image = go.GetComponent<Image>();
 
             // [수정 시작] IconImage 컴포넌트를 이름으로 찾아옵니다.
             Image iconImage = null;
-            // transform.Find는 자식 오브젝트만 검색하므로, 정확한 경로를 지정하거나 이름으로 찾습니다.
-            Transform iconTransform = go.transform.Find("IconImage"); // 2단계에서 지정한 이름과 반드시 일치해야 합니다.
+            Animator animator = null;
+            Transform iconTransform = go.transform.Find("IconImage");
             if (iconTransform != null) {
                 iconImage = iconTransform.GetComponent<Image>();
+                animator = iconTransform.GetComponent<Animator>();
             }
             // [수정 끝]
 
@@ -147,13 +185,31 @@ public class AchiveManager : MonoBehaviour {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = name;
                     texts[1].text = desc;
-                    texts[2].text = location; // 업적 위치 표시
+                    texts[2].text = location;
                     clearCount++;
 
-                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시합니다.
+                    // [수정 시작] 클리어했다면 아이콘을 찾아 표시하고 애니메이션을 할당합니다.
                     if (iconImage != null && achive.icon != null) {
-                        iconImage.sprite = achive.icon;    // 데이터에 저장된 스프라이트를 할당
-                        iconImage.color = Color.white;     // 아이콘을 불투명하게 만들어 표시
+                        iconImage.sprite = achive.icon;
+                        iconImage.color = Color.white;
+                    }
+
+                    if (animator != null && achive.achiveClip != null && baseAnimatorController != null) {
+                        // AnimatorOverrideController를 사용하여 클립을 동적으로 교체
+                        AnimatorOverrideController overrideController = new AnimatorOverrideController(baseAnimatorController);
+                        
+                        // 기본 컨트롤러의 첫 번째 애니메이션 클립 이름을 가져와 교체
+                        var clips = baseAnimatorController.animationClips;
+                        if (clips.Length > 0) {
+                            overrideController[clips[0].name] = achive.achiveClip;
+                        }
+
+                        animator.runtimeAnimatorController = overrideController;
+                        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                        animator.enabled = true;
+                    }
+                    else if (animator != null) {
+                        animator.enabled = false;
                     }
                     // [수정 끝]
                 }
@@ -162,26 +218,177 @@ public class AchiveManager : MonoBehaviour {
                     string location = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", achive.type.ToString());
                     texts[0].text = "???";
                     texts[1].text = "???";
-                    texts[2].text = location; // 업적 위치 표시
+                    texts[2].text = location;
 
-                    // [수정 시작] 클리어하지 않았다면 아이콘을 숨깁니다.
+                    // [수정 시작] 클리어하지 않았다면 아이콘과 애니메이션을 숨깁니다.
                     if (iconImage != null) {
                         iconImage.sprite = null;
-                        iconImage.color = new Color(1, 1, 1, 0); // 아이콘을 투명하게 만들어 숨김
+                        iconImage.color = new Color(1, 1, 1, 0);
                     }
-                    // [수정 끝]
+                    if (animator != null) animator.enabled = false;
                 }
             }
         }
 
-        // 전체 달성률 UI 업데이트
         achiveSlider.value = clearCount / (float)achives.Count;
         achivePercentText.text = $"{clearCount} / {achives.Count}";
     }
     
-    public bool IsAchiveCleared(string key)
-    {
+    public bool IsAchiveCleared(string key) {
         var achive = achives.Find(a => a.key == key);
         return achive != null && achive.isClear;
+    }
+
+    // ==========================================
+    // 개발자 이스터에그 전용 로직
+    // ==========================================
+
+    public void CollectDevEggPiece(int stageId) {
+        if (devEggPanel == null) {
+            Debug.LogError("[AchiveManager] devEggPanel이 할당되지 않았습니다!");
+            return;
+        }
+
+        // 1. 조각 수집 상태 저장
+        PlayerPrefs.SetInt($"DevEgg_Piece_{stageId}", 1);
+        PlayerPrefs.Save();
+
+        // 2. UI 표시 초기화
+        devEggPanel.SetActive(true);
+        if (devEggCanvasGroup != null) {
+            devEggCanvasGroup.alpha = 0;
+            devEggCanvasGroup.DOFade(1f, 0.5f).SetUpdate(true);
+        }
+
+        for (int i = 0; i < photoPieces.Length; i++) {
+            if (photoPieces[i] != null) {
+                photoPieces[i].gameObject.SetActive(i == (stageId - 1));
+                photoPieces[i].color = Color.white;
+                photoPieces[i].transform.localScale = Vector3.one;
+            }
+        }
+        
+        if (fullPhoto != null) fullPhoto.gameObject.SetActive(false);
+
+        // 3. 모든 조각 수집 여부 체크
+        bool isPiece1Collected = PlayerPrefs.GetInt("DevEgg_Piece_1", 0) == 1;
+        bool isPiece2Collected = PlayerPrefs.GetInt("DevEgg_Piece_2", 0) == 1;
+        bool isPiece3Collected = PlayerPrefs.GetInt("DevEgg_Piece_3", 0) == 1;
+
+        if (isPiece1Collected && isPiece2Collected && isPiece3Collected) {
+            PerformMergeAnimation();
+        } else {
+            DOVirtual.DelayedCall(3f, CloseDevEggPanel).SetUpdate(true);
+        }
+    }
+
+    private void PerformMergeAnimation() {
+        if (fullPhoto == null) {
+            Debug.LogError("[AchiveManager] fullPhoto가 할당되지 않았습니다!");
+            return;
+        }
+
+        Sequence seq = DOTween.Sequence().SetUpdate(true);
+        seq.AppendInterval(1.5f);
+        seq.AppendCallback(() => {
+            fullPhoto.gameObject.SetActive(true);
+            fullPhoto.color = new Color(1, 1, 1, 0);
+        });
+        seq.Append(fullPhoto.DOFade(1f, 1f));
+        seq.Join(photoPieces[2].DOFade(0f, 1f));
+        seq.AppendInterval(3f);
+        seq.AppendCallback(() => {
+            SetAchiveClear("DevEgg"); // 최종 업적 달성
+            CloseDevEggPanel();
+        });
+    }
+
+    public void CloseDevEggPanel() {
+        if (devEggCanvasGroup == null) return;
+        devEggCanvasGroup.DOFade(0f, 0.5f).SetUpdate(true).OnComplete(() => {
+            devEggPanel.SetActive(false);
+        });
+    }
+
+    // ==========================================
+    // 업적 상세 보기 로직
+    // ==========================================
+
+    public void ShowAchiveDetail(AchiveData data) {
+        if (!data.isClear || detailPanel == null) return;
+
+        detailPanel.SetActive(true);
+        
+        // 텍스트 설정
+        if (detailNameText != null) 
+            detailNameText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", data.key + "_name");
+        if (detailDescText != null) 
+            detailDescText.text = LocalizationSettings.StringDatabase.GetLocalizedString("Achive", data.key + "_desc");
+
+        // [수정] 원본 리소스가 있다면 우선 사용, 없다면 기존 리소스 사용 (Fallback)
+        AnimationClip targetClip = data.orgClip != null ? data.orgClip : data.achiveClip;
+        Sprite targetIcon = data.orgIcon != null ? data.orgIcon : data.icon;
+
+        bool hasAnimation = targetClip != null && baseAnimatorController != null;
+
+        // 1. 일반 이미지 설정 (애니메이션이 없을 때만)
+        if (detailIconImage != null) {
+            detailIconImage.gameObject.SetActive(!hasAnimation);
+            if (!hasAnimation && targetIcon != null) {
+                detailIconImage.sprite = targetIcon;
+            }
+        }
+
+        // 2. 애니메이터 설정
+        if (detailAnimator != null) {
+            // [핵심] 잔상 제거를 위해 오브젝트를 껐다 켬 + 스프라이트 즉시 제거
+            detailAnimator.gameObject.SetActive(false);
+            Image animImage = detailAnimator.GetComponent<Image>();
+            if (animImage != null) animImage.sprite = null;
+
+            if (hasAnimation) {
+                detailAnimator.gameObject.SetActive(true);
+                detailAnimator.enabled = false;
+                detailAnimator.runtimeAnimatorController = null;
+
+                // 새로운 OverrideController 생성
+                AnimatorOverrideController overrideController = new AnimatorOverrideController(baseAnimatorController);
+                
+                // [개선] GetOverrides를 사용하여 모든 애니메이션 슬롯을 타겟 클립으로 정확히 교체
+                List<KeyValuePair<AnimationClip, AnimationClip>> overrides = new List<KeyValuePair<AnimationClip, AnimationClip>>();
+                overrideController.GetOverrides(overrides);
+                for (int i = 0; i < overrides.Count; i++) {
+                    overrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(overrides[i].Key, targetClip);
+                }
+                overrideController.ApplyOverrides(overrides);
+
+                detailAnimator.runtimeAnimatorController = overrideController;
+                detailAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                detailAnimator.enabled = true;
+
+                // 상태 완전 초기화 및 강제 재생
+                detailAnimator.Rebind();
+                detailAnimator.Play(0, -1, 0f);
+                detailAnimator.Update(0f);
+            }
+        }
+
+        // 상세 패널 페이드 효과
+        CanvasGroup cg = detailPanel.GetComponent<CanvasGroup>();
+        if (cg != null) {
+            cg.alpha = 0;
+            cg.DOFade(1f, 0.3f).SetUpdate(true);
+        }
+    }
+
+    public void CloseAchiveDetail() {
+        if (detailPanel == null) return;
+        
+        CanvasGroup cg = detailPanel.GetComponent<CanvasGroup>();
+        if (cg != null) {
+            cg.DOFade(0f, 0.3f).SetUpdate(true).OnComplete(() => detailPanel.SetActive(false));
+        } else {
+            detailPanel.SetActive(false);
+        }
     }
 }
