@@ -341,10 +341,14 @@ public class AchiveManager : MonoBehaviour {
 
         // 2. 애니메이터 설정
         if (detailAnimator != null) {
-            // [핵심] 잔상 제거를 위해 오브젝트를 껐다 켬 + 스프라이트 즉시 제거
             detailAnimator.gameObject.SetActive(false);
+            
+            // [수정] Image와 SpriteRenderer 모두 초기화하여 잔상 제거
             Image animImage = detailAnimator.GetComponent<Image>();
             if (animImage != null) animImage.sprite = null;
+            
+            SpriteRenderer animSR = detailAnimator.GetComponent<SpriteRenderer>();
+            if (animSR != null) animSR.sprite = null;
 
             if (hasAnimation) {
                 detailAnimator.gameObject.SetActive(true);
