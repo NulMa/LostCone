@@ -43,7 +43,7 @@ using SceneMgr = UnityEngine.SceneManagement.SceneManager;
         public void OnClick()
         {
             SceneMgr.sceneLoaded += HandleSceneLoaded;
-            SceneMgr.LoadScene("DefaultScene2");
+            SceneMgr.LoadScene(MainMenuManager.DEFAULT_SCENE);
         }
 
         private void HandleSceneLoaded(Scene arg0, LoadSceneMode arg1)

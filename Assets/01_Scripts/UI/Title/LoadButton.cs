@@ -34,7 +34,7 @@ namespace _01_Scripts.UI.Title
         }
         
         public void ContinueGame() {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(MainMenuManager.DEFAULT_SCENE);
             StartCoroutine(LoadGameAfterSceneLoad());
         }
         
