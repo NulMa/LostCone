@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: 50d72a013f13ce0488147b799a838890
-AssetOrigin:
-  serializedVersion: 1
-  productId: 90678
-  packageName: Footstep(Snow and Grass)
-  packageVersion: 1.0
-  assetPath: Assets/Footstep(Snow and Grass)/Stepssingle sound/grass/Grass1 16-Audio.wav
-  uploadId: 180196
 AudioImporter:
   externalObjects: {}
   serializedVersion: 8
@@ -18,7 +11,7 @@ AudioImporter:
     compressionFormat: 1
     quality: 1
     conversionMode: 0
-    preloadAudioData: 1
+    preloadAudioData: 0
   platformSettingOverrides: {}
   forceToMono: 0
   normalize: 1
