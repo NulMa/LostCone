@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
-    public const string DEFAULT_SCENE = "DefaultScene2";
+    public const string DEFAULT_SCENE = "DefaultScene_03";
     public Button loadButton;
     public GameObject InGameUi; // InGame UI 오브젝트
 
