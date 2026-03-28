@@ -172,7 +172,8 @@ public class SettingUI : MonoBehaviour
     {
         BGMUSIC_VOLUME = value;
         bgmText.text = Mathf.RoundToInt(value * 100).ToString();
-        audioMixer.SetFloat("musicVolume", Mathf.Log10(value) * 20);
+        float volume = value <= 0.0001f ? -80f : Mathf.Log10(value) * 20;
+        audioMixer.SetFloat("musicVolume", volume);
         AudioManager.Instance?.SetBGMVolume(value);
         SaveSettings();
     }
@@ -181,7 +182,8 @@ public class SettingUI : MonoBehaviour
     {
         SFX_VOLUME = value;
         sfxText.text = Mathf.RoundToInt(value * 100).ToString();
-        audioMixer.SetFloat("sfxVolume", Mathf.Log10(value) * 20);
+        float volume = value <= 0.0001f ? -80f : Mathf.Log10(value) * 20;
+        audioMixer.SetFloat("sfxVolume", volume);
         AudioManager.Instance?.SetSFXVolume(value);
         SaveSettings();
     }

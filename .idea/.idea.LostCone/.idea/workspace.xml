@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="" />
+    <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/CreditTransition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/CreditTransition.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/Builds/DefaultScene_03.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/Builds/DefaultScene_03.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/Builds/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/Builds/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Achive/Achives/IrisoutAchive.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Core/GamaManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/GifVideo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/GifVideo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/NPCs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Map/SFXPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Map/SFXPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SettingUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SettingUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/Map/Metronome.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/Map/Metronome.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/02_Prefabs/PlayerParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/99_Temp/BKG/Map_02_KG.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/99_Temp/BKG/Map_02_KG.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/BGM3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/SoundSO/Title.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Audio/SoundSO/Title.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/AudioMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/AudioMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MapObjs/01_DonutHole/Ikimono.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MapObjs/01_DonutHole/Ikimono.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MapObjs/02_Junk/LastAnim.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MapObjs/02_Junk/LastAnim.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/MapObjs/02_Junk/LastCutScene.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/MapObjs/02_Junk/LastCutScene.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,7 +152,7 @@
       <workItem from="1772952465320" duration="4208000" />
       <workItem from="1772956934958" duration="6936000" />
       <workItem from="1773551471347" duration="4608000" />
-      <workItem from="1774609873239" duration="4000" />
+      <workItem from="1774609872114" duration="12184000" />
     </task>
     <servers />
   </component>

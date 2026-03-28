@@ -1,6 +1,7 @@
 using KimMin.ObjectPool.RunTime;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Blade.SoundSystem
@@ -20,6 +21,17 @@ namespace Blade.SoundSystem
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            _myPool.Push(this);
+        }
+        
+        private void OnDisable()
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         public void SetUpPool(Pool pool) => _myPool = pool;

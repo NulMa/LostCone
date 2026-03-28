@@ -89,6 +89,7 @@ public class Player : MonoBehaviour
     public bool isGrounded; // 현재 지상 여부
 
     public SoundSO redoutSound;
+    private bool _isRedoutPlayed;
 
     public bool IsGround
     {
@@ -645,12 +646,12 @@ public class Player : MonoBehaviour
             return;
         GamaManager.Instance.achiveCall(collision.name);
 
-        if(collision.name == "RedOut")
+        if(collision.name == "RedOut" && !_isRedoutPlayed)
         {
             StartCoroutine(MakeAlphaZero(collision.GetComponent<SpriteRenderer>(), 2f));
             var evt = new PlaySoundEvent();
             GameEventBus.RaiseEvent(evt.Initialize(redoutSound, collision.transform.position, 1));
-
+            _isRedoutPlayed = true;
             if (collision.gameObject.transform.parent.name == "RedOutRabbit")
                 collision.gameObject.transform.parent.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
         }

@@ -96,7 +96,12 @@ public class GifVideo : MonoBehaviour
                 // 7 change NEKO back gate close
                 videoObject[7].GetComponent<SpriteRenderer>().sprite = sprites[4];
                 break;
-
+            case 3:
+                videoObject[0].gameObject.SetActive(true);
+                videoObject[1].gameObject.SetActive(false);
+                videoObject[2].gameObject.SetActive(false);
+                Debug.Log("GifVideo: VideoNum 3 실행");
+                break;
             default:
                 break;
         }

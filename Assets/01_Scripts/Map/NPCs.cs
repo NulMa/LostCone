@@ -33,30 +33,36 @@ public class NPCs : MonoBehaviour {
             OnVideoDisabled();
         }
 
-        switch (gameObject.name) {
+        switch (gameObject.name)
+        {
             case "Lemon_Sprout":
                 if (AchiveManager.instance.IsAchiveCleared("HalfCut"))
                 {
                     GamaManager.Instance.rain.SetActive(false);
                     isPlayed = true;
                 }
+
                 break;
 
             case "YourName":
-                if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1){
+                if (PlayerPrefs.GetInt("HiddenWall_OnFunction_1", 0) == 1)
+                {
                     Debug.Log("구미 앞을 보다.");
                     animator.SetTrigger("Front");
                     isPlayed = true;
                 }
+
                 break;
 
             case "CatchNeko":
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 if (PlayerPrefs.GetInt("achive_LostCone", 0) == 1)
                 {
+                    video.GetComponent<GifVideo>().ifNeed();
                     StartCoroutine(ActivateChainedAnimator());
                     isPlayed = true;
                 }
+
                 ///////////////////////////////////////////////////////////////////////////////////////////////////
                 break;
 
@@ -66,6 +72,7 @@ public class NPCs : MonoBehaviour {
                     video.GetComponent<GifVideo>().ifNeed();
                     isPlayed = true;
                 }
+
                 break;
         }
     }
@@ -77,9 +84,8 @@ public class NPCs : MonoBehaviour {
             {
                 playVideo();
                 GamaManager.Instance.achiveCall("LostCone");
+                video.GetComponent<GifVideo>().ifNeed();
             }
-
-
 
 
             if (player != null && player.isInteracting) { // isInteracting 필드 확인
@@ -137,7 +143,6 @@ public class NPCs : MonoBehaviour {
 
                             return;
                         }
-
                         else{
                             playVideo();
                             PlayerPrefs.SetInt("GarakutaKun_0_Clear", 1);
@@ -145,6 +150,35 @@ public class NPCs : MonoBehaviour {
 
                             Debug.Log("Clear GarakutaKun_0");
                         }
+                        break;
+                    case "Lever_Stage2":
+                        if (isPlayed) break;
+
+                        // 1. 사운드 피드백 (인스펙터에서 interactSucessSound 할당 필요)
+                        // if (interactSucessSound != null) {
+                        //     GameEventBus.RaiseEvent(_playSoundEvent.Initialize(interactSucessSound));
+                        // }
+
+                        // 2. 레버 애니메이션
+                        
+                        if (animator != null) {
+                            animator.SetTrigger("Activate"); 
+                        }
+                        
+
+                        // 3. 연결된(chained) 히든월 제거
+                        if (chained != null) {
+                            foreach (GameObject obj in chained) {
+                                if (obj != null) {
+                                    var wall = obj.GetComponent<HiddenWall>();
+                                    if (wall != null) {
+                                        wall.HideWallByFunction();
+                                    }
+                                }
+                            }
+                        }
+
+                        isPlayed = true;
                         break;
                     default:
                         break;
@@ -200,11 +234,9 @@ public class NPCs : MonoBehaviour {
                     Debug.LogWarning("Chained 오브젝트가 설정되지 않았습니다.");
                 }
                 break;
-
             case "Gumi":
                 Debug.Log("Ikimono is free!");
                 break;
-
             case "CatchNeko" :  
                 chained[0].GetComponent<SpriteRenderer>().enabled = false;
                 chained[0].GetComponent<LeverNeko>().Cleard();
@@ -212,6 +244,7 @@ public class NPCs : MonoBehaviour {
                 chained[0].GetComponent<Animator>().enabled = false;
 
                 gameObject.SetActive(false);
+                Debug.Log("네코레버");
                 break;
         }
     }

@@ -16,19 +16,20 @@ namespace Code.Achive
         [SerializeField] private Animator irisOutAnimator;
         
         private readonly int _circleSizeHash = Shader.PropertyToID("_CircleSize");
+        private bool _hasPlayed;
 
         protected override void Awake()
         {
             base.Awake();
             fadeImage.material = new Material(fadeImage.material);
-            
         }
 
         [ContextMenu("IRIS OUT")]
         protected async override void OnMessageRecieved()
         {
-            if (AchiveManager.instance.IsAchiveCleared("IrisOut")) return;
+            if (AchiveManager.instance.IsAchiveCleared("IrisOut") || _hasPlayed) return;
 
+            _hasPlayed = true;
             irisOutAnimator.enabled = true;
             await Awaitable.WaitForSecondsAsync(0.2f);
 
