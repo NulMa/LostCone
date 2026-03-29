@@ -204,6 +204,9 @@ public class SettingUI : MonoBehaviour
     }
 
     // UI에 설정 반영
+    // 주의: 슬라이더 콜백(OnBGMSliderChanged 등)은 AudioMixer.SetFloat까지 처리하지만,
+    // Awake 시점에는 슬라이더가 없거나 콜백이 등록되지 않아 AudioMixer가 기본값(에디터 설정값)으로 유지됨.
+    // 따라서 이 함수에서 AudioMixer에도 직접 저장된 볼륨값을 적용해야 함.
     private void ApplySettingsToUI()
     {
         if (bgmSlider != null)
@@ -213,6 +216,15 @@ public class SettingUI : MonoBehaviour
         if (langDropdown != null)
             LangDropdown(Language);
 
+        // AudioMixer에 로드된 볼륨값 즉시 적용
+        // (슬라이더 조작 없이 시작할 때도 세팅값이 반영되도록)
+        // Log10 변환: Slider 0~1 값 → dB 값 (-80 ~ 0), 0 이하는 -80dB(무음)으로 처리
+        float bgmVol = BGMUSIC_VOLUME <= 0.0001f ? -80f : Mathf.Log10(BGMUSIC_VOLUME) * 20;
+        float sfxVol = SFX_VOLUME <= 0.0001f ? -80f : Mathf.Log10(SFX_VOLUME) * 20;
+        audioMixer.SetFloat("musicVolume", bgmVol);
+        audioMixer.SetFloat("sfxVolume", sfxVol);
+
+        // AudioManager의 AudioSource 볼륨도 함께 동기화
         AudioManager.Instance?.SetBGMVolume(BGMUSIC_VOLUME);
         AudioManager.Instance?.SetSFXVolume(SFX_VOLUME);
     }
