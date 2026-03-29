@@ -31,6 +31,7 @@ namespace Blade.SoundSystem
         
         private void OnDisable()
         {
+            _audioSource.Stop();
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
