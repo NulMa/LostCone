@@ -56,40 +56,37 @@ public class GamaManager : MonoBehaviour
 
     private void Awake()
     {
-        isLastSceneCleared = PlayerPrefs.GetInt("achive_LostCone") == 1 ? true : false;
-        if (!isLastSceneCleared)
-        {
-
-            followerNeko.SetActive(false);
-        }
-        else
-        {
-            followerNeko.SetActive(true);
-            playerCone.SetActive(true);
-        }
-
-        // 싱글톤 인스턴스 설정
+        // 싱글톤 인스턴스 설정 (다른 코드보다 반드시 먼저 실행)
         if (Instance == null)
         {
             Instance = this;
         }
         else
         {
-            Destroy(gameObject); // 중복된 인스턴스 제거
+            Destroy(gameObject);
+            return;
+        }
+
+        isLastSceneCleared = PlayerPrefs.GetInt("achive_LostCone") == 1 ? true : false;
+        if (!isLastSceneCleared)
+        {
+            followerNeko.SetActive(false);
+        }
+        else
+        {
+            followerNeko.SetActive(true);
+            if (playerCone != null) playerCone.SetActive(true);
         }
         
-        if (SaveManager.Instance.HasPath("playerPos"))
-            LoadGame();
-
         if (GamaManager.Instance.SceneManager.scenes[1].isDone) rain.SetActive(false);
-
-        // 현재 스테이지에 따른 BGM 재생
-        PlayBGMForCurrentStage();
     }
 
     private void Start()
     {
-
+        // Awake 단계에서 DOTweenAnimation.Awake(order 0)가 트윈을 생성하므로
+        // Start(order -5)에서 LoadGame을 호출해야 DOTween.Kill이 실제로 동작함
+        if (SaveManager.Instance.HasPath("playerPos"))
+            LoadGame();
     }
 
     private void Update()
@@ -269,14 +266,34 @@ public class GamaManager : MonoBehaviour
     }
 
     // 현재 스테이지에 따른 BGM 재생
+    // 같은 스테이지의 BGM이 이미 재생 중이면 중복 재생을 방지하기 위해 스킵함.
+    // (맵 내에서 점프/착지 등으로 OnCollisionEnter2D가 반복 호출되는 경우 대응)
     public void PlayBGMForCurrentStage()
     {
+        int newBgmChannel = bgm[currentStageID].GetInstanceID();
+        int newAsChannel = ambients[currentStageID].GetInstanceID();
+
+        // 이미 같은 BGM 채널이 재생 중이면 스킵
+        if (_bgmChannel == newBgmChannel)
+            return;
+
+        // 이전 BGM/앰비언트 정지 후 새로운 것으로 교체
         GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_bgmChannel));
         GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_asChannel));
-        _bgmChannel = bgm[currentStageID].GetInstanceID();
-        _asChannel = ambients[currentStageID].GetInstanceID();
+        _bgmChannel = newBgmChannel;
+        _asChannel = newAsChannel;
         GameEventBus.RaiseEvent(_playSoundEvent.Initialize(bgm[currentStageID], _bgmChannel));
-        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(ambients[currentStageID], _asChannel));
+
+        // 0번 맵이 이미 클리어된 경우(비가 그친 상태) 환경음 재생하지 않음
+        if (!(currentStageID == 0 && SceneManager.scenes[1].isDone))
+            GameEventBus.RaiseEvent(_playSoundEvent.Initialize(ambients[currentStageID], _asChannel));
+    }
+
+    // 환경음만 정지 (비 그치는 연출 등 특정 시점에 호출)
+    public void StopAmbient()
+    {
+        GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_asChannel));
+        _asChannel = 100;
     }
 
     // AudioManager SFX 실행 함수들

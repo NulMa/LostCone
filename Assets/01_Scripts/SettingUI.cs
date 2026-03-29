@@ -37,11 +37,20 @@ public class SettingUI : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             LoadSettings(); // 게임 시작 시 저장된 설정 불러오기
-            ApplySettingsToUI(); // UI에 설정 반영
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // AudioMixer.SetFloat()은 Awake 시점에 무시되는 Unity 특성으로 인해
+        // Start()에서 호출해야 실제로 반영됨
+        if (instance == this)
+        {
+            ApplySettingsToUI();
         }
     }
 

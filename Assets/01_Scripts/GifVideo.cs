@@ -110,6 +110,8 @@ public class GifVideo : MonoBehaviour
     private void OnDisable()
     {
         player.isScenePlaying = false;
+        if (VideoNum == 0)
+            GamaManager.Instance.StopAmbient();
     }
 }
 
