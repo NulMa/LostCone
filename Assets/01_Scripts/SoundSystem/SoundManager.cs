@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Blade.SoundSystem;
 using Core;
 using KimMin.ObjectPool.RunTime;
 using PaperFlower.Core;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Blade.Managers
 {
@@ -21,6 +19,11 @@ namespace Blade.Managers
             GameEventBus.AddListener<PlaySoundEvent>(HandlePlaySFXEvent);
             GameEventBus.AddListener<StopSoundEvent>(HandleStopSoundEvent);
             StopAllLoopSounds();
+            
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += (_, __) =>
+            {
+                StopAllLoopSounds();
+            };
         }
 
         private void OnDestroy()

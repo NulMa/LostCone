@@ -31,6 +31,7 @@ public class GamaManager : MonoBehaviour
     public Player player;
     public GameObject playerParent;
     public GameObject followerNeko;
+    public GameObject playerCone;
     public MapItems currentMap;
     public Image panel;
     public Camera mainCam;
@@ -45,11 +46,13 @@ public class GamaManager : MonoBehaviour
     public bool isLastSceneCleared = false;
     
     public SoundSO[] bgm;
+    public SoundSO[] ambients;
 
     
     private readonly PlaySoundEvent _playSoundEvent = new PlaySoundEvent();
     private readonly StopSoundEvent _stopSoundEvent = new StopSoundEvent();
-    private int _channel = 100;
+    private int _bgmChannel = 100;
+    private int _asChannel = 100;
 
     private void Awake()
     {
@@ -62,6 +65,7 @@ public class GamaManager : MonoBehaviour
         else
         {
             followerNeko.SetActive(true);
+            playerCone.SetActive(true);
         }
 
         // 싱글톤 인스턴스 설정
@@ -267,10 +271,12 @@ public class GamaManager : MonoBehaviour
     // 현재 스테이지에 따른 BGM 재생
     public void PlayBGMForCurrentStage()
     {
-        GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_channel));
-        int channel = 100 + currentStageID;
-        _channel = channel;
-        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(bgm[currentStageID], channel));
+        GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_bgmChannel));
+        GameEventBus.RaiseEvent(_stopSoundEvent.Initialize(_asChannel));
+        _bgmChannel = bgm[currentStageID].GetInstanceID();
+        _asChannel = ambients[currentStageID].GetInstanceID();
+        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(bgm[currentStageID], _bgmChannel));
+        GameEventBus.RaiseEvent(_playSoundEvent.Initialize(ambients[currentStageID], _asChannel));
     }
 
     // AudioManager SFX 실행 함수들

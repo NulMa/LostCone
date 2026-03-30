@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour {
+    public const string DEFAULT_SCENE = "DefaultScene_03";
     public Button loadButton;
     public GameObject InGameUi; // InGame UI 오브젝트
 
@@ -40,7 +41,7 @@ public class MainMenuManager : MonoBehaviour {
             AchiveManager.instance.RefreshUI();
         }
 
-        UnityEngine.SceneManagement.SceneManager.LoadScene("DefaultScene2"); // Unity의 SceneManager 사용
+        UnityEngine.SceneManagement.SceneManager.LoadScene(DEFAULT_SCENE); // Unity의 SceneManager 사용
     }
 
     public void HardReset()

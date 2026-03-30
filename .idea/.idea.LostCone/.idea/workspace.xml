@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07b26d23-f7af-48f3-b09b-ffd91a1b20f7" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LostCone/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene_03.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00_Scenes/DefaultScene_03.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/01_Scripts/SoundSystem/SoundPlayer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,19 +31,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "RealPaperFlower",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;RealPaperFlower&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.2.8f1\Editor\Unity.exe" />
@@ -130,6 +128,8 @@
       <workItem from="1772952465320" duration="4208000" />
       <workItem from="1772956934958" duration="6936000" />
       <workItem from="1773551471347" duration="4608000" />
+      <workItem from="1774609872114" duration="12184000" />
+      <workItem from="1774773898584" duration="316000" />
     </task>
     <servers />
   </component>

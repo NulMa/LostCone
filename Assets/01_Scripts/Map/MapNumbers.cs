@@ -39,11 +39,13 @@ public class MapNumbers : MonoBehaviour{
     public void OnOffAll() {
         Debug.Log("OnOffAll() 호출됨");
 
-        foreach (GameObject obj in toOff) {
-            obj.SetActive(false);
+        for (int i = 0; i < toOff.Length; i++) {
+            if (toOff[i] == null) { Debug.LogError($"[MapNumbers] mapNumber={mapNumber} | toOff[{i}] 가 null입니다."); continue; }
+            toOff[i].SetActive(false);
         }
-        foreach (GameObject obj in toOn) {
-            obj.SetActive(true);
+        for (int i = 0; i < toOn.Length; i++) {
+            if (toOn[i] == null) { Debug.LogError($"[MapNumbers] mapNumber={mapNumber} | toOn[{i}] 가 null입니다."); continue; }
+            toOn[i].SetActive(true);
         }
     }
 }
